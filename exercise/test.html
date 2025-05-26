@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Quiz App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .mode-btn {
+            padding: 12px 25px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .mode-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .mode-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .topic-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(240, 147, 251, 0.4);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+        }
+
+        .question-text {
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .options-container {
+            display: grid;
+            gap: 15px;
+        }
+
+        .option-btn {
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            text-align: left;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .option-btn:hover {
+            border-color: #667eea;
+            background: #f7fafc;
+        }
+
+        .option-btn.selected {
+            border-color: #667eea;
+            background: #edf2f7;
+        }
+
+        .option-btn.correct {
+            border-color: #48bb78;
+            background: #f0fff4;
+            color: #2f855a;
+        }
+
+        .option-btn.incorrect {
+            border-color: #f56565;
+            background: #fffafa;
+            color: #c53030;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+
+        .feedback.correct {
+            background: #f0fff4;
+            color: #2f855a;
+            border: 1px solid #48bb78;
+        }
+
+        .feedback.incorrect {
+            background: #fffafa;
+            color: #c53030;
+            border: 1px solid #f56565;
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .next-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .results-container {
+            text-align: center;
+        }
+
+        .score-display {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .score-display.pass {
+            color: #48bb78;
+        }
+
+        .score-display.fail {
+            color: #f56565;
+        }
+
+        .pass-status {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .pass-status.pass {
+            background: #f0fff4;
+            color: #2f855a;
+            border: 2px solid #48bb78;
+        }
+
+        .pass-status.fail {
+            background: #fffafa;
+            color: #c53030;
+            border: 2px solid #f56565;
+        }
+
+        .review-section {
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .review-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .review-item.correct {
+            background: #f0fff4;
+            border-color: #48bb78;
+        }
+
+        .review-item.incorrect {
+            background: #fffafa;
+            border-color: #f56565;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .back-btn {
+            background: #718096;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+
+        .back-btn:hover {
+            background: #4a5568;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .mode-selector {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Student Quiz Application</h1>
+            
+            <!-- Topic Selection Screen -->
+            <div id="topicSelection">
+                <div class="mode-selector">
+                    <button class="mode-btn active" data-mode="learn">Learn Mode</button>
+                    <button class="mode-btn" data-mode="test">Test Mode</button>
+                </div>
+                
+                <h2>Select a Topic:</h2>
+                <div class="topic-grid" id="topicGrid"></div>
+            </div>
+            
+            <!-- Quiz Screen -->
+            <div id="quizScreen" class="hidden">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <button class="back-btn" onclick="backToTopics()">← Back</button>
+                    <div id="questionCounter"></div>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                
+                <div class="question-container">
+                    <div class="question-text" id="questionText"></div>
+                    <div class="options-container" id="optionsContainer"></div>
+                    <div id="feedbackContainer"></div>
+                    <button class="next-btn" id="nextBtn" onclick="nextQuestion()" disabled>Next Question</button>
+                </div>
+            </div>
+            
+            <!-- Results Screen -->
+            <div id="resultsScreen" class="hidden">
+                <div class="results-container">
+                    <h2>Quiz Complete!</h2>
+                    <div class="score-display" id="scoreDisplay"></div>
+                    <div class="pass-status" id="passStatus"></div>
+                    <button class="next-btn" onclick="backToTopics()">Try Another Topic</button>
+                </div>
+                <div id="reviewSection" class="review-section hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample quiz data - you can replace this with your actual questions
+        const quizData = {
+            "JavaScript Basics": [
+                {
+                    question: "What does 'var' declare in JavaScript?",
+                    options: ["A variable", "A function", "An object", "An array"],
+                    correct: 0,
+                    explanation: "'var' is used to declare variables in JavaScript."
+                },
+                {
+                    question: "Which of these is NOT a JavaScript data type?",
+                    options: ["String", "Boolean", "Integer", "Undefined"],
+                    correct: 2,
+                    explanation: "JavaScript has Number type, not Integer specifically."
+                },
+                {
+                    question: "How do you write a comment in JavaScript?",
+                    options: ["<!-- comment -->", "# comment", "// comment", "/* comment */"],
+                    correct: 2,
+                    explanation: "// is used for single-line comments in JavaScript."
+                }
+            ],
+            "HTML Fundamentals": [
+                {
+                    question: "What does HTML stand for?",
+                    options: ["Hyper Text Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyperlink and Text Markup Language"],
+                    correct: 0,
+                    explanation: "HTML stands for Hyper Text Markup Language."
+                },
+                {
+                    question: "Which HTML tag is used for the largest heading?",
+                    options: ["<h6>", "<h1>", "<header>", "<heading>"],
+                    correct: 1,
+                    explanation: "<h1> creates the largest heading in HTML."
+                },
+                {
+                    question: "What is the correct HTML element for inserting a line break?",
+                    options: ["<break>", "<lb>", "<br>", "<newline>"],
+                    correct: 2,
+                    explanation: "<br> is the correct HTML element for line breaks."
+                }
+            ],
+            "CSS Styling": [
+                {
+                    question: "What does CSS stand for?",
+                    options: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style Sheets", "Colorful Style Sheets"],
+                    correct: 1,
+                    explanation: "CSS stands for Cascading Style Sheets."
+                },
+                {
+                    question: "Which property is used to change the background color?",
+                    options: ["bgcolor", "background-color", "color", "bg-color"],
+                    correct: 1,
+                    explanation: "background-color is the correct CSS property."
+                },
+                {
+                    question: "How do you select an element with id 'header'?",
+                    options: [".header", "#header", "header", "*header"],
+                    correct: 1,
+                    explanation: "# is used to select elements by ID in CSS."
+                }
+            ],
+            "Python Basics": [
+                {
+                    question: "Which keyword is used to define a function in Python?",
+                    options: ["function", "def", "define", "func"],
+                    correct: 1,
+                    explanation: "'def' is used to define functions in Python."
+                },
+                {
+                    question: "How do you create a comment in Python?",
+                    options: ["// comment", "# comment", "<!-- comment -->", "/* comment */"],
+                    correct: 1,
+                    explanation: "# is used for comments in Python."
+                },
+                {
+                    question: "What is the correct way to create a list in Python?",
+                    options: ["list = (1, 2, 3)", "list = {1, 2, 3}", "list = [1, 2, 3]", "list = <1, 2, 3>"],
+                    correct: 2,
+                    explanation: "Square brackets [] are used to create lists in Python."
+                }
+            ],
+            "Database Concepts": [
+                {
+                    question: "What does SQL stand for?",
+                    options: ["Structured Query Language", "Standard Query Language", "Sequential Query Language", "Simple Query Language"],
+                    correct: 0,
+                    explanation: "SQL stands for Structured Query Language."
+                },
+                {
+                    question: "Which SQL command is used to retrieve data?",
+                    options: ["GET", "FETCH", "SELECT", "RETRIEVE"],
+                    correct: 2,
+                    explanation: "SELECT is used to retrieve data from a database."
+                },
+                {
+                    question: "What is a primary key?",
+                    options: ["A password", "A unique identifier for records", "The first column", "A foreign reference"],
+                    correct: 1,
+                    explanation: "A primary key uniquely identifies each record in a table."
+                }
+            ],
+            "Web Development": [
+                {
+                    question: "What is the purpose of the <head> tag in HTML?",
+                    options: ["Display content", "Contains metadata", "Create headers", "Define body"],
+                    correct: 1,
+                    explanation: "The <head> tag contains metadata about the HTML document."
+                },
+                {
+                    question: "Which HTTP method is used to send data to a server?",
+                    options: ["GET", "POST", "PUT", "DELETE"],
+                    correct: 1,
+                    explanation: "POST is commonly used to send data to a server."
+                },
+                {
+                    question: "What is responsive design?",
+                    options: ["Fast loading websites", "Interactive websites", "Websites that adapt to screen sizes", "Websites with animations"],
+                    correct: 2,
+                    explanation: "Responsive design means websites adapt to different screen sizes."
+                }
+            ],
+            "Git & Version Control": [
+                {
+                    question: "What is Git?",
+                    options: ["A programming language", "A version control system", "A web browser", "A database"],
+                    correct: 1,
+                    explanation: "Git is a distributed version control system."
+                },
+                {
+                    question: "Which command creates a new Git repository?",
+                    options: ["git start", "git init", "git create", "git new"],
+                    correct: 1,
+                    explanation: "'git init' initializes a new Git repository."
+                },
+                {
+                    question: "What does 'git commit' do?",
+                    options: ["Uploads files", "Saves changes permanently", "Creates a branch", "Deletes files"],
+                    correct: 1,
+                    explanation: "'git commit' saves changes permanently to the repository."
+                }
+            ],
+            "Algorithms": [
+                {
+                    question: "What is Big O notation used for?",
+                    options: ["Measuring file size", "Analyzing algorithm efficiency", "Counting variables", "Debugging code"],
+                    correct: 1,
+                    explanation: "Big O notation describes algorithm time/space complexity."
+                },
+                {
+                    question: "Which sorting algorithm has O(n²) worst-case complexity?",
+                    options: ["Merge Sort", "Quick Sort", "Bubble Sort", "Heap Sort"],
+                    correct: 2,
+                    explanation: "Bubble Sort has O(n²) worst-case time complexity."
+                },
+                {
+                    question: "What is recursion?",
+                    options: ["A loop", "A function calling itself", "Error handling", "Data structure"],
+                    correct: 1,
+                    explanation: "Recursion is when a function calls itself."
+                }
+            ],
+            "Software Design": [
+                {
+                    question: "What is the DRY principle?",
+                    options: ["Don't Repeat Yourself", "Do Right Yesterday", "Debug Rigorously Yearly", "Design Reusable Years"],
+                    correct: 0,
+                    explanation: "DRY means Don't Repeat Yourself - avoid code duplication."
+                },
+                {
+                    question: "What is encapsulation in OOP?",
+                    options: ["Hiding implementation details", "Creating objects", "Inheriting properties", "Polymorphic behavior"],
+                    correct: 0,
+                    explanation: "Encapsulation hides internal implementation details."
+                },
+                {
+                    question: "Which design pattern ensures only one instance exists?",
+                    options: ["Factory", "Observer", "Singleton", "Strategy"],
+                    correct: 2,
+                    explanation: "Singleton pattern ensures only one instance of a class exists."
+                }
+            ],
+            "Computer Networks": [
+                {
+                    question: "What does HTTP stand for?",
+                    options: ["Hyper Text Transfer Protocol", "High Tech Transfer Protocol", "Home Text Transfer Protocol", "Hyperlink Text Transfer Protocol"],
+                    correct: 0,
+                    explanation: "HTTP stands for Hyper Text Transfer Protocol."
+                },
+                {
+                    question: "Which port does HTTPS typically use?",
+                    options: ["80", "443", "8080", "3000"],
+                    correct: 1,
+                    explanation: "HTTPS typically uses port 443."
+                },
+                {
+                    question: "What is an IP address?",
+                    options: ["Internet Password", "Internet Protocol address", "Internal Program address", "Interactive Page address"],
+                    correct: 1,
+                    explanation: "IP address stands for Internet Protocol address."
+                }
+            ]
+        };
+
+        // Quiz state
+        let currentMode = 'learn';
+        let currentTopic = null;
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let selectedAnswer = null;
+        let quizComplete = false;
+
+        // Initialize the app
+        function init() {
+            setupModeSelector();
+            displayTopics();
+        }
+
+        function setupModeSelector() {
+            const modeBtns = document.querySelectorAll('.mode-btn');
+            modeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    modeBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentMode = btn.dataset.mode;
+                });
+            });
+        }
+
+        function displayTopics() {
+            const topicGrid = document.getElementById('topicGrid');
+            topicGrid.innerHTML = '';
+            
+            Object.keys(quizData).forEach(topic => {
+                const topicCard = document.createElement('div');
+                topicCard.className = 'topic-card';
+                topicCard.innerHTML = `
+                    <h3>${topic}</h3>
+                    <p>${quizData[topic].length} questions</p>
+                `;
+                topicCard.addEventListener('click', () => startQuiz(topic));
+                topicGrid.appendChild(topicCard);
+            });
+        }
+
+        function startQuiz(topic) {
+            currentTopic = topic;
+            currentQuestions = [...quizData[topic]];
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            selectedAnswer = null;
+            quizComplete = false;
+            
+            document.getElementById('topicSelection').classList.add('hidden');
+            document.getElementById('quizScreen').classList.remove('hidden');
+            document.getElementById('resultsScreen').classList.add('hidden');
+            
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const question = currentQuestions[currentQuestionIndex];
+            const questionCounter = document.getElementById('questionCounter');
+            const progressFill = document.getElementById('progressFill');
+            const questionText = document.getElementById('questionText');
+            const optionsContainer = document.getElementById('optionsContainer');
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            // Update progress
+            const progress = ((currentQuestionIndex + 1) / currentQuestions.length) * 100;
+            progressFill.style.width = progress + '%';
+            questionCounter.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
+            
+            // Display question
+            questionText.textContent = question.question;
+            
+            // Clear previous state
+            optionsContainer.innerHTML = '';
+            feedbackContainer.innerHTML = '';
+            selectedAnswer = null;
+            nextBtn.disabled = true;
+            nextBtn.textContent = currentQuestionIndex === currentQuestions.length - 1 ? 'Finish Quiz' : 'Next Question';
+            
+            // Display options
+            question.options.forEach((option, index) => {
+                const optionBtn = document.createElement('button');
+                optionBtn.className = 'option-btn';
+                optionBtn.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
+                optionBtn.addEventListener('click', () => selectAnswer(index, optionBtn));
+                optionsContainer.appendChild(optionBtn);
+            });
+        }
+
+        function selectAnswer(answerIndex, btnElement) {
+            // Remove previous selections
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            selectedAnswer = answerIndex;
+            btnElement.classList.add('selected');
+            
+            const question = currentQuestions[currentQuestionIndex];
+            const isCorrect = answerIndex === question.correct;
+            
+            if (currentMode === 'learn') {
+                // Show immediate feedback
+                showFeedback(isCorrect, question);
+                
+                // Highlight correct/incorrect
+                document.querySelectorAll('.option-btn').forEach((btn, index) => {
+                    if (index === question.correct) {
+                        btn.classList.add('correct');
+                    } else if (index === answerIndex && !isCorrect) {
+                        btn.classList.add('incorrect');
+                    }
+                });
+            }
+            
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        function showFeedback(isCorrect, question) {
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            const feedback = document.createElement('div');
+            feedback.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+            feedback.innerHTML = `
+                <strong>${isCorrect ? 'Correct!' : 'Incorrect!'}</strong><br>
+                ${question.explanation}
+            `;
+            feedbackContainer.appendChild(feedback);
+        }
+
+        function nextQuestion() {
+            // Save answer
+            userAnswers[currentQuestionIndex] = selectedAnswer;
+            
+            if (currentQuestionIndex < currentQuestions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quizScreen').classList.add('hidden');
+            document.getElementById('resultsScreen').classList.remove('hidden');
+            
+            // Calculate score
+            let correctAnswers = 0;
+            userAnswers.forEach((answer, index) => {
+                if (answer === currentQuestions[index].correct) {
+                    correctAnswers++;
+                }
+            });
+            
+            const percentage = Math.round((correctAnswers / currentQuestions.length) * 100);
+            const passed = percentage >= 80;
+            
+            // Display score
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const passStatus = document.getElementById('passStatus');
+            
+            scoreDisplay.textContent = `${percentage}%`;
+            scoreDisplay.className = `score-display ${passed ? 'pass' : 'fail'}`;
+            
+            passStatus.textContent = passed ? 'PASSED' : 'FAILED';
+            passStatus.className = `pass-status ${passed ? 'pass' : 'fail'}`;
+            
+            // Show detailed review for test mode
+            if (currentMode === 'test') {
+                showReview();
+            }
+        }
+
+        function showReview() {
+            const reviewSection = document.getElementById('reviewSection');
+            reviewSection.classList.remove('hidden');
+            reviewSection.innerHTML = '<h3>Review:</h3>';
+            
+            currentQuestions.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer === question.correct;
+                
+                const reviewItem = document.createElement('div');
+                reviewItem.className = `review-item ${isCorrect ? 'correct' : 'incorrect'}`;
+                reviewItem.innerHTML = `
+                    <strong>Q${index + 1}: ${question.question}</strong><br>
+                    Your answer: ${question.options[userAnswer]}<br>
+                    ${!isCorrect ? `Correct answer: ${question.options[question.correct]}<br>` : ''}
+                    <em>${question.explanation}</em>
+                `;
+                reviewSection.appendChild(reviewItem);
+            });
+        }
+
+        function backToTopics() {
+            document.getElementById('topicSelection').classList.remove('hidden');
+            document.getElementById('quizScreen').classList.add('hidden');
+            document.getElementById('resultsScreen').classList.add('hidden');
+        }
+
+        // Initialize the app when page loads
+        init();
+    </script>
+</body>
+</html>
