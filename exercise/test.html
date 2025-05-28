@@ -3,322 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Quiz App</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #4a5568;
-            margin-bottom: 30px;
-            font-size: 2.5em;
-        }
-
-        h2 {
-            color: #2d3748;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-        }
-
-        .mode-selector {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-            justify-content: center;
-        }
-
-        .mode-btn {
-            padding: 12px 25px;
-            border: 2px solid #667eea;
-            background: white;
-            color: #667eea;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .mode-btn.active {
-            background: #667eea;
-            color: white;
-        }
-
-        .mode-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .topic-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .topic-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .topic-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(240, 147, 251, 0.4);
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #e2e8f0;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            transition: width 0.3s ease;
-        }
-
-        .question-container {
-            margin-bottom: 30px;
-        }
-
-        .question-text {
-            font-size: 1.3em;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        .options-container {
-            display: grid;
-            gap: 15px;
-        }
-
-        .option-btn {
-            padding: 15px 20px;
-            border: 2px solid #e2e8f0;
-            background: white;
-            text-align: left;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 16px;
-        }
-
-        .option-btn:hover {
-            border-color: #667eea;
-            background: #f7fafc;
-        }
-
-        .option-btn.selected {
-            border-color: #667eea;
-            background: #edf2f7;
-        }
-
-        .option-btn.correct {
-            border-color: #48bb78;
-            background: #f0fff4;
-            color: #2f855a;
-        }
-
-        .option-btn.incorrect {
-            border-color: #f56565;
-            background: #fffafa;
-            color: #c53030;
-        }
-
-        .feedback {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            font-weight: 500;
-        }
-
-        .feedback.correct {
-            background: #f0fff4;
-            color: #2f855a;
-            border: 1px solid #48bb78;
-        }
-
-        .feedback.incorrect {
-            background: #fffafa;
-            color: #c53030;
-            border: 1px solid #f56565;
-        }
-
-        .next-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .next-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .next-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .results-container {
-            text-align: center;
-        }
-
-        .score-display {
-            font-size: 3em;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-
-        .score-display.pass {
-            color: #48bb78;
-        }
-
-        .score-display.fail {
-            color: #f56565;
-        }
-
-        .pass-status {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin: 20px 0;
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        .pass-status.pass {
-            background: #f0fff4;
-            color: #2f855a;
-            border: 2px solid #48bb78;
-        }
-
-        .pass-status.fail {
-            background: #fffafa;
-            color: #c53030;
-            border: 2px solid #f56565;
-        }
-
-        .review-section {
-            text-align: left;
-            margin-top: 30px;
-        }
-
-        .review-item {
-            margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .review-item.correct {
-            background: #f0fff4;
-            border-color: #48bb78;
-        }
-
-        .review-item.incorrect {
-            background: #fffafa;
-            border-color: #f56565;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .back-btn {
-            background: #718096;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-right: 15px;
-        }
-
-        .back-btn:hover {
-            background: #4a5568;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .card {
-                padding: 20px;
-            }
-            
-            h1 {
-                font-size: 2em;
-            }
-            
-            .mode-selector {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .topic-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>MMIR Learning Application</title>
+    <link rel="stylesheet" href="style.css">    
 </head>
 <body>
+    <div class="particles" id="particles"></div>
     <div class="container">
-        <div class="card">
-            <h1>Student Quiz Application</h1>
+        <div class="frame">
+            <h1>MMIR Learning Application</h1>
             
             <!-- Topic Selection Screen -->
-            <div id="topicSelection">
+            <div id="modeSelection">
                 <div class="mode-selector">
-                    <button class="mode-btn active" data-mode="learn">Learn Mode</button>
+                    <button class="mode-btn" data-mode="learn">Learn Mode</button>
                     <button class="mode-btn" data-mode="test">Test Mode</button>
                 </div>
-                
-                <h2>Select a Topic:</h2>
-                <div class="topic-grid" id="topicGrid"></div>
             </div>
-            
+
+            <!-- Topic Selection Screen -->
+            <div id="topicSelection" class="hidden">
+                <h2 data-mode="learn">Select topics to learn</h2>
+                <h2 data-mode="test">Select number of questions</h2>
+                <div class="card-grid" id="cardGrid"></div>
+            </div>
+
             <!-- Quiz Screen -->
             <div id="quizScreen" class="hidden">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
@@ -352,255 +60,182 @@
     </div>
 
     <script>
-        // Sample quiz data - you can replace this with your actual questions
-        const quizData = {
-            "JavaScript Basics": [
-                {
-                    question: "What does 'var' declare in JavaScript?",
-                    options: ["A variable", "A function", "An object", "An array"],
-                    correct: 0,
-                    explanation: "'var' is used to declare variables in JavaScript."
-                },
-                {
-                    question: "Which of these is NOT a JavaScript data type?",
-                    options: ["String", "Boolean", "Integer", "Undefined"],
-                    correct: 2,
-                    explanation: "JavaScript has Number type, not Integer specifically."
-                },
-                {
-                    question: "How do you write a comment in JavaScript?",
-                    options: ["<!-- comment -->", "# comment", "// comment", "/* comment */"],
-                    correct: 2,
-                    explanation: "// is used for single-line comments in JavaScript."
-                }
-            ],
-            "HTML Fundamentals": [
-                {
-                    question: "What does HTML stand for?",
-                    options: ["Hyper Text Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyperlink and Text Markup Language"],
-                    correct: 0,
-                    explanation: "HTML stands for Hyper Text Markup Language."
-                },
-                {
-                    question: "Which HTML tag is used for the largest heading?",
-                    options: ["<h6>", "<h1>", "<header>", "<heading>"],
-                    correct: 1,
-                    explanation: "<h1> creates the largest heading in HTML."
-                },
-                {
-                    question: "What is the correct HTML element for inserting a line break?",
-                    options: ["<break>", "<lb>", "<br>", "<newline>"],
-                    correct: 2,
-                    explanation: "<br> is the correct HTML element for line breaks."
-                }
-            ],
-            "CSS Styling": [
-                {
-                    question: "What does CSS stand for?",
-                    options: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style Sheets", "Colorful Style Sheets"],
-                    correct: 1,
-                    explanation: "CSS stands for Cascading Style Sheets."
-                },
-                {
-                    question: "Which property is used to change the background color?",
-                    options: ["bgcolor", "background-color", "color", "bg-color"],
-                    correct: 1,
-                    explanation: "background-color is the correct CSS property."
-                },
-                {
-                    question: "How do you select an element with id 'header'?",
-                    options: [".header", "#header", "header", "*header"],
-                    correct: 1,
-                    explanation: "# is used to select elements by ID in CSS."
-                }
-            ],
-            "Python Basics": [
-                {
-                    question: "Which keyword is used to define a function in Python?",
-                    options: ["function", "def", "define", "func"],
-                    correct: 1,
-                    explanation: "'def' is used to define functions in Python."
-                },
-                {
-                    question: "How do you create a comment in Python?",
-                    options: ["// comment", "# comment", "<!-- comment -->", "/* comment */"],
-                    correct: 1,
-                    explanation: "# is used for comments in Python."
-                },
-                {
-                    question: "What is the correct way to create a list in Python?",
-                    options: ["list = (1, 2, 3)", "list = {1, 2, 3}", "list = [1, 2, 3]", "list = <1, 2, 3>"],
-                    correct: 2,
-                    explanation: "Square brackets [] are used to create lists in Python."
-                }
-            ],
-            "Database Concepts": [
-                {
-                    question: "What does SQL stand for?",
-                    options: ["Structured Query Language", "Standard Query Language", "Sequential Query Language", "Simple Query Language"],
-                    correct: 0,
-                    explanation: "SQL stands for Structured Query Language."
-                },
-                {
-                    question: "Which SQL command is used to retrieve data?",
-                    options: ["GET", "FETCH", "SELECT", "RETRIEVE"],
-                    correct: 2,
-                    explanation: "SELECT is used to retrieve data from a database."
-                },
-                {
-                    question: "What is a primary key?",
-                    options: ["A password", "A unique identifier for records", "The first column", "A foreign reference"],
-                    correct: 1,
-                    explanation: "A primary key uniquely identifies each record in a table."
-                }
-            ],
-            "Web Development": [
-                {
-                    question: "What is the purpose of the <head> tag in HTML?",
-                    options: ["Display content", "Contains metadata", "Create headers", "Define body"],
-                    correct: 1,
-                    explanation: "The <head> tag contains metadata about the HTML document."
-                },
-                {
-                    question: "Which HTTP method is used to send data to a server?",
-                    options: ["GET", "POST", "PUT", "DELETE"],
-                    correct: 1,
-                    explanation: "POST is commonly used to send data to a server."
-                },
-                {
-                    question: "What is responsive design?",
-                    options: ["Fast loading websites", "Interactive websites", "Websites that adapt to screen sizes", "Websites with animations"],
-                    correct: 2,
-                    explanation: "Responsive design means websites adapt to different screen sizes."
-                }
-            ],
-            "Git & Version Control": [
-                {
-                    question: "What is Git?",
-                    options: ["A programming language", "A version control system", "A web browser", "A database"],
-                    correct: 1,
-                    explanation: "Git is a distributed version control system."
-                },
-                {
-                    question: "Which command creates a new Git repository?",
-                    options: ["git start", "git init", "git create", "git new"],
-                    correct: 1,
-                    explanation: "'git init' initializes a new Git repository."
-                },
-                {
-                    question: "What does 'git commit' do?",
-                    options: ["Uploads files", "Saves changes permanently", "Creates a branch", "Deletes files"],
-                    correct: 1,
-                    explanation: "'git commit' saves changes permanently to the repository."
-                }
-            ],
-            "Algorithms": [
-                {
-                    question: "What is Big O notation used for?",
-                    options: ["Measuring file size", "Analyzing algorithm efficiency", "Counting variables", "Debugging code"],
-                    correct: 1,
-                    explanation: "Big O notation describes algorithm time/space complexity."
-                },
-                {
-                    question: "Which sorting algorithm has O(n²) worst-case complexity?",
-                    options: ["Merge Sort", "Quick Sort", "Bubble Sort", "Heap Sort"],
-                    correct: 2,
-                    explanation: "Bubble Sort has O(n²) worst-case time complexity."
-                },
-                {
-                    question: "What is recursion?",
-                    options: ["A loop", "A function calling itself", "Error handling", "Data structure"],
-                    correct: 1,
-                    explanation: "Recursion is when a function calls itself."
-                }
-            ],
-            "Software Design": [
-                {
-                    question: "What is the DRY principle?",
-                    options: ["Don't Repeat Yourself", "Do Right Yesterday", "Debug Rigorously Yearly", "Design Reusable Years"],
-                    correct: 0,
-                    explanation: "DRY means Don't Repeat Yourself - avoid code duplication."
-                },
-                {
-                    question: "What is encapsulation in OOP?",
-                    options: ["Hiding implementation details", "Creating objects", "Inheriting properties", "Polymorphic behavior"],
-                    correct: 0,
-                    explanation: "Encapsulation hides internal implementation details."
-                },
-                {
-                    question: "Which design pattern ensures only one instance exists?",
-                    options: ["Factory", "Observer", "Singleton", "Strategy"],
-                    correct: 2,
-                    explanation: "Singleton pattern ensures only one instance of a class exists."
-                }
-            ],
-            "Computer Networks": [
-                {
-                    question: "What does HTTP stand for?",
-                    options: ["Hyper Text Transfer Protocol", "High Tech Transfer Protocol", "Home Text Transfer Protocol", "Hyperlink Text Transfer Protocol"],
-                    correct: 0,
-                    explanation: "HTTP stands for Hyper Text Transfer Protocol."
-                },
-                {
-                    question: "Which port does HTTPS typically use?",
-                    options: ["80", "443", "8080", "3000"],
-                    correct: 1,
-                    explanation: "HTTPS typically uses port 443."
-                },
-                {
-                    question: "What is an IP address?",
-                    options: ["Internet Password", "Internet Protocol address", "Internal Program address", "Interactive Page address"],
-                    correct: 1,
-                    explanation: "IP address stands for Internet Protocol address."
-                }
-            ]
-        };
+
 
         // Quiz state
-        let currentMode = 'learn';
-        let currentTopic = null;
+        let currentMode = '';
+        let selectedTopics = [];
+        let selectedPercentage = 0;
         let currentQuestions = [];
         let currentQuestionIndex = 0;
         let userAnswers = [];
         let selectedAnswer = null;
         let quizComplete = false;
+        let quizData = {}
 
-        // Initialize the app
-        function init() {
-            setupModeSelector();
-            displayTopics();
-        }
 
-        function setupModeSelector() {
+        function setupModeButtons() {
             const modeBtns = document.querySelectorAll('.mode-btn');
             modeBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     modeBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     currentMode = btn.dataset.mode;
+                    
+                    // Update body class based on mode
+                    document.body.classList.remove('learn-mode', 'test-mode');
+                    document.body.classList.add(currentMode + '-mode');
+                    document.getElementById('topicSelection').classList.remove('hidden');
+                    
+                    // Select mode and show corresponding parameterization page
+                    if (currentMode === "learn") {
+                        displayLearnSelection()
+                    } else {
+                        displayTestSelection()
+                    }
                 });
             });
+            // Set initial mode class
+            document.body.classList.add('learn-mode');
         }
 
-        function displayTopics() {
-            const topicGrid = document.getElementById('topicGrid');
-            topicGrid.innerHTML = '';
+        function displayLearnSelection() {
+
+            function updateQuestions() {
+                // Fetch all questions
+                currentQuestions = selectedTopics.reduce((set, t) => set.concat(quizData[t]),[])
+                
+                // Update start button
+                const startBtn = document.getElementById('startQuizBtn');
+                startBtn.textContent = `Start Quiz (${currentQuestions.length} questions)`;
+                startBtn.disabled = currentQuestions.length === 0;
+            }
+
+            function toggleTopic(topic, topicCard) {
+                const index = selectedTopics.indexOf(topic);
+                if (index === -1) {
+                    // Add topic to selection
+                    selectedTopics.push(topic);
+                    topicCard.classList.add('selected');
+                } else {
+                    // Remove topic from selection
+                    selectedTopics.splice(index, 1);
+                    topicCard.classList.remove('selected');
+                }
+                updateQuestions()
+            }
+
+
+            const cardGrid = document.getElementById('cardGrid');
+            cardGrid.innerHTML = '';
             
+            // Add topic cards
             Object.keys(quizData).forEach(topic => {
                 const topicCard = document.createElement('div');
-                topicCard.className = 'topic-card';
+                topicCard.className = 'card';
+                topicCard.dataset.topic = topic;
                 topicCard.innerHTML = `
+                    <div class="card-selection-icon">✓</div>
                     <h3>${topic}</h3>
                     <p>${quizData[topic].length} questions</p>
                 `;
-                topicCard.addEventListener('click', () => startQuiz(topic));
-                topicGrid.appendChild(topicCard);
+                topicCard.addEventListener('click', () => toggleTopic(topic, topicCard));
+                cardGrid.appendChild(topicCard);
+                if (selectedTopics.indexOf(topic) >=0) 
+                    topicCard.classList.add('selected')
             });
+
+            // Add start quiz button container
+            const startButtonContainer = document.createElement('div');
+            startButtonContainer.className = 'start-button-container';
+            startButtonContainer.innerHTML = `
+                <button id="startQuizBtn" class="next-btn" disabled>
+                    Start Quiz (0 questions)
+                </button>
+            `;
+
+            // Add event listener to start button
+            document.getElementById('cardGrid').appendChild(startButtonContainer);
+            document.getElementById('startQuizBtn').addEventListener('click', () => {
+                if (currentQuestions.length > 0) {
+                    startQuiz();
+                }
+            });
+
+            updateQuestions()
         }
 
-        function startQuiz(topic) {
-            currentTopic = topic;
-            currentQuestions = [...quizData[topic]];
+        function displayTestSelection() {
+
+            function updateQuestions() {
+                // Get total number of questions across all topics
+                const allQuestions = Object.values(quizData).flat();
+                const numQuestions = Math.ceil((selectedPercentage/100) * allQuestions.length);
+    
+                // Shuffle and select subset
+                shuffleArray(allQuestions);
+                currentQuestions = allQuestions.slice(0, numQuestions);
+
+                // Update start button
+                const startBtn = document.getElementById('startQuizBtn');
+                startBtn.textContent = `Start Quiz (${currentQuestions.length} questions)`;
+                startBtn.disabled = currentQuestions.length === 0;
+            }
+
+            function togglePercentage(percentage, cardGrid, topicCard) {
+                selectedPercentage = percentage;
+
+                // unselect all other cards
+                const cards = cardGrid.querySelectorAll('.card');
+                cards.forEach(card => card.classList.remove('selected'));                
+
+                // select current card
+                topicCard.classList.add('selected');
+                updateQuestions()
+            }
+
+            const cardGrid = document.getElementById('cardGrid');
+            cardGrid.innerHTML = '';
+            
+            // Add percantage cards
+            [20, 40, 60, 80, 100].forEach(percentage => {
+                const topicCard = document.createElement('div');
+                topicCard.className = 'card';
+                topicCard.dataset.percentage = percentage;
+                topicCard.innerHTML = `
+                    <div class="card-selection-icon">✓</div>
+                    <h3>${percentage} %</h3>
+                    <p>nnn questions</p>
+                `;
+                topicCard.addEventListener('click', () => togglePercentage(percentage, cardGrid, topicCard));
+                cardGrid.appendChild(topicCard);
+                if (selectedPercentage === percentage) 
+                    topicCard.classList.add('selected')
+            });
+
+            // add start quiz button
+            const startButtonContainer = document.createElement('div');
+            startButtonContainer.className = 'start-button-container';
+            startButtonContainer.innerHTML = `
+                <button id="startQuizBtn" class="next-btn" disabled>
+                    Start Quiz (0 questions)
+                </button>
+            `;
+
+            // Add event listener to start button
+            document.getElementById('cardGrid').appendChild(startButtonContainer);
+            document.getElementById('startQuizBtn').addEventListener('click', () => {
+                if (currentQuestions.length > 0) {
+                    startTest();
+                }
+            });
+            updateQuestions()
+        }
+
+        function startQuiz() {
+            // Shuffle questions
+            shuffleArray(currentQuestions);
+            
             currentQuestionIndex = 0;
             userAnswers = [];
             selectedAnswer = null;
@@ -611,6 +246,17 @@
             document.getElementById('resultsScreen').classList.add('hidden');
             
             displayQuestion();
+        }
+        
+
+        
+        // Fisher-Yates shuffle algorithm
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
         }
 
         function displayQuestion() {
@@ -743,6 +389,7 @@
                 reviewItem.className = `review-item ${isCorrect ? 'correct' : 'incorrect'}`;
                 reviewItem.innerHTML = `
                     <strong>Q${index + 1}: ${question.question}</strong><br>
+                    <span class="topic-tag">${question.topic}</span><br>
                     Your answer: ${question.options[userAnswer]}<br>
                     ${!isCorrect ? `Correct answer: ${question.options[question.correct]}<br>` : ''}
                     <em>${question.explanation}</em>
@@ -755,10 +402,87 @@
             document.getElementById('topicSelection').classList.remove('hidden');
             document.getElementById('quizScreen').classList.add('hidden');
             document.getElementById('resultsScreen').classList.add('hidden');
+            
+            // Keep the selected topics highlighted
+            selectedTopics.forEach(topic => {
+                const topicCard = document.querySelector(`.topic-card[data-topic="${topic}"]`);
+                if (topicCard) {
+                    topicCard.classList.add('selected');
+                }
+            });
+            
+            // Update start button
+            const startBtn = document.getElementById('startQuizBtn');
+            if (startBtn) {
+                startBtn.textContent = `Start Quiz (${selectedTopics.length} topics selected)`;
+                startBtn.disabled = selectedTopics.length === 0;
+            }
+        }
+
+        function startTest(questionCount) {
+            // Collect all questions from all topics
+            let allQuestions = [];
+            Object.keys(quizData).forEach(topic => {
+                const topicQuestions = quizData[topic].map(q => ({...q, topic: topic}));
+                allQuestions = [...allQuestions, ...topicQuestions];
+            });
+            
+            // Shuffle all questions
+            shuffleArray(allQuestions);
+            
+            // Take only the requested number of questions
+            currentQuestions = allQuestions.slice(0, questionCount);
+            
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            selectedAnswer = null;
+            quizComplete = false;
+            
+            document.getElementById('topicSelection').classList.add('hidden');
+            document.getElementById('quizScreen').classList.remove('hidden');
+            document.getElementById('resultsScreen').classList.add('hidden');
+            
+            displayQuestion();
+        }
+
+        // Add this function to fetch topics from JSON file
+        async function loadQuestionsFromServer() {
+            try {
+                const response = await fetch('questions.json');
+                if (!response.ok) 
+                    throw new Error('Failed to load topics');
+                quizData = await response.json();
+                Object.entries(quizData).forEach(([topic, questions]) => {
+                    questions.topic = topic
+                });                            
+            } catch (error) {
+                console.error('Error loading topics:', error);
+                // Show error message to user
+                const topicGrid = document.getElementById('topicGrid');
+                topicGrid.innerHTML = '<p>Error loading topics. Please try again later.</p>';
+            }
+        }
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const numberOfParticles = 20;
+            
+            for (let i = 0; i < numberOfParticles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
         }
 
         // Initialize the app when page loads
-        init();
+        createParticles();
+        setupModeButtons()
+        loadQuestionsFromServer()
     </script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+
+
+.app {
+  min-height: 100vh;
+  transition: background 0.5s ease;
+  background: linear-gradient(135deg, var(--learn-primary) 0%, var(--learn-secondary) 100%);
+}
+
+.app.test-mode {
+  background: linear-gradient(135deg, var(--test-primary) 0%, var(--test-secondary) 100%);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  margin-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: var(--color-heading-primary);
+  margin-bottom: 30px;
+  font-size: 2.5em;
+}
+
+.logo {
+  height: 90px;
+  margin-right: 10px;
+}
+
+h2 {
+  color: var(--color-heading-secondary);
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.hidden {
+  display: none;
+}

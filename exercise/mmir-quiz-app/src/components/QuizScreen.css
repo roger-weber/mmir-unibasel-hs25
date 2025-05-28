@@ -1,0 +1,128 @@
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  background: var(--color-back-btn);
+  color: var(--color-white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: var(--color-back-btn-hover);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--color-gray-light);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+/* Learn mode progress */
+.learn-mode .progress-fill {
+  background: linear-gradient(90deg, var(--learn-primary), var(--learn-secondary));
+}
+
+/* Test mode progress */
+.test-mode .progress-fill {
+  background: linear-gradient(90deg, var(--test-primary), var(--test-secondary));
+}
+
+.question-container {
+  margin-bottom: 30px;
+}
+
+.question-text {
+  font-size: 1.3em;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.options-container {
+  display: grid;
+  gap: 15px;
+}
+
+.option-btn {
+  padding: 15px 20px;
+  border: 2px solid var(--color-gray-light);
+  background: var(--color-white);
+  text-align: left;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.option-btn:hover {
+  background: var(--color-gray-hover);
+}
+
+/* Learn mode option buttons */
+.learn-mode .option-btn:hover {
+  border-color: var(--learn-primary);
+}
+
+/* Test mode option buttons */
+.test-mode .option-btn:hover {
+  border-color: var(--test-primary);
+}
+
+.option-btn.selected {
+  background: var(--color-gray-selected);
+}
+
+/* Learn mode selected */
+.learn-mode .option-btn.selected {
+  border-color: var(--learn-primary);
+}
+
+/* Test mode selected */
+.test-mode .option-btn.selected {
+  border-color: var(--test-primary);
+}
+
+.option-btn.correct {
+  border-color: var(--color-success);
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
+}
+
+.option-btn.incorrect {
+  border-color: var(--color-error);
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+}
+
+.feedback {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.feedback.correct {
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
+  border: 1px solid var(--color-success);
+}
+
+.feedback.incorrect {
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+  border: 1px solid var(--color-error);
+}
