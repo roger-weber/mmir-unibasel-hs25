@@ -15,7 +15,7 @@
     "eject": "react-scripts eject",
     "build": "react-app-rewired build && npm run post-build",
     "post-build": "rimraf build/asset-manifest.json build/*.LICENSE.txt",
-    "publish": "copy-folder build ../quiz"
+    "publish": "npm run build && copy-folder build ../quiz"
   },
   "eslintConfig": {
     "extends": [
