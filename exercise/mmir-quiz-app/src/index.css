@@ -8,8 +8,12 @@
     --color-gray-light: #e2e8f0;
     --color-gray-hover: #f7fafc;
     --color-gray-selected: #edf2f7;
-    --color-back-btn: #718096;
-    --color-back-btn-hover: #4a5568;
+
+    /* button colors */
+    --color-btn: hsl(216, 15%, 52%);
+    --color-btn-hover: hsl(216, 15%, 35%);
+    --color-back-btn: hsl(216, 15%, 52%);
+    --color-back-btn-hover: hsl(216, 15%, 35%);
     
     /* Success/Error colors */
     --color-success: #48bb78;
@@ -18,6 +22,8 @@
     --color-error: #f56565;
     --color-error-bg: #fffafa;
     --color-error-text: #c53030;
+    --color-progress-start: hsl(216, 15%, 35%);
+    --color-progress-end: hsl(216, 15%, 65%);
     
     /* Learn mode colors */
     --learn-primary: hsl(192, 40%, 54%);

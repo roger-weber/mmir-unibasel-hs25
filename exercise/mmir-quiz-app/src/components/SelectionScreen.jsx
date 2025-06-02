@@ -1,5 +1,6 @@
 import { useQuiz } from '../context/QuizContext';
 import './SelectionScreen.css';
+import { Play } from 'lucide-react';
 
 const ModeSelector = () => {
   const quiz = useQuiz();
@@ -27,7 +28,7 @@ const TopicGrid = () => {
   
   return (
     <div className="topic-grid">
-      {quiz.getTopics().map(topic => (
+      {quiz.topics.map(topic => (
         <div 
           key={topic}
           className={`topic-card ${quiz.isTopicSelected(topic) ? 'selected' : ''}`}
@@ -35,7 +36,7 @@ const TopicGrid = () => {
         >
           <div className="topic-selection-icon">✓</div>
           <div className="topic-title">{topic}</div>
-          <p>{quiz.getNumberOfQuestions(topic)} questions</p>
+          <p>{quiz.getNumberOfTopicQuestions(topic)} questions</p>
         </div>
       ))}
     </div>
@@ -55,45 +56,42 @@ const PercentageGrid = () => {
         >
           <div className="topic-selection-icon">✓</div>
           <div className="topic-title">{percentage}<span className="percent-sign">%</span></div>
-          <p>{Math.ceil((percentage / 100) * quiz.getNumberOfQuestions())} questions</p>
+          <p>{Math.ceil((percentage / 100) * quiz.numberOfQuestions)} questions</p>
         </div>
       ))}
     </div>
   );
 };
 
-const StartButton = () => {
+const StartButton = ({ onStartQuiz }) => {
   const quiz = useQuiz();
   
   return (
     <div className="start-button-container">
       <button 
-        className="next-btn" 
-        disabled={quiz.getNumberOfSelectedQuestions() === 0}
-        onClick={quiz.startQuiz}
+        className="button start" 
+        disabled={quiz.numberOfSelectedQuestions === 0}
+        onClick={onStartQuiz}
       >
-        Start Quiz ({quiz.getNumberOfSelectedQuestions()} questions)
+        <Play />
+        <span>Start Quiz ({quiz.numberOfSelectedQuestions} questions)</span>
       </button>
     </div>
   );
 };
 
-const SelectionScreen = () => {
+const SelectionScreen = ({ onStartQuiz }) => {
   const quiz = useQuiz();
 
   return (
     <div id="topicSelection">
       <ModeSelector />
       
-      <h2 class={quiz.mode || 'hidden'}>{quiz.mode === 'learn' ? 'Select Topics:' : 'Select Percentage:'}</h2>
+      <h2 className={quiz.mode || 'hidden'}>{quiz.isLearningMode() ? 'Select Topics:' : 'Select Percentage:'}</h2>
       
-      {quiz.mode === 'learn' ? (
-        <TopicGrid />
-      ) : (
-        <PercentageGrid />
-      )}
-      
-      <StartButton/>
+      {quiz.isLearningMode() && <TopicGrid /> }
+      {quiz.isTestingMode() && <PercentageGrid /> }
+      {quiz.numberOfSelectedQuestions>0 && <StartButton onStartQuiz={onStartQuiz} /> }
     </div>
   );
 };

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "lucide-react": "^0.511.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.6.1",
@@ -10,9 +11,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build": "react-app-rewired build && npm run post-build",
+    "post-build": "rimraf build/asset-manifest.json build/*.LICENSE.txt",
+    "publish": "copy-folder build ../quiz"
   },
   "eslintConfig": {
     "extends": [
@@ -30,5 +33,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "copy-folder-util": "^1.1.5",
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.2.1",
+    "rimraf": "^6.0.1"
   }
 }

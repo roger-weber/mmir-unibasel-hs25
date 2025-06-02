@@ -44,7 +44,7 @@
 
 .topic-grid, .percentage-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   margin-bottom: 30px;
 }
@@ -135,37 +135,8 @@
 }
 
 .start-button-container {
-  text-align: center;
-  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 
-.next-btn {
-  border: none;
-  padding: 12px 30px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  color: var(--color-white);
-}
-
-/* Learn mode button */
-.learn-mode .next-btn {
-  background: linear-gradient(135deg, var(--learn-primary) 0%, var(--learn-secondary) 100%);
-}
-
-/* Test mode button */
-.test-mode .next-btn {
-  background: linear-gradient(135deg, var(--test-primary) 0%, var(--test-secondary) 100%);
-}
-
-.next-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.next-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
