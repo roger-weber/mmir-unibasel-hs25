@@ -43,25 +43,45 @@ const TopicGrid = () => {
   );
 };
 
-const PercentageGrid = () => {
+const PercentageSelector = () => {
   const quiz = useQuiz();
+  const percentages = [20, 40, 60, 80, 100];
+  
+  const handleChange = (e) => {
+    const value = parseInt(e.target.value, 10);
+    quiz.setPercentage(value);
+  };
+  
+  const selectedQuestions = Math.ceil((quiz.selectedPercentage / 100) * quiz.numberOfQuestions);
   
   return (
-    <div className="percentage-grid">
-      {[20, 40, 60, 80, 100].map(percentage => (
-        <div 
-          key={percentage}
-          className={`percentage-card ${quiz.selectedPercentage === percentage ? 'selected' : ''}`}
-          onClick={() => quiz.setPercentage(percentage)}
-        >
-          <div className="topic-selection-icon">✓</div>
-          <div className="topic-title">{percentage}<span className="percent-sign">%</span></div>
-          <p>{Math.ceil((percentage / 100) * quiz.numberOfQuestions)} questions</p>
+    <div className="percentage-selector">
+      <div className="slider-container">
+        <input 
+          type="range" 
+          min="20" 
+          max="100" 
+          step="20" 
+          value={quiz.selectedPercentage} 
+          onChange={handleChange}
+          className="percentage-slider"
+        />
+        <div className="slider-labels">
+          {percentages.map(percent => (
+            <span 
+              key={percent} 
+              className={quiz.selectedPercentage === percent ? 'active' : ''}
+              onClick={() => quiz.setPercentage(percent)}
+            >
+              {percent}%
+            </span>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 };
+
 
 const StartButton = ({ onStartQuiz }) => {
   const quiz = useQuiz();
@@ -74,7 +94,7 @@ const StartButton = ({ onStartQuiz }) => {
         onClick={onStartQuiz}
       >
         <Play />
-        <span>Start Quiz ({quiz.numberOfSelectedQuestions} questions)</span>
+        <span>Start ({quiz.numberOfSelectedQuestions} questions)</span>
       </button>
     </div>
   );
@@ -87,11 +107,18 @@ const SelectionScreen = ({ onStartQuiz }) => {
     <div id="topicSelection">
       <ModeSelector />
       
-      <h2 className={quiz.mode || 'hidden'}>{quiz.isLearningMode() ? 'Select Topics:' : 'Select Percentage:'}</h2>
-      
-      {quiz.isLearningMode() && <TopicGrid /> }
-      {quiz.isTestingMode() && <PercentageGrid /> }
-      {quiz.numberOfSelectedQuestions>0 && <StartButton onStartQuiz={onStartQuiz} /> }
+      {quiz.mode && (
+        <>
+          <div className="percentage-container">
+            <StartButton onStartQuiz={onStartQuiz} />
+            <PercentageSelector />
+          </div>  
+
+          <h2>Select Topics:</h2>
+          <TopicGrid />
+        </>
+      )}
+
     </div>
   );
 };

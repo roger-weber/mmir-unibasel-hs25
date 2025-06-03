@@ -42,14 +42,14 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.topic-grid, .percentage-grid {
+.topic-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   margin-bottom: 30px;
 }
 
-.topic-card, .percentage-card {
+.topic-card {
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
@@ -74,26 +74,16 @@
   line-height: 1.2;
 }
 
-.percentage-card .topic-title {
-  font-size: 2em;
-}
-
-.percent-sign {
-  font-size: 80%;
-}
-
-.topic-card p, .percentage-card p {
+.topic-card p {
   margin-bottom: 0;
   margin-top: auto;
 }
 
-/* Learn mode topic cards */
 .learn-mode .topic-card {
   background: linear-gradient(135deg, var(--learn-card-start) 0%, var(--learn-card-end) 100%);
 }
 
-/* Test mode topic cards */
-.test-mode .percentage-card {
+.test-mode .topic-card {
   background: linear-gradient(135deg, var(--test-card-start) 0%, var(--test-card-end) 100%);
 }
 
@@ -114,8 +104,7 @@
   transition: all 0.3s ease;
 }
 
-.topic-card.selected .topic-selection-icon,
-.percentage-card.selected .topic-selection-icon {
+.topic-card.selected .topic-selection-icon {
   opacity: 1;
   transform: scale(1);
 }
@@ -128,8 +117,7 @@
   color: var(--test-primary);
 }
 
-.topic-card.selected,
-.percentage-card.selected {
+.topic-card.selected {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
@@ -137,6 +125,90 @@
 .start-button-container {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  align-items: center;
+}
+
+.percentage-container {
+  display: grid;
+  grid-template-columns: 1fr minmax(400px, 1fr) 1fr;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.percentage-selector {
+  padding: 0px 32px;
+}
+
+.slider-container {
+  position: relative;
+  padding: 0px 0;
+}
+
+.percentage-slider {
+  width: 96%;
+  position: relative;
+  left: 1%;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--color-gray-light);
+  outline: none;
+  border-radius: 4px;
+}
+
+.percentage-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--test-card-start) 0%, var(--test-card-end) 100%);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  border: none;
+}
+
+.percentage-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--test-card-start) 0%, var(--test-card-end) 100%);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  border: none;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider-labels span {
+  font-size: 12px;
+  color: var(--color-gray-light);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.slider-labels span.active {
+  opacity: 1;
+  color: var(--color-heading-primary);
+}
+
+.percentage-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.percentage-value {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.questions-count {
+  font-size: 1.2em;
+  opacity: 0.9;
 }
 

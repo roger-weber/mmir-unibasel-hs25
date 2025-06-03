@@ -18,7 +18,7 @@ export const QuizProvider = ({ children }) => {
   // state managed by this provider
   const [mode, setMode] = useState('');
   const [selectedTopics, setSelectedTopics] = useState([]);
-  const [selectedPercentage, setSelectedPercentage] = useState(0);
+  const [selectedPercentage, setSelectedPercentage] = useState(100);
   const [questions, setQuestions] = useState([]);
   const [pendingQuestions, setPendingQuestions] = useState([]);
   const [results, setResults] = useState({});
@@ -27,14 +27,10 @@ export const QuizProvider = ({ children }) => {
 
   // effects
   useEffect(() => {
-    if (mode === 'learn') {
-      setQuestions(selectedTopics.reduce((set, t) => set.concat(quizData[t]), []))
-    } else {
-      const questions = Object.values(quizData).flat();
-      const numQuestions = Math.ceil((selectedPercentage/100) * questions.length);
-      setQuestions(shuffleArray(questions).slice(0, numQuestions))
-    }
-  }, [mode, selectedTopics, selectedPercentage, quizData]);
+    const questions = selectedTopics.reduce((set, t) => set.concat(quizData[t]), []);
+    const numQuestions = Math.ceil((selectedPercentage/100) * questions.length);
+    setQuestions(shuffleArray(questions).slice(0, numQuestions))
+  }, [selectedTopics, selectedPercentage, quizData]);
 
 
   // export access obejct
@@ -71,7 +67,7 @@ export const QuizProvider = ({ children }) => {
     questions,
     reset: () => {
       setSelectedTopics([]);
-      setSelectedPercentage(0);
+      setSelectedPercentage(100);
       setQuestions([]);
     },
     get numberOfSelectedQuestions() {
