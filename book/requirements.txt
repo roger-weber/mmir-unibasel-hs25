@@ -1,0 +1,4 @@
+jupyter-book
+sphinx_press_theme
+sphinx_rtd_theme
+livereload
