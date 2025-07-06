@@ -3,10 +3,11 @@ from livereload import Server
 
 def build_book():
     print("Building Jupyter Book...")
-    subprocess.run(["jupyter-book", "build", "--all", "."])
+    subprocess.run(["jupyter-book", "build", "."])
     print("Jupyter Book build complete.")
 
 if __name__ == "__main__":
+    subprocess.run(["jupyter-book", "build", "--all", "."])
     server = Server()
     server.watch("_static/**", build_book)
     server.watch("**/*.md", build_book)  # Watch for Markdown files
@@ -14,4 +15,5 @@ if __name__ == "__main__":
     server.watch("*.md", build_book) # Watch for config
     server.watch("_config.yml", build_book) # Watch for config
     server.watch("_toc.yml", build_book) # Watch for config
-    server.serve(root="_build/html")
+    server.serve(root="_build/html", open_url_delay=1)
+

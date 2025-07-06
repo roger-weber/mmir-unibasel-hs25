@@ -36,6 +36,7 @@ html:
 
 sphinx:
   config:
+    bibtex_default_style: alpha
     project: Multimedia Retrieval (HS25)
     html_theme: sphinx_rtd_theme
     html_title: Multimedia Retrieval (HS25)

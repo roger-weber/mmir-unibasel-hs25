@@ -83,3 +83,17 @@ footer, span.backrefs {
 aside.footnote {
     grid-template-columns: auto 5px 5px 100%;
 }
+
+.boxed.admonition {
+    background: #f3f6f6;
+}
+
+.boxed .admonition-title {
+    background: #e1e4e5;
+    color: black;
+}
+
+.boxed .admonition-title:before {
+    content: "\F138";
+}
+

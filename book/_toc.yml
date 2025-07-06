@@ -18,6 +18,10 @@ parts:
     maxdepth: 2
     chapters:
     - file: 2_mmir/1_introduction/0_intro
+      sections:
+      - file: 2_mmir/1_introduction/1_motivation
+      - file: 2_mmir/1_introduction/2_retrieval_process
+      - file: 2_mmir/1_introduction/3_metadata
     - file: 2_mmir/2_evaluation/0_intro
       sections:
       - file: 2_mmir/2_evaluation/boolean

@@ -55,6 +55,21 @@ My margin content
 
 For example, the main index file for this project contains 5 separate TOCs. They are broken up in order to use headings for each part.
 
+```{bibliography}
+:style: unsrt
+:filter: docname in docnames
+```
+
+The citation {cite:p}`Smeulders2000` results in [Perez et al., 2011]
+
+The citation {cite:t}`Smeulders2000` results in Perez et al. [2011]
+
+The citation {cite:ps}`Smeulders2000` results in [Perez, Granger, and Hunter, 2011]
+
+The citation {cite:ts}`Smeulders2000` results in Perez, Granger, and Hunter [2011]
+
+
+
 
 [table](table-overview)
 

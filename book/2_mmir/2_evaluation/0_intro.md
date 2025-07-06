@@ -5,7 +5,7 @@ So far, we have not discussed the evaluation of classification and retrieval met
 Before we define these metrics, let’s consider what we need for a retrieval benchmark. Firstly, we need a collection of documents that match the retrieval scenario. Secondly, we require multiple queries covering various aspects of the retrieval task, along with a relevance assessment of documents against these queries. Lastly, we need a performance goal that the algorithms should achieve.
 
 ```{admonition} Structure of a Retrieval Benchmark
-:class: hint
+:class: boxed
 
   **Collections and queries:** examples include MS MARCO (Microsoft Machine Reading Comprehension Dataset), which contains over 500 thousand queries from Bing against millions of retrieved documents and passages. Another example is the TREC (Text REtrieval Conference) data sets, featuring 50+ queries against several thousand documents.
 
@@ -23,3 +23,11 @@ Before we define these metrics, let’s consider what we need for a retrieval be
 In a typical text retrieval competition, each contestant evaluates all queries against the collection. The competition assess the combined set of documents retrieved by all contestants (often with the help of the contestants), leading to a dense assessment, as shown in the figure on the right. Even though not all documents are assessed, this approach maintains the relative order of competing algorithms. To illustrate, if we have a relevant document that was not assessed (see arrow), it may lead to a slight overestimation of the algorithms’ ability to retrieve relevant documents (recall). However, including assessments for these documents would not alter the relative ranking of the methods.
 
 Competitions like MS MARCO have a large number of queries, making dense assessments impractical. Instead, they only assess a few documents per query (sometimes just 2-5 documents), leading to a sparse assessment, as shown on the right side. This significantly differs from the dense assessment above. For instance, there could be assessed and relevant documents that none of the contestants found. However, the challenge arises from missing assessment for retrieved documents, which can negatively impact the performance evaluation. For example, consider the area highlighted by the arrow: it contains relevant documents for which assessments are missing. Consequently, even if a competing algorithm provides a good answer, due to missing relevancy assessment, it may not receive credit for it.
+
+
+**References**
+
+```{bibliography}
+:keyprefix: 2-
+```
+
