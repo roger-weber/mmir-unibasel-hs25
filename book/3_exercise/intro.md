@@ -1,5 +1,0 @@
-# Excercises
-
-hello
-
-
