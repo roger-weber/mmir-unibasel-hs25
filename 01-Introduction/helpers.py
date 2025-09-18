@@ -9,7 +9,7 @@ class AWSConnectionError(Exception):
     pass
 
 try:
-    session = boto3.Session(profile_name='default', region_name='us-east-1')
+    session = boto3.Session(region_name='us-east-1')
     bedrock_client = session.client('bedrock', region_name='us-west-2')
     bedrock_runtime_client = session.client('bedrock-runtime', region_name='us-west-2')
 except Exception as e:
