@@ -1,0 +1,109 @@
+{
+    "meta-data": {
+        "title": "MMIR Exercise",
+        "description": "Exercise questions for MMIR HS25"
+    },
+    "questions": {
+        "01 - Introduction": [
+            {
+                "question": "Which key property makes text retrieval less affected by the semantic gap compared to other media?",
+                "options": [
+                    "It always uses structured metadata",
+                    "It directly matches user text queries to terms in unstructured documents",
+                    "It relies on image recognition algorithms",
+                    "It requires manual annotation of every document"
+                ],
+                "correct": 1,
+                "explanation": "Text retrieval matches user-entered text queries directly to terms in unstructured documents, minimizing issues caused by semantic interpretation."
+            },
+            {
+                "question": "What is the main advantage of Boolean retrieval systems when scanning data?",
+                "options": [
+                    "They can score and rank results in real time",
+                    "They determine each document's relevance independently without post-processing",
+                    "They automatically expand queries with synonyms",
+                    "They always outperform vector-space models"
+                ],
+                "correct": 1,
+                "explanation": "Boolean retrieval determines relevance for each document independently and does not require a post-processing ranking step."
+            },
+            {
+                "question": "In the set-of-words model, how is a document represented?",
+                "options": [
+                    "As a sequence of characters with full formatting",
+                    "As a set of unique terms, ignoring order and frequency",
+                    "As a weighted graph of co-occurring phrases",
+                    "As a probability distribution of word embeddings"
+                ],
+                "correct": 1,
+                "explanation": "The set-of-words model records only the presence of unique terms, ignoring both order and frequency."
+            },
+            {
+                "question": "Why was faceted search introduced as an extension to the Boolean model?",
+                "options": [
+                    "To enable partial matches of query terms",
+                    "To improve tokenization of complex documents",
+                    "To allow users to filter and sort large result sets interactively",
+                    "To compute inverse document frequency scores"
+                ],
+                "correct": 2,
+                "explanation": "Faceted search was added to help users navigate large result sets by applying filters and sorting without changing document relevance."
+            },
+            {
+                "question": "What key improvement did the Extended Boolean Model introduce over the classical Boolean Model?",
+                "options": [
+                    "Support for natural language queries",
+                    "Partial matching and term-frequency-based relevance scoring",
+                    "Integration of hyperlink analysis",
+                    "Automatic language translation"
+                ],
+                "correct": 1,
+                "explanation": "The Extended Boolean Model allows partial matches and uses term frequency to assign relevance scores, enabling ranked results."
+            },
+            {
+                "question": "In the offline indexing phase, what is the primary purpose of the 'split' step?",
+                "options": [
+                    "To tokenize text into words and subwords",
+                    "To divide long documents into smaller coherent retrieval units",
+                    "To normalize character encodings to UTF-8",
+                    "To rank documents by retrieval status value"
+                ],
+                "correct": 1,
+                "explanation": "During the split step, long documents are divided into smaller searchable chunks, enabling finer-grained retrieval."
+            },
+            {
+                "question": "Why is overlapping text sometimes added when chunking long documents?",
+                "options": [
+                    "To improve storage compression",
+                    "To avoid false negatives when query terms span adjacent chunks",
+                    "To simplify vector-space calculations",
+                    "To increase the inverse document frequency of rare terms"
+                ],
+                "correct": 1,
+                "explanation": "Overlapping text ensures that query terms at chunk boundaries are captured together, reducing false negatives."
+            },
+            {
+                "question": "According to Zipf’s law, what happens to the probability p(r) of a term as its rank r increases?",
+                "options": [
+                    "It stays constant regardless of rank",
+                    "It increases linearly with r",
+                    "It decreases proportionally to 1/r",
+                    "It follows a random distribution"
+                ],
+                "correct": 2,
+                "explanation": "Zipf’s law states that term probability is inversely proportional to its rank, p(r) = c/r."
+            },
+            {
+                "question": "Which factor best explains why terms with very low or very high document frequency have low discrimination power?",
+                "options": [
+                    "They cannot be tokenized properly",
+                    "They fail to differentiate documents effectively",
+                    "They have high inverse document frequency",
+                    "They are always removed as stop words"
+                ],
+                "correct": 1,
+                "explanation": "Terms appearing in too few or too many documents provide little ability to distinguish relevant from non-relevant documents."
+            }
+        ]
+    }
+}
