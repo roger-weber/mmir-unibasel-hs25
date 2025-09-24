@@ -65,7 +65,7 @@ New questions are added as we progress in the course. There is a short [User Man
 * Work through [Exercise 1.2: Probabilistic Retrieval](./98-Exercises/TEx_1_2_ProbabilisticRetrieval.md)
 
 
-| Exercise | Title | <span>Tasks <img width="800" height="1"></span> |
+| Exercise | Title | <img width="800" height="1"> |
 |---|---|---------------------------------------------------------------|
 | **Theoretical Exercise 1** | Classical Text Retrieval | <ul><li>Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 1–2<li>Work through [Exercise 1.1: Vector Space Retrieval](./98-Exercises/TEx_1_1_VectorSpaceRetrieval.md)<li>Work through [Exercise 1.2: Probabilistic Retrieval](./98-Exercises/TEx_1_2_ProbabilisticRetrieval.md) </ul> |
 
