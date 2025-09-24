@@ -21,6 +21,7 @@ Throughout, students engage with theoretical and hands-on practical exercises, a
 > - [Documentation, tutorials, cheat sheets](#documentation-tutorials-cheat-sheets)
 
 
+---
 
 ## Course Structure
 
@@ -43,10 +44,11 @@ Throughout, students engage with theoretical and hands-on practical exercises, a
 | 15      | Multimodal Search               | We use transformer-based models to generate improved descriptions and classifiers and examine how to integrate them into the retrieval process.                                                            |
 | 99      | ML Methods                      | We review key machine learning methods used for content analysis and for extracting metadata. This chapter is not part of the exam; it is supplemental material to help you understand the course methods. |
 
+---
 
 ## Exercises
 
-The [quiz application](https://roger-weber.github.io/mmir-unibasel-hs25/) offers multiple choice questions covering the course content, organized by chapter. It provides two modes:
+The [Quiz Application](https://roger-weber.github.io/mmir-unibasel-hs25/) offers multiple choice questions covering the course content, organized by chapter. It provides two modes:
 - Learn Mode: continue answering questions until all are answered correctly
 - Test Mode: complete a set of questions and receive your score
 
@@ -56,8 +58,16 @@ New questions are added as we progress in the course. There is a short [User Man
 > The quiz application runs locally in your browser without storing or tracking results. The source code is [available in this repository](./mmir-quiz-app/). Feel free to provide suggestions for improvements! 
 
 
+**Theoretical Exercise 1: Classical Text Retrieval**
+
+* Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 1–2
+* Work through [Exercise 1.1: Vector Space Retrieval](./98-Exercises/TEx_1_1_VectorSpaceRetrieval.md)
+* Work through [Exercise 1.2: Probabilistic Retrieval](./98-Exercises/TEx_1_2_ProbabilisticRetrieval.md)
 
 
+
+
+---
 
 ## Helpful software
 
@@ -188,6 +198,7 @@ New questions are added as we progress in the course. There is a short [User Man
     - [Sign-up for Amazon Q (free)](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/q-free-tier.html)
         (this requires an AWS Builder ID; usage is for free for individual tier; no AWS account required)
 
+---
 
 ## Documentation, tutorials, cheat sheets
 
