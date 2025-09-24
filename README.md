@@ -35,7 +35,7 @@ The [quiz application](https://roger-weber.github.io/mmir-unibasel-hs25/) offers
 New questions are added as we progress in the course.
 
 > **Note**  
-> The quiz application runs locally in your browser without storing or tracking results. The source code is available in this repository. Feel free to provide suggestions for improvements! 
+> The quiz application runs locally in your browser without storing or tracking results. The source code is [available in this repository](./mmir-quiz-app/). Feel free to provide suggestions for improvements! 
 
 
 
