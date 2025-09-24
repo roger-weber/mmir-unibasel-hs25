@@ -28,11 +28,14 @@ This overview provides a summary of the content covered in the Multimedia Retrie
 
 ## Exercises
 
-The quiz app provides multiple choice questions about the content of the course ordered by chapters. There are two modes
-- Learn Mode: answer questions until you answer all correctly
-- Test Mode: answer questions and see how well you did
+The [quiz application](https://roger-weber.github.io/mmir-unibasel-hs25/) offers multiple choice questions covering the course content, organized by chapter. It provides two modes:
+- Learn Mode: continue answering questions until all are answered correctly
+- Test Mode: complete a set of questions and receive your score
 
-The quiz app runs local in your browser and does not store or track results. The source code is available in this repository. If you have suggestions, let me know!
+New questions are added as we progress in the course.
+
+> **Note**  
+> The quiz application runs locally in your browser without storing or tracking results. The source code is available in this repository. Feel free to provide suggestions for improvements! 
 
 
 

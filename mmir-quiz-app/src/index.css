@@ -1,0 +1,53 @@
+:root {
+    /* Common colors */
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-text: #333333;
+    --color-heading-primary: #4a5568;
+    --color-heading-secondary: #2d3748;
+    --color-gray-light: #e2e8f0;
+    --color-gray-hover: #f7fafc;
+    --color-gray-selected: #edf2f7;
+
+    /* button colors */
+    --color-btn: hsl(216, 15%, 52%);
+    --color-btn-hover: hsl(216, 15%, 35%);
+    --color-back-btn: hsl(216, 15%, 52%);
+    --color-back-btn-hover: hsl(216, 15%, 35%);
+    
+    /* Success/Error colors */
+    --color-success: #48bb78;
+    --color-success-bg: #f0fff4;
+    --color-success-text: #2f855a;
+    --color-error: #f56565;
+    --color-error-bg: #fffafa;
+    --color-error-text: #c53030;
+    --color-progress-start: hsl(216, 15%, 35%);
+    --color-progress-end: hsl(216, 15%, 65%);
+    
+    /* Learn mode colors */
+    --learn-primary: hsl(192, 40%, 54%);
+    --learn-secondary: hsl(192, 40%, 84%);
+    --learn-card-start: hsl(187, 30%, 34%);
+    --learn-card-end: hsl(187, 30%, 54%);
+    
+    /* Test mode colors */
+    --test-primary: hsl(45, 24%, 53%);
+    --test-secondary: hsl(45, 24%, 83%);
+    --test-card-start: hsl(25, 76%, 31%);
+    --test-card-end: hsl(25, 76%, 51%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    min-height: 100vh;
+    transition: background 0.5s ease;
+}
