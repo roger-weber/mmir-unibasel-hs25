@@ -1,14 +1,3 @@
-<style>
-p:has(+ ul) {
-  margin-bottom: 0;
-}
-p + ul {
-  margin-top: 0;
-}
-</style>
-
-
-
 # Multimedia Retrieval HS25 (University of Basel)
 
 This overview provides a summary of the content covered in the Multimedia Retrieval course at the University of Basel. You can find the course material here:
@@ -16,7 +5,6 @@ This overview provides a summary of the content covered in the Multimedia Retrie
   - [Public Web Site](https://dmi.unibas.ch/de/studium/computer-science-informatik/lehrangebot-hs25/lecture-multimedia-retrieval/)
 
 
-[TOC]
 
 > **Table of Contents**
 > - [Course Structure](#course-structure)
