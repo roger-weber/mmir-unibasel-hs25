@@ -4,6 +4,18 @@ This overview provides a summary of the content covered in the Multimedia Retrie
   - [ADAM University Basel](https://adam.unibas.ch/goto_adam_crs_1995846.html)
   - [Public Web Site](https://dmi.unibas.ch/de/studium/computer-science-informatik/lehrangebot-hs25/lecture-multimedia-retrieval/)
 
+> **Table of Contents**
+> * [Course Structure](#course-structure)
+> * [Exercises](#exercises)
+> * [Helpful software](#helpful-software)
+>   1. [Installers](#1-installers)
+>   1. [Python](#2-python)
+>   1. [Jupyter notebooks](#3-jupyter-notebooks)
+>   1. [IDE](#4-ide)
+> - [Documentation, tutorials, cheat sheets](#documentation-tutorials-cheat-sheets)
+> - [Links](#links)
+> - [git issue with large files](#git-issue-with-large-files)
+
 
 
 
