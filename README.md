@@ -15,6 +15,9 @@ This overview provides a summary of the content covered in the Multimedia Retrie
   - [ADAM University Basel](https://adam.unibas.ch/goto_adam_crs_1995846.html)
   - [Public Web Site](https://dmi.unibas.ch/de/studium/computer-science-informatik/lehrangebot-hs25/lecture-multimedia-retrieval/)
 
+
+[TOC]
+
 > **Table of Contents**
 > - [Course Structure](#course-structure)
 > - [Exercises](#exercises)
