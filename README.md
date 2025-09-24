@@ -6,7 +6,7 @@ The curriculum progresses through advanced text processing methods, indexing str
 
 Beyond text, the course delves into multimodal content analysis, examining visual features (color, texture, shape), acoustic features in time and frequency domains, and spatiotemporal features for video analysis. Students explore machine learning classifiers for content description and multimodal search using transformer models. 
 
-Throughout, students engage with theoretical and hands-on practical exercises, and can test teheir knowledge with an interactive quiz application. You can find the course material here:
+Throughout, students engage with theoretical and hands-on practical exercises, and can test their knowledge with an interactive quiz application. You can find the course material here:
   - [ADAM University Basel](https://adam.unibas.ch/goto_adam_crs_1995846.html) (for students only)
   - [Public Web Site](https://dmi.unibas.ch/de/studium/computer-science-informatik/lehrangebot-hs25/lecture-multimedia-retrieval/)
 
