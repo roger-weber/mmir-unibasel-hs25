@@ -1,15 +1,15 @@
-# Multimedia Retrieval Course Overview (University of Basel)
+# Multimedia Retrieval HS25 (University of Basel)
 
 This overview provides a summary of the content covered in the Multimedia Retrieval course at the University of Basel. You can find the course material here:
   - [Public Web Site](https://dmi.unibas.ch/de/studium/computer-science-informatik/lehrangebot-hs25/lecture-multimedia-retrieval/)
   - [ADAM University Basel](https://adam.unibas.ch/goto_adam_crs_1995846.html)
 
 
-### Table of contents:
+## Course Structure
 | Chapter | Title                          | Content                                                                                                                                                                                                 |
 |--------:|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 01      | [Introduction](01-Introduction/README.md)                    | We will cover the motivation, a short history, the general retrieval process and its variations, and watch demonstrations to get started.                                                               |
-| 02      | Classical Text Retrieval        | We discuss the main classical retrieval models: Boolean, vector space, and probabilistic. We conclude with BM25, the leading model used in many systems today.                                           |
+| 02      | [Classical Text Retrieval](02-ClassicalTextRetrieval/README.md)        | We discuss the main classical retrieval models: Boolean, vector space, and probabilistic. We conclude with BM25, the leading model used in many systems today.                                           |
 | 03      | Performance Evaluation          | We evaluate and compare retrieval systems to determine how well the methods described in the chapters perform. Focus is on precision and recall related metrics.                                          |
 | 04      | Advanced Text Processing        | We study how to extract improved text features, examine tokenization strategies for machine learning, and discuss various linguistic analysis and transformation methods.                                 |
 | 05      | Index for Text Retrieval        | We explore methods to quickly find relevant documents and study Lucene, a widespread library that provides classical and modern text retrieval capabilities.                                              |
@@ -24,6 +24,17 @@ This overview provides a summary of the content covered in the Multimedia Retrie
 | 14      | Classifiers                     | We study network architectures that extract classifiers from images and audio files to serve as focused content descriptors.                                                                               |
 | 15      | Multimodal Search               | We use transformer-based models to generate improved descriptions and classifiers and examine how to integrate them into the retrieval process.                                                            |
 | 99      | ML Methods                      | We review key machine learning methods used for content analysis and for extracting metadata. This chapter is not part of the exam; it is supplemental material to help you understand the course methods. |
+
+
+## Exercises
+
+The quiz app provides multiple choice questions about the content of the course ordered by chapters. There are two modes
+- Learn Mode: answer questions until you answer all correctly
+- Test Mode: answer questions and see how well you did
+
+The quiz app runs local in your browser and does not store or track results. The source code is available in this repository. If you have suggestions, let me know!
+
+
 
 
 
