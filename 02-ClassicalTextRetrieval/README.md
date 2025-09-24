@@ -1,8 +1,9 @@
-# Chapter 1: Introduction
-We will cover the motivation, a short history, the general retrieval process and its variations, and watch demonstrations to get started.
+# Chapter 2: Classical Text Retrieval
+We discuss the main classical retrieval models: Boolean, vector space, and probabilistic. We conclude with BM25, the leading model used in many systems today.
 
 > **Slides**
 > coming soon
+
 
 
 ### Demos
