@@ -1,4 +1,4 @@
-# Multimedia Retrieval HS25 (University of Basel)
+# Overview
 
 The **Multimedia Retrieval** course at the University of Basel is a comprehensive exploration of information retrieval systems spanning text, images, audio, and video content. The course begins with foundational concepts, covering classical text retrieval models including Boolean, vector space, and probabilistic approaches, culminating in the widely-used BM25 algorithm. Students learn performance evaluation techniques using precision and recall metrics to assess retrieval system effectiveness.
 
