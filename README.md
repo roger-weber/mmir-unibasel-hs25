@@ -1,8 +1,10 @@
 # Multimedia Retrieval HS25 (University of Basel)
 
 This overview provides a summary of the content covered in the Multimedia Retrieval course at the University of Basel. You can find the course material here:
-  - [Public Web Site](https://dmi.unibas.ch/de/studium/computer-science-informatik/lehrangebot-hs25/lecture-multimedia-retrieval/)
   - [ADAM University Basel](https://adam.unibas.ch/goto_adam_crs_1995846.html)
+  - [Public Web Site](https://dmi.unibas.ch/de/studium/computer-science-informatik/lehrangebot-hs25/lecture-multimedia-retrieval/)
+
+
 
 
 ## Course Structure
