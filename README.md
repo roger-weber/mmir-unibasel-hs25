@@ -14,10 +14,10 @@ Throughout, students engage with theoretical and hands-on practical exercises, a
 > - [Course Structure](#course-structure)
 > - [Exercises](#exercises)
 > - [Helpful software](#helpful-software)
->   1. [Installers](#1-installers)
->   2. [Python](#2-python)
->   3. [Jupyter notebooks](#3-jupyter-notebooks)
->   4. [IDE](#4-ide)
+>     1. [Installers](#1-installers)
+>     2. [Python](#2-python)
+>     3. [Jupyter notebooks](#3-jupyter-notebooks)
+>     4. [IDE](#4-ide)
 > - [Documentation, tutorials, cheat sheets](#documentation-tutorials-cheat-sheets)
 
 
