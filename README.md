@@ -64,19 +64,12 @@ New questions are added as we progress in the course. There is a short [User Man
 * Work through [Exercise 1.1: Vector Space Retrieval](./98-Exercises/TEx_1_1_VectorSpaceRetrieval.md)
 * Work through [Exercise 1.2: Probabilistic Retrieval](./98-Exercises/TEx_1_2_ProbabilisticRetrieval.md)
 
+| Exercise | Ttitle | Tasks |
+|---|---|---|
+| **Theoretical Exercise 1** | Classical Text Retrieval |  
+  - Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 1–2
+  - Work through [Exercise 1.1: Vector Space Retrieval](./98-Exercises/TEx_1_1_VectorSpaceRetrieval.md) |
 
-<table>
-  <tr>
-    <td>
-      <b>Theoretical Exercise 1:</b> Classical Text Retrieval
-    </td>
-    <td markdown="1">
-      - Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 1–2
-      - Work through [Exercise 1.1: Vector Space Retrieval](./98-Exercises/TEx_1_1_VectorSpaceRetrieval.md)
-      - Work through [Exercise 1.2: Probabilistic Retrieval](./98-Exercises/TEx_1_2_ProbabilisticRetrieval.md)
-    </td>
-  </tr>
-</table>
 
 
 ---
