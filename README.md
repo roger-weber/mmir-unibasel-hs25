@@ -1,10 +1,14 @@
 # Multimedia Retrieval HS25 (University of Basel)
 
-This overview provides a summary of the content covered in the Multimedia Retrieval course at the University of Basel. You can find the course material here:
-  - [ADAM University Basel](https://adam.unibas.ch/goto_adam_crs_1995846.html)
+The **Multimedia Retrieval** course at the University of Basel is a comprehensive exploration of information retrieval systems spanning text, images, audio, and video content. The course begins with foundational concepts, covering classical text retrieval models including Boolean, vector space, and probabilistic approaches, culminating in the widely-used BM25 algorithm. Students learn performance evaluation techniques using precision and recall metrics to assess retrieval system effectiveness.
+
+The curriculum progresses through advanced text processing methods, indexing strategies using tools like Lucene, and modern semantic search techniques including word embeddings and transformer-based models. A significant focus is placed on vector search challenges, addressing the curse of dimensionality and contemporary vector search engine techniques. The course embraces current AI trends by covering Retrieval Augmented Generation (RAG), showing how large language models enhance responses using retrieved information.
+
+Beyond text, the course delves into multimodal content analysis, examining visual features (color, texture, shape), acoustic features in time and frequency domains, and spatiotemporal features for video analysis. Students explore machine learning classifiers for content description and multimodal search using transformer models. 
+
+Throughout, students engage with theoretical and hands-on practical exercises, and can test teheir knowledge with an interactive quiz application. You can find the course material here:
+  - [ADAM University Basel](https://adam.unibas.ch/goto_adam_crs_1995846.html) (for students only)
   - [Public Web Site](https://dmi.unibas.ch/de/studium/computer-science-informatik/lehrangebot-hs25/lecture-multimedia-retrieval/)
-
-
 
 > **Table of Contents**
 > - [Course Structure](#course-structure)
@@ -15,13 +19,11 @@ This overview provides a summary of the content covered in the Multimedia Retrie
 >   1. [Jupyter notebooks](#3-jupyter-notebooks)
 >   1. [IDE](#4-ide)
 > - [Documentation, tutorials, cheat sheets](#documentation-tutorials-cheat-sheets)
-> - [Links](#links)
-> - [git issue with large files](#git-issue-with-large-files)
-
 
 
 
 ## Course Structure
+
 | Chapter | Title                          | Content                                                                                                                                                                                                 |
 |--------:|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 01      | [Introduction](01-Introduction/README.md)                    | We will cover the motivation, a short history, the general retrieval process and its variations, and watch demonstrations to get started.                                                               |
@@ -48,7 +50,7 @@ The [quiz application](https://roger-weber.github.io/mmir-unibasel-hs25/) offers
 - Learn Mode: continue answering questions until all are answered correctly
 - Test Mode: complete a set of questions and receive your score
 
-New questions are added as we progress in the course.
+New questions are added as we progress in the course. There is a short [User Manual](./mmir-quiz-app/USER_MANUAL.md) with more details on how the application works.
 
 > **Note**  
 > The quiz application runs locally in your browser without storing or tracking results. The source code is [available in this repository](./mmir-quiz-app/). Feel free to provide suggestions for improvements! 
@@ -195,13 +197,3 @@ New questions are added as we progress in the course.
 - [Python for Data Scientist](https://khuyentran1401.github.io/Efficient_Python_tricks_and_tools_for_data_scientists/README.html)
 - [Python Cheat Sheets](https://www.pythoncheatsheet.org/)
 
-## Links
-
-- [Web Site Course (Uni Basel)](https://dmi.unibas.ch/de/studium/computer-science-informatik/lehrangebot-hs24/lecture-multimedia-retrieval/)
-- [Link to Adam (Students only)](https://adam.unibas.ch/goto_adam_crs_1738202.html)
-
-
-## git issue with large files
-```
-git config http.postBuffer 524288000     
-```
