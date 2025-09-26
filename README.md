@@ -23,6 +23,8 @@ Throughout, students engage with theoretical and hands-on practical exercises, a
 
 ---
 
+<br>
+
 ## Course Structure
 
 | Chapter | Title                          | Content                                                                                                                                                                                                 |
