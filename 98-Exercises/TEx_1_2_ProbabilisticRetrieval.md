@@ -32,7 +32,7 @@ The BIR model relies on three key assumptions. To test their validity, calculate
 Start from the relationship
 
    $$
-       \operatorname{sim}(Q,D_i) = \frac{P(R\mid D_i)}{P(NR\mid D_i)}
+       sim(Q,D_i) = \frac{P(R\mid D_i)}{P(NR\mid D_i)}
          = \frac{P(R\mid D_i)}{1 - P(R\mid D_i)}
          = \frac{P(R\mid \mathbf{x})}{1 - P(R\mid \mathbf{x})}
          = \dots
