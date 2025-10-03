@@ -1,4 +1,4 @@
-## Exercise 1.1: Vector Space Retrieval (theoretical)
+## Theoretical Exercise 1.1: Vector Space Retrieval
 
 For vector space retrieval, we introduced the inner vector product and cosine measure to rank documents by their similarity to the query. We will examine now the geometric interpretation of these functions. For simplicity, we begin by analyzing a two-term query before extending to higher dimensions.
 

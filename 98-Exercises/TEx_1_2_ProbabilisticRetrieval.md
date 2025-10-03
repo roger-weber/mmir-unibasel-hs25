@@ -1,4 +1,4 @@
-# Exercise 1.2: Probabilistic Retrieval (Theoretical)
+# Theoretical Exercise 1.2: Probabilistic Retrieval
 
 This task explores the **Binary Independence Retrieval (BIR)** model and illustrates the approach with simple examples. For a query $Q$, the BIR method produces the following initial list of retrieved documents:
 

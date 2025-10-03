@@ -2,7 +2,7 @@
 We will cover the motivation, a short history, the general retrieval process and its variations, and watch demonstrations to get started.
 
 > **Slides**
-> coming soon
+> [01_Introduction.pdf](https://dmi.unibas.ch/fileadmin/user_upload/dmi/Studium/Computer_Science/Vorlesungen_HS23/Multimedia_Retrieval/HS25/01_Introduction.pdf)
 
 
 ### Demos

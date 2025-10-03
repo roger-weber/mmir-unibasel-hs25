@@ -2,7 +2,7 @@
 We discuss the main classical retrieval models: Boolean, vector space, and probabilistic. We conclude with BM25, the leading model used in many systems today.
 
 > **Slides**
-> coming soon
+> [02_ClassicalTextRetrieval.pdf](https://dmi.unibas.ch/fileadmin/user_upload/dmi/Studium/Computer_Science/Vorlesungen_HS23/Multimedia_Retrieval/HS25/02_ClassicalTextRetrieval.pdf)
 
 
 

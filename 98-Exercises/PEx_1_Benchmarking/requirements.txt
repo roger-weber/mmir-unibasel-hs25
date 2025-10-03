@@ -1,0 +1,5 @@
+nltk
+kagglehub
+ipywidgets 
+tqdm 
+unidecode
