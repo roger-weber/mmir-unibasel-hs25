@@ -69,7 +69,7 @@ New questions are added as we progress in the course. There is a short [User Man
 | Exercise | Title | <img width="800" height="1"> |
 |---|---|---------------------------------------------------------------|
 | **Theoretical Exercise 1** | Classical Text Retrieval | <ul><li>Work through [Theoretical Exercise 1.1: Vector Space Retrieval](./98-Exercises/TEx_1_1_VectorSpaceRetrieval.md)<li>Work through [Theoretical Exercise 1.2: Probabilistic Retrieval](./98-Exercises/TEx_1_2_ProbabilisticRetrieval.md)<li>Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 1–2</ul> |
-| **Practical Exercise 1** | Benchmarking | <ul><li>Work through [Practical Exercise 1: Vector Space Retrieval](./98-Exercises/PEx_1_EvaluationClassicalRetrieval_Solution%20copy.md)</ul> |
+| **Practical Exercise 1** | Benchmarking | <ul><li>Work through [Practical Exercise 1: Benchmarking](./98-Exercises/PEx_1_EvaluationClassicalRetrieval_Solution%20copy.md)</ul> |
 
 
 <br>
