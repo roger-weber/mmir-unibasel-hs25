@@ -15,6 +15,8 @@ This exercise emphasizes planning over implementation. Your task is to create a 
 
 
 
+---
+
 ### Task 1.1a
 
 Start by defining a use case scenario for the movie collection. Try to avoid an overly generic scenario such as just "movie search". Rather, define a persona that wants to achieve some task over the movie database, for example, a "movie enthusiast wants to find a movie to watch". Then define a variety of queries and topics using generative AI:
@@ -33,6 +35,8 @@ print(collection.prompt_context(["tt0076759", "tt0120915"]))
 ```
 
 
+
+---
 
 ### Task 1.1b
 
@@ -56,6 +60,8 @@ For debugging, you may also ask the tool to explain its assessment. What is your
 Document the steps in your markdown response. Implementation and automation of the assessment is not required.
 
 
+
+---
 
 ### Task 1.1c
 
