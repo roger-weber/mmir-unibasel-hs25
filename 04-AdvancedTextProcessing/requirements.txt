@@ -1,0 +1,13 @@
+nltk
+svgling
+ipywidgets
+spacy
+transformers
+tabulate
+torch
+PyPDF2
+beautifulsoup4
+langchain
+jieba
+unidecode
+py7zr

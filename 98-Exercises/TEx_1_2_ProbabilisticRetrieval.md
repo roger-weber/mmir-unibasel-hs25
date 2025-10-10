@@ -1,4 +1,4 @@
-# Theoretical Exercise 1.2: Probabilistic Retrieval
+# Theoretical Exercise 1.2: Probabilistic Retrieval (Theoretical)
 
 This task explores the **Binary Independence Retrieval (BIR)** model and illustrates the approach with simple examples. For a query $Q$, the BIR method produces the following initial list of retrieved documents:
 
@@ -15,9 +15,18 @@ The rows $x_1$ and $x_2$ show the binary term representations of the 20 document
 Use these relevance judgements to compute updated $c_j$ values and determine the revised ranking of the documents according to the BIR model.
 
 > <details>
-> <summary>Solution (coming soon)</summary>
+> <summary>Solution</summary>
 > <br>
-> Provided after deadline of exercise
+>
+>The table below shows the $c_j$ values. Here, $l = 12$ (number of relevant documents) and $k = 20$ (number of presented documents).
+>
+>|       | $l_j$ | $k_j$ | $r_j$ | $n_j$ | $c_j$ |
+>| :---- | :---- | :---- | :---- | :---- | :---- |
+>| $x_1$ | 8     | 11    | 2/3   | 3/8   | 1.20  |
+>| $x_2$ | 7     | 11    | 7/12  | 1/2   | 0.34  |
+>
+>The binary representations can be ordered as (1,1) > (1,0) > (0,1) > (0,0). The feedback did not change the ranking, so the order remains the same. This result is common for small queries with few terms. Task 1.2c is expected to give better results.
+>
 > </details>
 
 ---
@@ -32,7 +41,7 @@ The BIR model relies on three key assumptions. To test their validity, calculate
 Start from the relationship
 
    $$
-       sim(Q,D_i) = \frac{P(R\mid D_i)}{P(NR\mid D_i)}
+       \text{sim}(Q,D_i) = \frac{P(R\mid D_i)}{P(NR\mid D_i)}
          = \frac{P(R\mid D_i)}{1 - P(R\mid D_i)}
          = \frac{P(R\mid \mathbf{x})}{1 - P(R\mid \mathbf{x})}
          = \dots
@@ -44,9 +53,24 @@ and solve for $P(R\mid \mathbf{x})$.
 
 
 > <details>
-> <summary>Solution (coming soon)</summary>
+> <summary>Solution</summary>
 > <br>
-> Provided after deadline of exercise
+>
+>We first calculate the probability $P(R|𝐱)$ using the BIR assumptions:
+>
+>$$\text{sim}\left(Q,D_i\right)=\frac{P(R|𝒙)}{1-P(R|𝒙)}=\frac{P(R)}{P(NR)}∙\prod_{\forall j:x_j=1, q_j=1} \frac{r_j}{n_j}∙\prod_{\forall j:x_j=0, q_j=1} \frac{1-r_j}{1-n_j}$$
+>
+>$$P\left(R\vert 𝒙\right)=\frac{\frac{P(R)}{P(NR)}∙\prod_{\forall j:x_j=1, q_j=1} \frac{r_j}{n_j}∙\prod_{\forall j:x_j=0, q_j=1} \frac{1-r_j}{1-n_j}}{1+\frac{P(R)}{P(NR)}∙\prod_{\forall j:x_j=1, q_j=1} \frac{r_j}{n_j}∙\prod_{\forall j:x_j=0, q_j=1} \frac{1-r_j}{1-n_j}}$$
+>
+>For counting, we have $P(R) = 12/20$ (12 out of 20 documents are relevant) and $P(NR) = 1 - P(R) = 8/20$. For $P(R|𝐱)$, for example, $P(R(0,0)) = 1/3$ (1 out of 3 documents with representation (0,0) is relevant). This gives:
+>
+>| $P(R\vert 𝒙)$ | $(0,0)$ | $(0,1)$ | $(1,0)$ | $(1,1)$ |
+>| :- | :- | :- | :- | :- |
+>| counted | 0.33 | 0.50 | 0.67 | 0.80 |
+>| computed | 0.40 | 0.48 | 0.69 | 0.76 |
+>
+> The differences arise from the assumption that terms are independent. In reality, this assumption is not always true, causing the probabilities to differ.
+>
 > </details>
 
 ---
@@ -85,7 +109,56 @@ Non-relevant documents: **m1–m4**
 
 
 > <details>
-> <summary>Solution (coming soon)</summary>
+> <summary>Solution</summary>
 > <br>
-> Provided after deadline of exercise
+>
+>The table below shows the $c_j$ values using the BIR model. In the first step, we use the initial estimates for $r_j$ and $n_j$. In the second step, these estimates are updated with feedback, with $l = 5$ and $k = 9$.
+>
+> First step:
+>| **term** $t_j$ | $df(t_j)$ | $r_j$ | $n_j$ | $c_j$ |
+>| :------------- | :-------- | :---- | :---- | :---- |
+>| human          | 2         | 0.5   | 0.22  | 1.25  |
+>| computer       | 2         | 0.5   | 0.22  | 1.25  |
+>| interaction    | 0         | 0.5   | 0     | 0     |
+>
+> Second step:
+>| **term** $t_j$ | $l_j$ | $k_j$ | $r_j$ | $n_j$ | $c_j$ |
+>| :------------- | :---- | :---- | :---- | :---- | :---- |
+>| human          | 2     | 2     | 0.42  | 0.1   | 1.86  |
+>| computer       | 2     | 2     | 0.42  | 0.1   | 1.86  |
+>| interaction    | 0     | 0     | 0.08  | 0.1   | -0.2  |
+>
+> We use the $c_j$ values to rank the documents, shown in columns 1 and 2. However, like in Task 1.2a, the feedback does not improve the ranking.
+>
+>| $\text{sim}(Q,D)$ | 1st step     | 2nd step     | with new terms |
+>| :----             | :----------- | :----------- | :------------- |
+>| c1                | 2.50         | 3.72         | 5.58           |
+>| c2                | 1.25         | 1.86         | 10.65          |
+>| c3                | 0            | 0            | 6.93           |
+>| c4                | 1.25         | 1.86         | 4.14           |
+>| c5                | 0            | 0            | 6.26           |
+>| m1                | 0            | 0            | -3.25          |
+>| m2                | 0            | 0            | -6.49          |
+>| m3                | 0            | 0            | -8.89          |
+>| m4                | 0            | 0            | -5.89          |
+>
+>
+> To improve the query, we can add terms with high absolute $c_j$ values. Adding all terms from the table below results in retrieving all relevant documents, including c3 and c5, which now appear among the top three.
+>
+>| Term $t_j$ | $l_j$ | $k_j$ | $r_j$ | $n_j$ | $c_j$ |
+>| :--------- | :---- | :---- | :---- | :---- | :---- |
+>| human      | 2     | 2     | 0.42  | 0.1   | 1.86  |
+>| interface  | 2     | 2     | 0.42  | 0.1   | 1.86  |
+>| computer   | 2     | 2     | 0.42  | 0.1   | 1.86  |
+>| user       | 3     | 3     | 0.58  | 0.1   | 2.53  |
+>| system     | 3     | 3     | 0.58  | 0.1   | 2.53  |
+>| response   | 2     | 2     | 0.42  | 0.1   | 1.86  |
+>| time       | 2     | 2     | 0.42  | 0.1   | 1.86  |
+>| eps        | 2     | 2     | 0.42  | 0.1   | 1.86  |
+>| survey     | 1     | 2     | 0.25  | 0.3   | -0.25 |
+>| trees      | 0     | 3     | 0.08  | 0.7   | -3.25 |
+>| graph      | 0     | 3     | 0.08  | 0.7   | -3.25 |
+>| minors     | 0     | 2     | 0.08  | 0.5   | -2.40 |
+>
+> <br>
 > </details>
