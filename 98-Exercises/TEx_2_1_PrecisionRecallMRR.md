@@ -2,10 +2,10 @@
 
 Two search engines, A and B, search the same document collection and each return the top 30 results for one query, ranked by relevance. The table below shows these rankings, with a '+' indicating a relevant document and an empty cell indicating a non-relevant one. For this query, there are 12 relevant documents in total.
 
-| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 |
-| :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- |
-| A | + | + |  | + |  |  | + |  |  |  | + |  |  |  |  |  |  |  | + |  |  |  |  |  |  |  |  |  | + |
-| B |  | + | + |  |  | + |  |  | + | + |  | + |  |  |  | + |  |  | + |  |  | + |  | + |  |  |  |  |  |
+|  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 |
+| :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- | :- |
+| A | + | + |  | + |  |  |  | + |  |  |  | + |  |  |  |  |  |  |  | + |  |  |  |  |  |  |  |  |  | + |
+| B |  | + | + |  |  |  | + |  |  | + | + |  | + |  |  |  | + |  |  | + |  |  | + |  | + |  |  |  |  |  |
 
 
 
