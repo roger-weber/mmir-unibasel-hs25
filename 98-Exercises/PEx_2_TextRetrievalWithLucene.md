@@ -1,4 +1,4 @@
-# **Practical Exercise 2: Benchmarking**
+# **Practical Exercise 2: Text Retrieval with Lucene**
 
 In this exercise, you will use **Lucene** and its **fuzzy retrieval model** to search for movie titles. The dataset used is the same as in Practical Exercise 1, available on [KaggleHub](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset). This dataset contains approximately **45,000 movies** with summaries, cast information, and various metadata such as ratings and release years.
 
