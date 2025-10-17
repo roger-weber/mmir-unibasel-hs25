@@ -1,0 +1,8 @@
+ipywidgets
+tabulate
+nltk
+PyPDF2
+unidecode
+pandas
+whoosh
+psycopg2
