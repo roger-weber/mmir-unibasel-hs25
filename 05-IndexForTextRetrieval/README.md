@@ -9,8 +9,8 @@ We explore methods to quickly find relevant documents and study Lucene, a widesp
 
 ### Demos
 
-- [Setup libraries and dataset](00-setup.ipynb): run this once for all the demos in this chapter
-- [Boolean Retrieval](./01-boolean-retrieval.ipynb)): basic evaluation code for boolean retrieval
+- [Install libraries, Ganymede, and PostgreSQL](00-setup.ipynb): run this once for all the demos in this chapter
+- [Boolean Retrieval](./01-boolean-retrieval.ipynb): basic evaluation code for boolean retrieval
 - [Probabilistic Retrieval](./02-probabilistic-retrieval.ipynb): interactive demo for probabilistic retrieval using diffent evaluation approaches
 - [Vector Space Retrieva](./03-vectorspace-retrieval.ipynb): interactive demo for vector space retrieval using diffent evaluation approaches
 - [SQL Retrieval](./04-sql-retrieval.ipynb) ([SQL only](./04-sql-retrieval.sql)): do-it-yourself text retrieval with a relational database
