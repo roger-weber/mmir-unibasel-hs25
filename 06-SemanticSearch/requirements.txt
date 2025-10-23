@@ -1,0 +1,5 @@
+gensim
+nltk
+scikit-learn
+sentence_transformers
+seaborn
