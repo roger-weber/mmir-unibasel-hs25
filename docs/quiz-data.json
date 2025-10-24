@@ -1,1 +1,1637 @@
-{"meta-data": {"title": "Multimedia Retrieval HS25", "description": "Exercise questions for MMIR HS25, University Basel"}, "questions": {"01 - Introduction": [{"question": "Which key technological shift allowed large-scale information retrieval to emerge in the 1970s?", "options": ["Development of GPU-based parallel computing platforms", "Rise of computer typesetting and word processing creating machine-readable text", "Introduction of transformer architectures", "Creation of cloud-based storage services"], "correct": 1, "explanation": "The 1970s saw widespread computer typesetting and word processing, producing machine-readable text that enabled large-scale retrieval systems."}, {"question": "What major innovation distinguished Google's PageRank from earlier web search algorithms?", "options": ["It indexed only multimedia content instead of text.", "It ranked pages by the authority of inbound links rather than just keyword matching.", "It eliminated the need for any ranking and returned results in random order.", "It introduced manual tagging for every webpage."], "correct": 1, "explanation": "PageRank ranked pages based on the authority of links pointing to them, moving beyond pure keyword matching."}, {"question": "Why is the 'semantic gap' particularly challenging in multimedia retrieval?", "options": ["Because low-level features like pixels or frequencies do not directly represent human-level concepts.", "Because text retrieval research is more established and advanced.", "Because storage devices cannot handle multimedia file sizes.", "Because queries in multimedia retrieval are slower to process."], "correct": 0, "explanation": "The semantic gap refers to the mismatch between low-level media features and high-level human semantics, making direct matching difficult."}, {"question": "Which retrieval architecture first combines a retriever with a language model to generate a full answer rather than extracting a single passage?", "options": ["Retriever-Reader", "Retriever-Generator (RAG)", "Retriever-Filter", "Generator-only"], "correct": 1, "explanation": "Retriever-Generator, also known as Retrieval-Augmented Generation (RAG), combines a retriever with a generative model to produce comprehensive answers."}, {"question": "Suppose you need to design a retrieval system that can infer user interests without explicit queries, as in TikTok recommendations. Which relevance strategy is most appropriate?", "options": ["Objective relevance using keyword matching", "Manual tagging and classification of all content", "Implicit relevance estimation from behavioral signals and context", "Only inverse document frequency scoring"], "correct": 2, "explanation": "Query-less search relies on behavioral signals and contextual data to infer user intent and estimate relevance without explicit queries."}, {"question": "Given the fastest PCI-E 5.0 NVMe SSD read rate of about 14,000 MB/s, approximately how long would it take to sequentially read 1 petabyte of data?", "options": ["Around 20 hours", "Around 1 day", "Around 8 days", "Around 1 year"], "correct": 2, "explanation": "1 petabyte is about 1,000,000,000 MB; at 14,000 MB/s it would take roughly 71,000 seconds (~20 hours) per 1 TB, so about 8 days for 1 PB."}, {"question": "Which retrieval architecture simply returns documents matching a query without explicit ranking?", "options": ["Retriever-Only", "Retriever-Ranker", "Retriever-Reader", "Retriever-Generator"], "correct": 0, "explanation": "Retriever-only systems fetch and present matching documents directly without filtering or ranking stages."}, {"question": "Why is searching images inherently more complex than searching text, according to the concept of the semantic gap?", "options": ["Images require more storage space than text", "Pixels have no fixed, direct relation to high-level concepts", "Image queries always need manual tagging", "Text search engines cannot process metadata"], "correct": 1, "explanation": "The semantic gap is the mismatch between low-level image features and the human semantics they represent."}, {"question": "Which statement best describes Retrieval-Augmented Generation (RAG)?", "options": ["It relies solely on a language model without external information", "It retrieves relevant documents and combines them with a query for a generative model to answer", "It uses Boolean logic to refine search results", "It is limited to ranking web pages by link authority"], "correct": 1, "explanation": "RAG retrieves supporting documents and feeds them with the query into a language model to generate a comprehensive answer."}, {"question": "The exponential data growth described in the text implies which critical challenge for retrieval systems?", "options": ["Lower hardware costs make retrieval trivial", "Indexing and ranking must occur nearly in real time to remain relevant", "Users no longer require high recall", "Query-less search becomes impossible"], "correct": 1, "explanation": "Rapidly created data such as news and social posts require near real-time indexing and ranking to stay relevant."}], "02 - Classical Retrieval": [{"question": "In the classical Boolean retrieval model, how is a document's relevance to a query determined?", "options": ["By calculating the cosine similarity between document and query vectors", "By checking if the document satisfies the Boolean expression of the query", "By estimating the probability that the document is relevant", "By counting the frequency of each query term"], "correct": 1, "explanation": "The Boolean model includes a document if it satisfies the Boolean query expression, without using ranking or probability."}, {"question": "Which representation records how often each term appears but ignores the order of terms?", "options": ["Set-of-words model", "Bag-of-words model", "Vector embedding model", "Probabilistic model"], "correct": 1, "explanation": "The bag-of-words model preserves term frequencies but discards word order and proximity."}, {"question": "What is a primary motivation for chunking long documents into smaller units before indexing?", "options": ["To reduce the size of the vocabulary", "To eliminate the need for metadata extraction", "To improve retrieval precision by ensuring query terms occur closer together", "To avoid the need for an inverted index"], "correct": 2, "explanation": "Chunking forces query terms to appear within the same segment, which improves precision by reducing false positives due to distant term occurrences."}, {"question": "Which feature distinguishes faceted search from basic Boolean retrieval?", "options": ["Faceted search requires all query terms to be present", "Users can add or remove filters and sort results without resubmitting the search", "It relies solely on probabilistic ranking of documents", "It eliminates the need for metadata attributes"], "correct": 1, "explanation": "Faceted search allows interactive filtering and sorting independent of the original query, improving navigation of large result sets."}, {"question": "Why are stop words like \"the\" often given very low weight in modern retrieval systems?", "options": ["They rarely appear in documents", "They significantly increase the size of the index", "They have high document frequency and low discriminative power", "They cannot be tokenized correctly"], "correct": 2, "explanation": "Stop words appear in most documents and thus cannot differentiate relevant from non-relevant documents, reducing their discriminative power."}, {"question": "In the indexing pipeline's offline phase, which step directly produces high-dimensional feature vectors for retrieval?", "options": ["Tokenization", "Summarization", "Metadata extraction", "Chunk splitting"], "correct": 1, "explanation": "During summarization, tokens are transformed into high-dimensional feature representations used for indexing and later retrieval."}, {"question": "The discrimination power dp(t) of a term t, as defined by Salton, Wong, and Yang (1975), is high when:", "options": ["Removing t causes documents to become more similar to the collection centroid", "Term t occurs in almost all documents", "Term t has low inverse document frequency", "The similarity to the centroid decreases upon removing t"], "correct": 0, "explanation": "A high dp(t) means that removing the term increases the similarity of documents to the centroid, showing that the term previously helped to distinguish documents."}, {"question": "Which key property makes text retrieval less affected by the semantic gap compared to other media?", "options": ["It always uses structured metadata", "It directly matches user text queries to terms in unstructured documents", "It relies on image recognition algorithms", "It requires manual annotation of every document"], "correct": 1, "explanation": "Text retrieval matches user-entered text queries directly to terms in unstructured documents, minimizing issues caused by semantic interpretation."}, {"question": "What is the main advantage of Boolean retrieval systems when scanning data?", "options": ["They can score and rank results in real time", "They determine each document's relevance independently without post-processing", "They automatically expand queries with synonyms", "They always outperform vector-space models"], "correct": 1, "explanation": "Boolean retrieval determines relevance for each document independently and does not require a post-processing ranking step."}, {"question": "In the set-of-words model, how is a document represented?", "options": ["As a sequence of characters with full formatting", "As a set of unique terms, ignoring order and frequency", "As a weighted graph of co-occurring phrases", "As a probability distribution of word embeddings"], "correct": 1, "explanation": "The set-of-words model records only the presence of unique terms, ignoring both order and frequency."}, {"question": "Why was faceted search introduced as an extension to the Boolean model?", "options": ["To enable partial matches of query terms", "To improve tokenization of complex documents", "To allow users to filter and sort large result sets interactively", "To compute inverse document frequency scores"], "correct": 2, "explanation": "Faceted search was added to help users navigate large result sets by applying filters and sorting without changing document relevance."}, {"question": "What key improvement did the Extended Boolean Model introduce over the classical Boolean Model?", "options": ["Support for natural language queries", "Partial matching and term-frequency-based relevance scoring", "Integration of hyperlink analysis", "Automatic language translation"], "correct": 1, "explanation": "The Extended Boolean Model allows partial matches and uses term frequency to assign relevance scores, enabling ranked results."}, {"question": "In the offline indexing phase, what is the primary purpose of the 'split' step?", "options": ["To tokenize text into words and subwords", "To divide long documents into smaller coherent retrieval units", "To normalize character encodings to UTF-8", "To rank documents by retrieval status value"], "correct": 1, "explanation": "During the split step, long documents are divided into smaller searchable chunks, enabling finer-grained retrieval."}, {"question": "Why is overlapping text sometimes added when chunking long documents?", "options": ["To improve storage compression", "To avoid false negatives when query terms span adjacent chunks", "To simplify vector-space calculations", "To increase the inverse document frequency of rare terms"], "correct": 1, "explanation": "Overlapping text ensures that query terms at chunk boundaries are captured together, reducing false negatives."}, {"question": "Which factor best explains why terms with very low or very high document frequency have low discrimination power?", "options": ["They cannot be tokenized properly", "They fail to differentiate documents effectively", "They have high inverse document frequency", "They are always removed as stop words"], "correct": 1, "explanation": "Terms appearing in too few or too many documents provide little ability to distinguish relevant from non-relevant documents."}, {"question": "Which key limitation of the Standard Boolean Model motivated the development of ranked retrieval methods?", "options": ["Lack of partial match capability", "Excessive computational complexity", "Dependence on term frequencies", "Requirement of probabilistic feedback"], "correct": 0, "explanation": "The Standard Boolean Model returns only documents that fully satisfy the Boolean query and cannot rank or partially match documents, leading to either too many or too few results."}, {"question": "Why does the cosine similarity measure reduce the bias toward longer documents compared to the inner product?", "options": ["It ignores inverse document frequency", "It normalizes vectors by their length", "It uses only binary term presence", "It excludes query term frequencies"], "correct": 1, "explanation": "Cosine similarity divides by the product of vector lengths, so document length does not directly inflate similarity scores."}, {"question": "Which assumption is fundamental to the Binary Independence Model?", "options": ["Documents are represented as dense real-valued vectors", "Term independence and binary term presence", "Relevance depends on query term proximity", "Term frequencies must be normalized"], "correct": 1, "explanation": "The BIR assumes terms occur independently and represent documents as binary (present/absent) sets, disregarding exact frequencies."}, {"question": "How does BM25 address the issue of very frequent query terms dominating the score?", "options": ["By discarding all terms appearing in more than 50% of documents", "By applying a saturation function to term frequency", "By using only binary term weights", "By removing inverse document frequency entirely"], "correct": 1, "explanation": "BM25 uses a nonlinear saturation of term frequency controlled by parameter k, preventing excessive influence of very frequent terms."}, {"question": "What role does the parameter b play in the BM25 scoring formula?", "options": ["Controls how document length normalizes term frequency", "Determines the inverse document frequency smoothing", "Sets the minimum similarity threshold for retrieval", "Specifies the user feedback weight in relevance estimation"], "correct": 0, "explanation": "The b parameter adjusts the impact of document length on term frequency saturation, favoring shorter or longer documents depending on its value."}, {"question": "A researcher wants a retrieval model that (1) provides a probabilistic foundation, (2) allows partial matches, (3) incorporates term frequency with diminishing returns, and (4) accounts for document length. Which model best satisfies all these requirements?", "options": ["Standard Boolean Model", "Vector Space Model with cosine similarity", "Binary Independence Model", "BM25"], "correct": 3, "explanation": "BM25 integrates probabilistic principles, supports partial matching, applies saturated term frequency, and normalizes by document length, fulfilling all four criteria."}, {"question": "Which statement best describes the primary limitation of the Standard Boolean Model in information retrieval?", "options": ["It requires complex probabilistic calculations.", "It cannot rank documents by relevance.", "It depends on user feedback to estimate probabilities.", "It only works with normalized vectors."], "correct": 1, "explanation": "The Standard Boolean Model only filters documents as relevant or not without ranking them by relevance."}, {"question": "What key advantage does the Vector Space Model have over the Standard Boolean Model?", "options": ["It guarantees independent term assumptions.", "It provides ranked retrieval based on similarity measures.", "It avoids using term frequencies entirely.", "It uses only Boolean logic for query processing."], "correct": 1, "explanation": "The Vector Space Model ranks documents by computing similarity between query and document vectors."}, {"question": "In the Vector Space Model, which measure computes the angle between the query and document vectors?", "options": ["Inner product", "Bayes' theorem", "Cosine similarity", "P-norm model"], "correct": 2, "explanation": "The cosine measure calculates the angle between query and document vectors to assess similarity."}, {"question": "According to the Binary Independence Model, which assumption is made about terms absent from the query?", "options": ["They are given higher weights.", "They do not affect document ranking.", "They are normalized using idf values.", "They must be present in all relevant documents."], "correct": 1, "explanation": "The BIR model assumes that terms absent from the query are equally distributed in relevant and non-relevant documents and thus do not affect ranking."}, {"question": "Which feature distinguishes the Extended Boolean Model from the Vector Space Model despite both supporting ranked retrieval?", "options": ["The Extended Boolean Model uses Boolean query structure while Vector Space treats queries as vectors.", "The Extended Boolean Model uses cosine similarity while Vector Space does not.", "The Extended Boolean Model ignores idf weighting while Vector Space requires it.", "The Extended Boolean Model relies on Bayes' theorem for probability estimation."], "correct": 0, "explanation": "Extended Boolean retains Boolean expressions for queries, unlike the Vector Space Model which treats queries as weighted vectors."}, {"question": "Consider a retrieval scenario with very frequent terms appearing in more than 50% of documents. According to the BM25 derivation from the BIR model, what happens to the idf-like weight c_j for such terms and why is this significant for ranking?", "options": ["c_j becomes zero, ensuring these common terms have no influence on ranking.", "c_j becomes negative, potentially lowering the score contribution of very common terms.", "c_j grows without bound, dominating the score.", "c_j remains constant, giving frequent terms equal weight to rare terms."], "correct": 1, "explanation": "For very frequent terms, the BM25/BIR-derived c_j can be negative, reducing their contribution and preventing common terms from dominating the ranking."}, {"question": "In the Binary Independence Model, why can terms absent from the query be ignored in ranking?", "options": ["They have zero inverse document frequency", "Their occurrence probability is assumed equal in relevant and non-relevant documents", "They are treated as stop words by default", "They cancel out during cosine normalization"], "correct": 1, "explanation": "BIR assumes terms not in the query have the same probability in relevant and non-relevant documents, so they do not affect ranking."}, {"question": "Suppose a corpus contains extremely long documents where relevant terms are scattered far apart. Which combination of strategies best improves both precision and recall without excessive index growth?", "options": ["Use only fixed-size chunking without overlap", "Apply structural chunking with overlapping windows", "Rely solely on term stemming", "Increase BM25's k parameter and ignore chunking"], "correct": 1, "explanation": "Structural chunking preserves semantic boundaries while overlapping windows reduce false negatives, balancing precision and recall for long documents."}, {"question": "Compare how the Extended Boolean Model, Vector Space Model, and BM25 each handle term frequency when ranking documents. Which statement best describes their key differences?", "options": ["All three ignore term frequency entirely, focusing only on binary presence of terms.", "Extended Boolean uses term frequency to assign similarity scores, Vector Space weights terms by tf-idf without saturation, and BM25 adds frequency saturation and length normalization.", "Extended Boolean and Vector Space use tf-idf with saturation, while BM25 ignores term frequency.", "Vector Space and BM25 both ignore term frequency but normalize for document length."], "correct": 1, "explanation": "Extended Boolean incorporates term frequency for partial matches, Vector Space uses tf-idf without saturation, and BM25 introduces frequency saturation with document length normalization."}, {"question": "Which best describes the relationship between the offline indexing pipeline and linguistic preprocessing like stemming or lemmatization?", "options": ["Stemming is performed after the index is built to reduce vector dimensionality.", "Tokens are stemmed or lemmatized during feature extraction so the index stores normalized terms for matching queries.", "Lemmatization is only applied at query time and never during indexing.", "The inverted index itself performs stemming dynamically for each query."], "correct": 1, "explanation": "During the offline phase, stemming or lemmatization occurs in the tokenization/feature extraction stage so the index uses normalized terms."}, {"question": "How does user relevance feedback in the Binary Independence Model (BIR) relate to BM25's scoring approach?", "options": ["Feedback adjusts BM25's k and b hyperparameters directly.", "BIR uses feedback to refine probabilities r_j and n_j, similar to how BM25 adjusts IDF weights but without direct feedback loops.", "BM25 requires feedback to estimate IDF values just like BIR.", "Both models ignore user feedback entirely."], "correct": 1, "explanation": "BIR iteratively updates r_j and n_j using feedback, conceptually similar to BM25's probabilistic weighting though BM25 does not require explicit feedback."}, {"question": "When incorporating HTML metadata and anchor text into a BM25-based retrieval engine, which weighting strategy is most appropriate to counteract spammy anchor texts?", "options": ["Assign extremely high weights to all anchor text terms to ensure recall.", "Treat anchor text terms with the same weight as body text regardless of context.", "Index anchor text but down-weight overly common or misleading phrases to limit click-bait influence.", "Exclude all anchor text from the index to avoid bias."], "correct": 2, "explanation": "Anchor text is valuable but can be manipulated; indexing with cautious down-weighting mitigates spam without losing relevance signals."}, {"question": "How can Zipf's law guide stop-word removal and IDF weighting for a multilingual corpus to improve both Boolean and Vector Space retrieval?", "options": ["By enforcing equal frequency of all terms across languages.", "By identifying extremely high- and low-frequency words for potential down-weighting or exclusion, refining IDF weighting.", "By ensuring rare terms are always removed to reduce vocabulary size.", "By ranking terms purely by alphabetical order to maintain neutrality."], "correct": 1, "explanation": "Zipf's law highlights very frequent and very rare terms, informing stop-word lists and IDF weighting to balance discrimination and recall."}], "03 - Evaluation": [{"question": "What is the primary purpose of benchmarks in information retrieval?", "options": ["To provide anecdotal evidence of a system's performance", "To allow consistent comparison across different retrieval methods", "To replace the need for relevance judgments", "To rank documents manually by users"], "correct": 1, "explanation": "Benchmarks provide a shared test environment that enables fair and reproducible comparisons across different retrieval methods."}, {"question": "Which of the following is NOT typically a component of an effective benchmark?", "options": ["Document collection", "Set of queries", "Relevance judgments", "User interface design"], "correct": 3, "explanation": "An effective benchmark consists of a document collection, queries, relevance judgments, and performance goals, but not the system's user interface."}, {"question": "In legal document discovery, which metric is most important?", "options": ["Top-10 precision", "High recall", "Low latency", "Normalized Discounted Cumulative Gain (nDCG)"], "correct": 1, "explanation": "Legal discovery requires retrieving nearly all relevant documents, making recall the critical metric."}, {"question": "What is the main difference between macro and micro evaluation of retrieval systems?", "options": ["Macro averages per-query metrics equally; micro aggregates counts across all queries before computing metrics.", "Macro evaluates only top-ranked documents; micro evaluates all documents.", "Macro focuses on binary relevance; micro uses graded relevance.", "Macro is used for web search; micro is used for legal discovery."], "correct": 0, "explanation": "Macro evaluation gives equal weight to each query, while micro evaluation sums counts across queries and then computes precision/recall."}, {"question": "Why is the Mean Reciprocal Rank (MRR) particularly useful for sparse relevance assessments?", "options": ["It focuses on the first relevant document rather than all retrieved documents", "It measures overall recall more accurately", "It ignores ranking and only considers document presence", "It replaces the need for precision-recall curves"], "correct": 0, "explanation": "MRR focuses on the rank of the first relevant document, making it robust when many documents remain unjudged in sparse assessments."}, {"question": "Which retrieval architecture is primarily responsible for improving top-ranked precision without user intervention?", "options": ["Retriever only", "Retriever-Filter", "Retriever-Ranker", "Boolean retrieval"], "correct": 2, "explanation": "Retriever-Ranker systems assign relevance scores to candidates, improving precision at the top of the ranked list automatically."}, {"question": "How does Normalized Discounted Cumulative Gain (nDCG) differ from simple Precision@k?", "options": ["nDCG penalizes lower-ranked relevant documents and accounts for graded relevance", "nDCG only considers binary relevance and ignores ranking", "Precision@k considers all retrieved documents, while nDCG considers only the first document", "nDCG cannot handle top-k evaluations"], "correct": 0, "explanation": "nDCG incorporates both the position of relevant documents and graded relevance, while Precision@k only counts relevant documents without ranking weights."}, {"question": "A retrieval system returns 75% precision and 45% recall for a query with 20 relevant documents. If the goal is exhaustive research, which F-\u00ce\u00b2 value would emphasize recall over precision, and why?", "options": ["\u00ce\u00b2=0.5, because it prioritizes precision for fact-checking", "\u00ce\u00b2=1, because it balances precision and recall equally", "\u00ce\u00b2=2, because it emphasizes recall for exhaustive retrieval", "\u00ce\u00b2=\u00e2\u02c6\u017e, because it ignores both precision and recall"], "correct": 2, "explanation": "Setting \u00ce\u00b2>1 (e.g., \u00ce\u00b2=2) in the F-measure emphasizes recall over precision, which is suitable for exhaustive research where retrieving all relevant documents is critical."}, {"question": "In the context of information retrieval, precision measures:", "options": ["The total number of relevant documents in the collection", "The proportion of retrieved documents that are relevant", "The speed at which a system returns results", "The percentage of relevant documents not retrieved"], "correct": 1, "explanation": "Precision measures how many of the retrieved documents are relevant from the user's perspective."}, {"question": "In the context of information retrieval, recall measures:", "options": ["The total number of documents retrieved", "The proportion of relevant documents that are retrieved", "The speed at which results are returned", "The rank of the first relevant document"], "correct": 1, "explanation": "Recall measures the percentage of relevant documents retrieved out of all relevant documents in the collection."}, {"question": "What does a precision-recall curve illustrate in information retrieval?", "options": ["The trade-off between precision and recall across different thresholds", "The system's response time over multiple queries", "The cumulative gain of the top-ranked document only", "The total number of queries evaluated"], "correct": 0, "explanation": "A precision-recall curve shows how precision and recall change as more documents are retrieved, illustrating their trade-off."}, {"question": "System efficiency in information retrieval can be assessed by:", "options": ["Measuring the distance of the PR-curve to the ideal point", "Counting only the total number of retrieved documents", "Calculating micro-averaged recall alone", "Evaluating relevance grades without considering ranking"], "correct": 0, "explanation": "System efficiency is measured by the distance of the precision-recall curve to the ideal point, combining precision and recall performance into a single metric."}, {"question": "Which scenario would prioritize high recall over precision?", "options": ["Fact-checking a single query quickly", "Legal document discovery for a lawsuit", "Recommending a few products to a user", "Searching for a quick answer on a news website"], "correct": 1, "explanation": "In legal discovery, finding all relevant documents is critical, so recall is prioritized over precision."}, {"question": "Why might micro evaluation be preferred over macro evaluation in some retrieval tasks?", "options": ["It emphasizes worst-case performance across all queries", "It gives equal weight to queries with few relevant documents", "It aggregates all true positives and retrieved documents, reducing the impact of small queries", "It requires fewer relevance judgments"], "correct": 2, "explanation": "Micro evaluation sums TP and retrieved/relevant documents before calculating metrics, making it less sensitive to small queries."}, {"question": "What does Mean Reciprocal Rank (MRR) specifically measure?", "options": ["The precision of all retrieved documents", "The average rank of the first relevant document across queries", "The recall of top-k documents for each query", "The normalized cumulative gain of the top results"], "correct": 1, "explanation": "MRR focuses on the rank of the first relevant document, averaging its reciprocal over all queries."}, {"question": "Which metric accounts for graded relevance and the position of a document in the ranking?", "options": ["Precision at k (P@k)", "Recall", "Discounted Cumulative Gain (DCG)", "F1-score"], "correct": 2, "explanation": "DCG considers both the graded relevance of documents and their rank, penalizing relevant documents in lower positions."}, {"question": "In a Retriever-Ranker architecture, how is precision mainly improved?", "options": ["By expanding the document collection", "By giving relevance scores to candidates and ranking them", "By applying user filters like date or rating", "By increasing throughput and reducing latency"], "correct": 1, "explanation": "The ranker assigns scores to retrieved documents, improving precision at the top of the ranked list."}, {"question": "In a fact-checking scenario, which metric is usually most important?", "options": ["High recall across all documents", "Top results precision", "Throughput of queries", "Normalized DCG over all results"], "correct": 1, "explanation": "Fact-checking prioritizes quickly finding mostly relevant documents, making top results precision critical."}, {"question": "What distinguishes dense from sparse relevance assessments in large-scale retrieval benchmarks?", "options": ["Dense assessments judge only the top results; sparse assess all documents", "Dense assessments involve human assessors; sparse assessments are automated", "Dense assessments cover most retrieved documents; sparse assess only a subset per query", "Dense assessments ignore relevance; sparse focus on relevance"], "correct": 2, "explanation": "Dense assessments cover most retrieved documents via pooling, while sparse assessments evaluate only subsets due to scale."}, {"question": "In graded relevance assessments, what is the purpose of normalized DCG (nDCG)?", "options": ["To calculate only binary relevance", "To normalize DCG values for comparison across queries", "To evaluate the top result only", "To replace precision and recall entirely"], "correct": 1, "explanation": "nDCG normalizes the DCG value by the ideal ranking, allowing comparisons across queries with different relevance distributions."}, {"question": "Why is the F-Measure useful in retrieval evaluation?", "options": ["It only considers recall", "It only considers precision", "It combines precision and recall into a single metric, adjustable via \u00ce\u00b2", "It measures query latency"], "correct": 2, "explanation": "The F-Measure balances precision and recall with a \u00ce\u00b2 parameter controlling their relative importance."}, {"question": "Which scenario would most benefit from using Mean Reciprocal Rank (MRR) instead of precision-recall metrics?", "options": ["Legal discovery requiring high overall recall", "Fact-checking tasks with sparse relevance assessments", "Biomedical literature search over hundreds of results", "E-commerce recommendations focusing on diversity"], "correct": 1, "explanation": "MRR emphasizes the rank of the first relevant document, making it ideal for fact-checking tasks with sparse judgments."}, {"question": "Given a benchmark with highly variable query sizes, which evaluation approach minimizes the distortion caused by queries with few relevant documents?", "options": ["Macro evaluation", "Micro evaluation", "Mean Reciprocal Rank", "Precision at k"], "correct": 1, "explanation": "Micro evaluation aggregates true positives and totals across all queries, reducing the impact of queries with very few relevant documents."}, {"question": "In information retrieval system design, why might high precision conflict with operational metrics like latency, cost, or scalability?", "options": ["Because optimizing precision always reduces recall", "Because retrieving relevant documents with high precision may require more computational resources", "Because precision and recall are unrelated to user satisfaction", "Because operational metrics are only relevant for offline experiments"], "correct": 1, "explanation": "Maximizing precision often requires retrieving and processing more documents, which can increase computational cost, slow responses, and reduce scalability."}, {"question": "Which approach can be used to automate relevance assessment in large-scale benchmarks while maintaining reliability?", "options": ["Ignoring human judgments entirely and relying only on raw retrieval counts", "Using Large Language Models (LLMs) to suggest initial relevance judgments for human review", "Pooling all documents without applying any sampling or prioritization", "Calculating only precision at k without considering relevance"], "correct": 1, "explanation": "LLMs can generate initial relevance judgments, which humans then review for uncertain cases, improving efficiency while keeping assessments reliable."}], "04 - Advanced Text Processing": [{"question": "Which early method in information retrieval focused on reducing words to their base forms to match queries and documents?", "options": ["Stemming", "Word embeddings", "Transformer models", "N-gram analysis"], "correct": 0, "explanation": "Stemming reduces words to their root forms, enabling simpler matching between queries and documents."}, {"question": "What is the main purpose of query expansion using synonyms in traditional NLP retrieval?", "options": ["To increase recall", "To improve precision", "To reduce computational load", "To enforce exact keyword matching"], "correct": 0, "explanation": "Expanding a query with synonyms increases recall by retrieving more relevant documents, though it may reduce precision."}, {"question": "Why did statistical NLP models like HMMs and n-grams struggle with meaning and long-range dependencies?", "options": ["They relied heavily on local patterns and limited feature engineering", "They used deep neural networks with too many parameters", "They employed symbolic rules instead of data", "They could not process large corpora"], "correct": 0, "explanation": "Statistical models primarily captured local patterns, making them inadequate for understanding long-range dependencies and semantic meaning."}, {"question": "Which advance in the Neural Era allowed models to process sequences in parallel while capturing long-range dependencies?", "options": ["Transformer architecture", "Hidden Markov Models", "ELIZA pattern matching", "N-gram models"], "correct": 0, "explanation": "Transformers use self-attention to process sequences in parallel and capture long-range dependencies, overcoming RNN limitations."}, {"question": "Why are one-hot vectors impractical for large vocabularies in machine learning models?", "options": ["They require large input layers and are sparse", "They cannot encode numerical data", "They lose word order information", "They prevent tokenization of special characters"], "correct": 0, "explanation": "One-hot vectors scale poorly with large vocabularies due to high dimensionality and sparsity, making them inefficient for large models."}, {"question": "How does PMI (Pointwise Mutual Information) prefer bi-grams in a corpus?", "options": ["It favors bi-grams where the terms occur exclusively together and infrequently", "It favors bi-grams with frequent stop words", "It ignores term co-occurrence and uses only frequency", "It ranks bi-grams randomly"], "correct": 0, "explanation": "PMI scores are highest for rare bi-grams where terms occur together exclusively, highlighting meaningful associations."}, {"question": "How do sub-word tokenizations help retrieval systems handle misspellings or non-native pronunciations?", "options": ["By breaking words or phonemes into overlapping sequences, enabling partial matches", "By mapping each token to a unique ID", "By using one-hot vectors for exact matches", "By ignoring infrequent words entirely"], "correct": 0, "explanation": "Overlapping sub-word or phoneme sequences allow retrieval systems to match parts of words even when full words differ due to spelling errors or pronunciation."}, {"question": "In constructing a vocabulary using n-grams and PMI, why might a highly frequent name like 'Sherlock Holmes' appear lower in the PMI ranking but higher using LHR?", "options": ["PMI favors rare co-occurrences, while LHR measures statistical dependence accounting for frequency", "PMI ignores term frequency, while LHR ignores co-occurrence", "PMI and LHR always rank the same bi-grams", "LHR uses semantic embeddings whereas PMI does not"], "correct": 0, "explanation": "PMI favors rare, exclusive co-occurrences, so frequent names can score lower; LHR evaluates dependence between terms, highlighting frequent, significant bi-grams."}, {"question": "What is the role of the '##' prefix in WordPiece tokenization?", "options": ["Indicates a token is at the beginning of a word", "Indicates a token is part of a word's middle or continuation", "Marks tokens as rare vocabulary items", "Signals that a token is a special symbol"], "correct": 1, "explanation": "In WordPiece, '##' denotes subword tokens that continue within a word, helping the tokenizer capture prefixes and shared semantics."}, {"question": "In the LHR method for scoring bi-grams, why might frequent stop-word pairs appear significant?", "options": ["LHR directly counts term frequency without normalization", "LHR compares independence vs. dependence of terms, so dependence can make frequent pairs significant", "Stop words are given higher weights in LHR by default", "PMI filtering is applied before computing LHR"], "correct": 1, "explanation": "LHR measures whether the occurrence of one term depends on another. Even frequent stop words can appear significant if their co-occurrence is highly dependent."}, {"question": "How does Byte Pair Encoding (BPE) handle unseen words in a large corpus?", "options": ["By mapping all unseen words to [UNK]", "By decomposing them into smaller byte-level subwords using the existing vocabulary", "By ignoring them during encoding", "By treating each word as a separate token regardless of frequency"], "correct": 1, "explanation": "BPE can represent previously unseen words by breaking them into smaller subword units present in the learned vocabulary, allowing flexible encoding."}, {"question": "Consider a scenario where a query 'teach multtimedia' is segmented into sub-sequences for retrieval. Which feature of sub-word tokenization allows partial matching even with misspellings?", "options": ["N-gram construction with stop-word filtering", "Frequency-based vocabulary expansion", "Sub-sequences with optional token proximity consideration", "Embedding layers mapping tokens to dense vectors"], "correct": 2, "explanation": "Segmenting words into overlapping sub-sequences allows retrieval models to match most sub-sequences even if the word is misspelled, enabling robust partial matching."}, {"question": "What is a common effect of converting text to lowercase before tokenization?", "options": ["It always improves grammatical correctness of generated text", "It prevents the model from distinguishing between 'Apple' and 'apple'", "It increases the vocabulary size", "It encodes semantic similarity between numbers"], "correct": 1, "explanation": "Lowercasing helps reduce vocabulary size and merge tokens that differ only by case, but it prevents the model from generating proper capitalization."}, {"question": "Why are embedding layers preferred over one-hot vectors in large language models?", "options": ["They completely eliminate the need for tokenization", "They reduce dimensionality and capture semantic similarity", "They encode only the order of tokens, not meaning", "They allow direct input of raw text into transformers"], "correct": 1, "explanation": "Embedding layers map sparse one-hot vectors to lower-dimensional dense vectors, capturing semantic relationships efficiently."}, {"question": "In information retrieval, what is the trade-off when expanding queries with synonyms or hypernyms?", "options": ["Improved precision but reduced recall", "Improved recall but potentially reduced precision", "No effect on either recall or precision", "Guaranteed improvement in both recall and precision"], "correct": 1, "explanation": "Expanding queries increases the chance of retrieving relevant documents (higher recall) but may introduce unrelated items (lower precision)."}, {"question": "When applying PMI to rank bi-grams, which scenario yields the highest PMI score?", "options": ["When a bi-gram appears frequently but its individual terms appear elsewhere often", "When a bi-gram appears exclusively together with minimal occurrences", "When a bi-gram contains common stop words", "When a bi-gram has unequal frequencies between its terms"], "correct": 1, "explanation": "PMI favors bi-grams where the terms appear almost exclusively together, making them statistically significant."}, {"question": "Which stemming algorithm in English is described as the most aggressive, often producing overly short stems that may collide with unrelated words?", "options": ["Porter Stemmer", "Lancaster Stemmer", "Snowball Stemmer", "WordNet Lemmatizer"], "correct": 1, "explanation": "The Lancaster Stemmer is aggressive in removing suffixes, sometimes reducing different words to the same short stem."}, {"question": "In text retrieval, why might dictionary-based stemmers like WordNet and spaCy be preferred over rule-based stemmers?", "options": ["They run faster than rule-based stemmers", "They produce stems that are linguistically correct", "They always generate shorter stems", "They ignore part-of-speech information"], "correct": 1, "explanation": "WordNet and spaCy produce linguistically correct stems, ensuring that variants like 'had' and 'have' map to the same base form."}, {"question": "What distinguishes endocentric compounds from exocentric compounds?", "options": ["Endocentric compounds have a semantic head, exocentric do not", "Exocentric compounds are shorter than endocentric compounds", "Endocentric compounds occur only in German and Finnish", "Exocentric compounds always use binding syllables"], "correct": 0, "explanation": "Endocentric compounds derive meaning from a head element, whereas exocentric compounds' meaning cannot be inferred from their parts."}, {"question": "How is the best split of a compound determined when multiple options exist?", "options": ["By choosing the split with the fewest components", "By using a random selection among valid splits", "By selecting the split with the highest average log-frequency of components", "By taking the split with the longest component"], "correct": 2, "explanation": "The algorithm chooses the split whose components have the highest average log-frequency in the corpus, representing the most probable split."}, {"question": "Why are synonyms problematic in information retrieval systems?", "options": ["They reduce search speed", "They prevent matching query terms to semantically equivalent document terms", "They increase spelling errors", "They break POS tagging"], "correct": 1, "explanation": "Different words with similar meanings, like 'buy' and 'purchase', may not match in documents unless synonym expansion is used."}, {"question": "In text retrieval, why is stem correctness less critical than mapping variants to the same token?", "options": ["Because incorrect stems always improve search results", "Because all algorithms produce identical stems", "Because mapping variants ensures that different forms of a word are recognized as the same token", "Because stemming is irrelevant for English text"], "correct": 2, "explanation": "Ensuring that different inflected forms map to the same stem allows queries to match more document variants."}, {"question": "Which algorithm type generally produces linguistically correct stems for English words?", "options": ["Rule-based stemmers like Porter and Lancaster", "Dictionary-based approaches like WordNet and spaCy", "Snowball without modifications", "Lancaster only"], "correct": 1, "explanation": "WordNet and spaCy use dictionary-based approaches, producing stems that are linguistically valid."}, {"question": "How does NER improve the interpretation of queries like 'Who is Albert Einstein?' in search engines?", "options": ["By filtering out stop words from the query", "By assigning POS tags only", "By collapsing relevant tokens into a named entity and inferring user intent", "By correcting spelling errors automatically"], "correct": 2, "explanation": "NER identifies 'Albert Einstein' as a single named entity, helping the search system understand that the user seeks information about a person."}, {"question": "How do large language models with a closed vocabulary handle new or uncommon words, such as novel names, during tokenization?", "options": ["They ignore the words completely, leading to missing information in the model", "They break the words into subword units or byte-pair encoded tokens present in the vocabulary", "They automatically add the new words to the model's vocabulary during inference", "They replace all unknown words with a generic placeholder token regardless of context"], "correct": 1, "explanation": "LLMs with closed vocabularies use subword or byte-pair encoding to split unseen words into smaller units present in the vocabulary, allowing them to process novel names without adding new tokens."}], "05 - Index for Text Retrieval": [{"question": "What is the primary advantage of the inverted index in text retrieval systems?", "options": ["It reduces the number of documents in a collection", "It allows query processing cost to grow with query terms instead of collection size", "It eliminates the need for query parsing", "It compresses documents directly rather than indexes"], "correct": 1, "explanation": "Inverted indexes reduce query processing cost by focusing on terms rather than scanning all documents, so cost scales with query terms."}, {"question": "Who introduced the theoretical foundations for modern information retrieval, including the Vector Space Model?", "options": ["Herman Hollerith", "Calvin Mooers", "Gerard Salton", "Vannevar Bush"], "correct": 2, "explanation": "Gerard Salton established many theoretical foundations of information retrieval, notably the Vector Space Model."}, {"question": "What is a key limitation of Boolean retrieval models discussed in the text?", "options": ["They cannot use inverted indexes", "They cannot handle term frequencies", "They require semantic embeddings", "They must process all documents at once"], "correct": 1, "explanation": "Boolean models use set-based logic and do not utilize term frequencies, which limits ranking by relevance."}, {"question": "In the context of inverted indexes, what is a 'posting list'?", "options": ["A list of all terms in the vocabulary", "A list of documents that contain a specific term", "A summary of document metadata", "A compressed file of all search results"], "correct": 1, "explanation": "A posting list maps a term to all document IDs where that term appears."}, {"question": "How does the Document-At-A-Time (DAAT) retrieval method differ from Term-At-A-Time (TAAT)?", "options": ["DAAT processes one term at a time, while TAAT processes documents", "DAAT retrieves documents sequentially using sorted postings, while TAAT accumulates scores term by term", "DAAT uses cosine similarity, while TAAT uses Boolean logic", "DAAT can only handle Boolean queries"], "correct": 1, "explanation": "DAAT streams documents from postings and scores them as they appear; TAAT accumulates scores for each document across all query terms."}, {"question": "In database-based retrieval systems, what structure is used to implement inverted indexes?", "options": ["A linked list in memory", "A B-tree index on the posting(term) column", "A relational join between documents and vocabulary", "A hash map over query terms"], "correct": 1, "explanation": "B-trees are used as indexes over posting(term), enabling efficient term lookups analogous to inverted files."}, {"question": "In Boolean retrieval, what does the expression 'expr1 AND NOT(expr2)' correspond to in set operations?", "options": ["Union of expr1 and expr2", "Intersection of expr1 and expr2", "Subtraction of expr2 from expr1", "Symmetric difference of expr1 and expr2"], "correct": 2, "explanation": "The 'AND NOT' operator corresponds to subtracting the set of expr2 documents from expr1."}, {"question": "Why is 'cat OR NOT(dog)' considered inefficient or non-intuitive in retrieval systems?", "options": ["It requires computing all possible document pairs.", "It demands enumerating almost all documents except those with 'dog'.", "It needs random access to every term in the vocabulary.", "It cannot be implemented using inverted indexes."], "correct": 1, "explanation": "The query 'cat OR NOT(dog)' implies listing all documents except those containing 'dog', which becomes computationally expensive and conceptually meaningless for users."}, {"question": "In BM25, which parameters are used to adjust for document length and term frequency saturation?", "options": ["k and b", "idf and tf", "n and m", "\u00ce\u00b1 and \u00ce\u00b2"], "correct": 0, "explanation": "BM25 uses parameters k (term frequency scaling) and b (document length normalization) to balance scoring behavior."}, {"question": "What is the key optimization achieved by delta (d-gap) compression in inverted indexes?", "options": ["It reorders documents alphabetically.", "It reduces the need for idf weighting.", "It stores only small differences between consecutive document IDs.", "It merges multiple indexes into one unified structure."], "correct": 2, "explanation": "Delta compression stores differences (gaps) between consecutive document IDs, which are small and compress efficiently."}, {"question": "Which of the following best describes Whoosh\u00e2\u20ac\u2122s intended use case compared to larger frameworks like Elasticsearch?", "options": ["It is designed for distributed enterprise-scale search clusters.", "It is suitable for small applications, teaching, and prototyping due to its simplicity.", "It requires Java and external dependencies to function properly.", "It cannot handle tokenization or ranking algorithms."], "correct": 1, "explanation": "Whoosh is a pure Python search engine meant for simplicity, learning, and prototyping small applications."}, {"question": "In PostgreSQL\u00e2\u20ac\u2122s full-text search, what is the purpose of the tsvector data type?", "options": ["To store SQL queries for search optimization.", "To store documents in raw text format.", "To store normalized lists of lexemes for full-text indexing.", "To create relational joins between document tables."], "correct": 2, "explanation": "tsvector stores normalized lexemes used by PostgreSQL\u00e2\u20ac\u2122s full-text search to enable efficient matching and ranking."}, {"question": "What advantage does PostgreSQL\u00e2\u20ac\u2122s integration of full-text search within SQL provide to developers?", "options": ["It allows search queries to be combined with relational operations in one system.", "It replaces the need for SQL joins entirely.", "It enables full-text indexing on binary data types.", "It supports fuzzy search without indexing."], "correct": 0, "explanation": "By integrating FTS into SQL, PostgreSQL allows developers to combine relational logic with search in one system."}, {"question": "How does Haystack\u00e2\u20ac\u2122s abstraction layer benefit developers when building search pipelines?", "options": ["It limits developers to one backend type for consistency.", "It forces all queries to run through a fixed API without flexibility.", "It provides a unified API so backends can be swapped easily between development and production.", "It only supports keyword-based search pipelines."], "correct": 2, "explanation": "Haystack\u00e2\u20ac\u2122s abstraction layer allows switching between backends like Whoosh or Elasticsearch via a single API."}, {"question": "Which of the following statements correctly describes Lucene\u00e2\u20ac\u2122s handling of deleted documents?", "options": ["Documents are permanently removed from the index upon deletion.", "Lucene marks documents as deleted and removes them only during segment merges.", "Deleted documents are replaced by null pointers for faster lookups.", "Deletion automatically triggers re-indexing of all related terms."], "correct": 1, "explanation": "Lucene marks deleted documents and removes them only during segment merges, maintaining index integrity."}, {"question": "When scaling Lucene-based systems, what problem do Solr and Elasticsearch solve through sharding?", "options": ["They remove the need for inverted indexes.", "They enable concurrent searches and overcome Lucene\u00e2\u20ac\u2122s single-server index size limit.", "They replace BM25 scoring with faster hash lookups.", "They remove the need for replicas entirely."], "correct": 1, "explanation": "Sharding distributes documents across nodes, increasing scalability and overcoming Lucene\u00e2\u20ac\u2122s index-size limits."}, {"question": "In a distributed Lucene-based architecture, what is the main trade-off when combining results from multiple shards that maintain independent term statistics?", "options": ["Reduced query latency due to duplicate documents.", "Slight inconsistency in document scores across shards.", "Increased memory usage due to replicated postings.", "Complete loss of ranking accuracy across the index."], "correct": 1, "explanation": "Because each shard has its own term statistics, score variations occur, but they are typically minor and acceptable."}, {"question": "Why is GIN indexing used in PostgreSQL Full Text Search?", "options": ["It creates a hierarchical JSON representation of tokens", "It maps lexemes to documents for fast full-text lookups", "It clusters query results using the BM25F algorithm", "It converts SQL queries into Lucene-like search expressions"], "correct": 1, "explanation": "GIN (Generalized Inverted Index) accelerates full-text queries by mapping lexemes to document identifiers."}, {"question": "What is a key advantage of Solr\u00e2\u20ac\u2122s faceted search capability?", "options": ["It allows segment-level merging during indexing", "It groups search results dynamically by metadata fields such as category", "It ensures consistent BM25 scoring across distributed shards", "It avoids the need for Lucene\u00e2\u20ac\u2122s inverted index structure"], "correct": 1, "explanation": "Faceted search in Solr groups results by facets like category or country, improving exploration and filtering."}, {"question": "Which of the following best explains Lucene\u00e2\u20ac\u2122s use of segments?", "options": ["Segments are temporary caches for query results", "Each segment is an immutable mini-index created during document additions", "Segments store real-time replicas for distributed queries", "Segments represent document clusters optimized by PostgreSQL"], "correct": 1, "explanation": "Lucene stores data in immutable segments, each acting as a small index merged later according to merge policies."}, {"question": "What is the fundamental reason Elasticsearch and OpenSearch can scale beyond Lucene\u00e2\u20ac\u2122s 2.1 billion document limit?", "options": ["They compress Lucene segments into smaller B-trees", "They perform distributed indexing through shard-based partitioning", "They replace Lucene\u00e2\u20ac\u2122s inverted index with a graph-based model", "They rely on PostgreSQL\u00e2\u20ac\u2122s tsvector architecture for storage"], "correct": 1, "explanation": "Sharding distributes documents across multiple Lucene indexes, removing the single-index limit and enabling scalability."}, {"question": "A Lucene cluster employs 4 shards with 2 replicas per shard, distributed across 2 availability zones. If each leader can act as a coordinator, what scaling behavior can be expected as replicas increase?", "options": ["Search throughput scales roughly linearly with the number of replicas, as each can handle more concurrent queries", "Indexing performance improves proportionally with replicas, since all replicas index documents concurrently", "Replica count increases scoring consistency across shards by averaging term statistics", "Adding replicas increases index size exponentially and reduces concurrency"], "correct": 0, "explanation": "Because each replica can process independent search requests, query throughput scales approximately with the number of replicas."}], "06 - Semantic Search": [{"question": "What is the main limitation of exact keyword matching in information retrieval?", "options": ["It cannot recognize variations or synonyms of the query terms.", "It requires high computational power for every search.", "It introduces too many irrelevant documents into results.", "It depends on neural embeddings for semantic similarity."], "correct": 0, "explanation": "Exact keyword matching only retrieves documents containing the exact query words, failing to capture linguistic or conceptual variations."}, {"question": "What key advantage does semantic matching have over ontology-based approaches?", "options": ["It relies solely on manually crafted synonym lists.", "It automatically learns conceptual relationships from data.", "It reduces document storage requirements.", "It ignores word meaning to focus on keyword frequency."], "correct": 1, "explanation": "Semantic matching uses vector embeddings that automatically learn conceptual relations from large text corpora."}, {"question": "Which early technique revealed hidden semantic structure by analyzing word co-occurrence patterns?", "options": ["Word2Vec", "Latent Semantic Indexing (LSI)", "BERT", "Sentence-BERT (SBERT)"], "correct": 1, "explanation": "LSI (1988) used Singular Value Decomposition on the term-document matrix to expose latent semantic relationships between words and concepts."}, {"question": "Why did Word2Vec struggle with sentences like 'I sat by the bank and watched the boats go by'?", "options": ["It ignored rare words during training.", "It modeled only local context within limited word windows.", "It overfit to financial terms like 'bank'.", "It used matrix factorization instead of neural networks."], "correct": 1, "explanation": "Word2Vec relies on local context windows and cannot capture meaning shifts across sentences or distant context."}, {"question": "How did transformers introduced in 'Attention Is All You Need' improve contextual understanding?", "options": ["By training separate models for each word type.", "By using attention to relate all words within a sequence.", "By relying on bag-of-words assumptions.", "By removing the need for embeddings."], "correct": 1, "explanation": "Transformers use attention mechanisms to model dependencies among all words in a sequence, improving contextual understanding."}, {"question": "What limitation arises when comparing queries and documents in LSI's reduced topic space?", "options": ["Cosine similarity cannot be computed in reduced space.", "Dense vectors prevent efficient pruning with inverted indexes.", "Dimensionality reduction eliminates topic separation.", "Queries lose all relationship with document frequencies."], "correct": 1, "explanation": "Because both queries and documents are dense vectors after SVD, inverted indexes cannot be used, requiring comparisons with all documents."}, {"question": "Which technique allows keyword-based systems to capture slight variations like 'diseases'?", "options": ["Word embeddings", "Stemming and linguistic transformations", "Latent Semantic Indexing", "BERT embeddings"], "correct": 1, "explanation": "Stemming and linguistic transformations help recognize variations in words, extending matches beyond exact keywords."}, {"question": "Latent Semantic Indexing (LSI) uses which mathematical technique to reveal hidden semantic structures?", "options": ["Fourier Transform", "Singular Value Decomposition (SVD)", "Principal Component Analysis (PCA)", "Gradient Descent"], "correct": 1, "explanation": "LSI applies SVD to the term-document matrix to uncover latent semantic structures."}, {"question": "A limitation of word2vec compared to transformer-based models is that it:", "options": ["Cannot handle out-of-vocabulary words.", "Models only local context within a limited window.", "Requires manual ontologies to expand queries.", "Cannot be trained on large corpora."], "correct": 1, "explanation": "Word2vec captures only local context, failing to disambiguate words across sentences or wider contexts."}, {"question": "Sentence-BERT (SBERT) improves over BERT by:", "options": ["Creating better word-level embeddings using attention.", "Generating fast and high-quality sentence embeddings via siamese networks.", "Using SVD to reduce dimensionality of embeddings.", "Applying tf-idf weighting to queries."], "correct": 1, "explanation": "SBERT restructures BERT into siamese/triplet networks to produce more accurate and efficient sentence embeddings."}, {"question": "Why is dimensionality reduction applied in LSI using SVD?", "options": ["To remove all zero values in the matrix.", "To approximate A with fewer latent topics and reduce search cost.", "To convert the document-term matrix into an inverted index.", "To normalize tf-idf weights to unit vectors."], "correct": 1, "explanation": "Dimensionality reduction keeps the largest singular values to capture main topics while reducing matrix size and computation."}, {"question": "What is the primary training method used by Word2Vec?", "options": ["Supervised learning with labeled datasets", "Self-supervised learning using context windows", "Reinforcement learning", "Unsupervised clustering of words"], "correct": 1, "explanation": "Word2Vec uses self-supervised learning by predicting context words from a center word or vice versa, without requiring labeled data."}, {"question": "In the Skip-Gram model, what is the model's main objective?", "options": ["Predicting the center word from surrounding words", "Predicting surrounding words from the center word", "Clustering semantically similar words", "Generating sentence embeddings"], "correct": 1, "explanation": "Skip-Gram predicts the surrounding context words given a center word within a window."}, {"question": "Which similarity measure is commonly used to compare word embeddings?", "options": ["Jaccard similarity", "Cosine similarity", "Hamming distance", "Pearson correlation"], "correct": 1, "explanation": "Cosine similarity measures the angle between vectors, making it suitable for word embeddings regardless of their magnitude."}, {"question": "How does CBOW differ from Skip-Gram in Word2Vec?", "options": ["CBOW predicts context words from the center word; Skip-Gram predicts the center word", "CBOW uses larger context windows than Skip-Gram", "CBOW predicts the center word from surrounding words; Skip-Gram predicts surrounding words from the center word", "CBOW employs sub-word embeddings, unlike Skip-Gram"], "correct": 2, "explanation": "CBOW predicts the center word based on the surrounding words, whereas Skip-Gram predicts context words from the center word."}, {"question": "What is a key advantage of fastText over traditional Word2Vec?", "options": ["It uses one-hot vectors for efficiency", "It incorporates sub-word representations for handling rare or unseen words", "It is trained with supervised labels", "It eliminates the need for context windows"], "correct": 1, "explanation": "fastText breaks words into sub-words to generate embeddings, enabling representation of rare or previously unseen words."}, {"question": "Why might max pooling be preferred over average pooling in text embeddings?", "options": ["It better preserves syntactic relationships", "It highlights the most salient features in a text", "It ensures all tokens contribute equally to the final vector", "It captures word order effectively"], "correct": 1, "explanation": "Max pooling selects the maximum value across each embedding dimension, emphasizing dominant or important features."}, {"question": "Which limitation of average pooling can affect document similarity calculations?", "options": ["It ignores stop words entirely", "It discards token-level embeddings", "It dilutes distinctive content by treating all tokens equally", "It requires sub-word tokenization"], "correct": 2, "explanation": "Average pooling treats all tokens equally, so frequent tokens like stop words or common terms can dilute meaningful content in the embedding."}, {"question": "How does a cross-encoder differ from a bi-encoder in semantic retrieval?", "options": ["It processes query and document separately for efficiency", "It encodes only the query while ignoring the document", "It combines query and document into a single input sequence for token-level interactions", "It does not use transformer architectures"], "correct": 2, "explanation": "Cross-encoders process the query and document together, allowing precise token-level interaction modeling for improved ranking accuracy."}, {"question": "What is the main purpose of Matryoshka embeddings (MRL)?", "options": ["To generate embeddings only for sub-words", "To create nested representations that remain meaningful at lower dimensions for multi-stage retrieval", "To replace Transformers in semantic retrieval", "To pool token embeddings using max pooling"], "correct": 1, "explanation": "MRL embeddings are trained to maintain semantic usefulness even when truncated to lower dimensions, enabling efficient multi-stage retrieval."}, {"question": "In Qwen3 embedding models, how is the embedding for a text segment obtained?", "options": ["By averaging all token embeddings using max pooling", "From the hidden state of the final [EOS] token in a decoder-based transformer", "From the [CLS] token of an encoder-based transformer", "By summing sub-word embeddings like fastText"], "correct": 1, "explanation": "Qwen3 embeddings use a decoder-based transformer and take the hidden state of the final [EOS] token as the dense semantic embedding for the text."}, {"question": "What is the main purpose of word embeddings like Word2Vec or GloVe?", "options": ["To compress images into lower dimensions.", "To represent words as dense vectors capturing semantic relationships.", "To count word frequencies in a corpus.", "To perform syntactic parsing of sentences."], "correct": 1, "explanation": "Word embeddings map words into vector space to capture semantic and contextual similarities."}, {"question": "In CBOW, what does the model use to predict the center word?", "options": ["Only the first word of the sentence", "All words in the corpus", "All surrounding words in the context window", "A single randomly chosen word"], "correct": 2, "explanation": "CBOW predicts the center word based on all surrounding words within the context window."}, {"question": "Why does fastText split center words into sub-word n-grams?", "options": ["To reduce vocabulary size and represent rare or unseen words.", "To improve syntactic parsing of the text.", "To speed up cross-encoder inference.", "To avoid using embeddings for context words."], "correct": 0, "explanation": "fastText splits words into sub-word units to generate embeddings for rare or unseen words and capture morphological features."}, {"question": "What is the main advantage of semantic search over purely lexical search methods like BM25?", "options": ["It always runs faster than BM25.", "It matches documents based on shared meaning rather than exact words.", "It requires no preprocessing of documents.", "It eliminates the need for re-rankers."], "correct": 1, "explanation": "Semantic search uses embeddings to capture the meaning of text, allowing it to find documents even if they don't share exact words."}, {"question": "Why are long documents split into smaller chunks before embedding?", "options": ["To make documents easier to read for users.", "Because embedding models perform best with limited input lengths.", "To reduce the number of documents in the index.", "To remove irrelevant information from documents."], "correct": 1, "explanation": "Embedding models have input size limits, so documents are split into overlapping segments to ensure effective encoding."}, {"question": "What is the role of a cross-encoder re-ranker in semantic search pipelines?", "options": ["To split documents into chunks.", "To compute embeddings for the query.", "To rerank documents.", "To replace BM25 in lexical retrieval."], "correct": 2, "explanation": "Cross-encoder process queries and documents together to produce more precise relevance scores than independent embeddings thus re-ranking the documents."}, {"question": "Why might a small document collection skip BM25 and start with semantic retrieval?", "options": ["Because BM25 is only useful for large datasets", "To increase recall by considering semantic similarity directly", "To reduce embedding dimensionality", "Because re-rankers are unnecessary in small collections"], "correct": 1, "explanation": "In small collections, semantic retrieval directly over embeddings can retrieve more relevant candidates and improve recall."}, {"question": "In a retriever-ranker pipeline, what is the main focus of the retriever component?", "options": ["Maximizing precision of top-ranked results", "Finding a set of candidate documents focused on recall", "Splitting documents into chunks for embedding", "Reducing the dimensionality of embeddings"], "correct": 1, "explanation": "The retriever aims to fetch a broad set of potentially relevant candidates, prioritizing recall over precision."}, {"question": "Which of the following best describes the advantage of multi-stage retrieval with MRL embeddings?", "options": ["It allows retrieval without any embedding computation.", "It can use smaller subvectors for fast approximate searches and full vectors for precise re-ranking.", "It eliminates the need for chunking long documents.", "It guarantees exact lexical matches for all queries."], "correct": 1, "explanation": "MRL embeddings let systems balance efficiency and accuracy by using low-dimensional vectors for initial retrieval and full vectors for re-ranking."}, {"question": "Why might a system combine BM25, embeddings, and a re-ranker rather than using only embeddings?", "options": ["Because embeddings cannot capture any semantic information alone", "To leverage BM25 speed, embedding semantic insight, and re-ranker precision", "Because BM25 increases the dimensionality of embeddings", "To reduce the need for document preprocessing"], "correct": 1, "explanation": "Combining these techniques allows the system to be fast, semantically aware, and precise, taking advantage of each method's strengths."}]}}
+{
+  "meta-data": {
+    "title": "Multimedia Retrieval HS25",
+    "description": "Exercise questions for MMIR HS25, University Basel"
+  },
+  "questions": {
+    "01 - Introduction": [
+      {
+        "question": "Which key technological shift allowed large-scale information retrieval to emerge in the 1970s?",
+        "options": [
+          "Development of GPU-based parallel computing platforms",
+          "Rise of computer typesetting and word processing creating machine-readable text",
+          "Introduction of transformer architectures",
+          "Creation of cloud-based storage services"
+        ],
+        "correct": 1,
+        "explanation": "The 1970s saw widespread computer typesetting and word processing, producing machine-readable text that enabled large-scale retrieval systems."
+      },
+      {
+        "question": "What major innovation distinguished Google's PageRank from earlier web search algorithms?",
+        "options": [
+          "It indexed only multimedia content instead of text.",
+          "It ranked pages by the authority of inbound links rather than just keyword matching.",
+          "It eliminated the need for any ranking and returned results in random order.",
+          "It introduced manual tagging for every webpage."
+        ],
+        "correct": 1,
+        "explanation": "PageRank ranked pages based on the authority of links pointing to them, moving beyond pure keyword matching."
+      },
+      {
+        "question": "Why is the 'semantic gap' particularly challenging in multimedia retrieval?",
+        "options": [
+          "Because low-level features like pixels or frequencies do not directly represent human-level concepts.",
+          "Because text retrieval research is more established and advanced.",
+          "Because storage devices cannot handle multimedia file sizes.",
+          "Because queries in multimedia retrieval are slower to process."
+        ],
+        "correct": 0,
+        "explanation": "The semantic gap refers to the mismatch between low-level media features and high-level human semantics, making direct matching difficult."
+      },
+      {
+        "question": "Which retrieval architecture first combines a retriever with a language model to generate a full answer rather than extracting a single passage?",
+        "options": [
+          "Retriever-Reader",
+          "Retriever-Generator (RAG)",
+          "Retriever-Filter",
+          "Generator-only"
+        ],
+        "correct": 1,
+        "explanation": "Retriever-Generator, also known as Retrieval-Augmented Generation (RAG), combines a retriever with a generative model to produce comprehensive answers."
+      },
+      {
+        "question": "Suppose you need to design a retrieval system that can infer user interests without explicit queries, as in TikTok recommendations. Which relevance strategy is most appropriate?",
+        "options": [
+          "Objective relevance using keyword matching",
+          "Manual tagging and classification of all content",
+          "Implicit relevance estimation from behavioral signals and context",
+          "Only inverse document frequency scoring"
+        ],
+        "correct": 2,
+        "explanation": "Query-less search relies on behavioral signals and contextual data to infer user intent and estimate relevance without explicit queries."
+      },
+      {
+        "question": "Given the fastest PCI-E 5.0 NVMe SSD read rate of about 14,000 MB/s, approximately how long would it take to sequentially read 1 petabyte of data?",
+        "options": [
+          "Around 20 hours",
+          "Around 1 day",
+          "Around 8 days",
+          "Around 1 year"
+        ],
+        "correct": 2,
+        "explanation": "1 petabyte is about 1,000,000,000 MB; at 14,000 MB/s it would take roughly 71,000 seconds (~20 hours) per 1 TB, so about 8 days for 1 PB."
+      },
+      {
+        "question": "Which retrieval architecture simply returns documents matching a query without explicit ranking?",
+        "options": [
+          "Retriever-Only",
+          "Retriever-Ranker",
+          "Retriever-Reader",
+          "Retriever-Generator"
+        ],
+        "correct": 0,
+        "explanation": "Retriever-only systems fetch and present matching documents directly without filtering or ranking stages."
+      },
+      {
+        "question": "Why is searching images inherently more complex than searching text, according to the concept of the semantic gap?",
+        "options": [
+          "Images require more storage space than text",
+          "Pixels have no fixed, direct relation to high-level concepts",
+          "Image queries always need manual tagging",
+          "Text search engines cannot process metadata"
+        ],
+        "correct": 1,
+        "explanation": "The semantic gap is the mismatch between low-level image features and the human semantics they represent."
+      },
+      {
+        "question": "Which statement best describes Retrieval-Augmented Generation (RAG)?",
+        "options": [
+          "It relies solely on a language model without external information",
+          "It retrieves relevant documents and combines them with a query for a generative model to answer",
+          "It uses Boolean logic to refine search results",
+          "It is limited to ranking web pages by link authority"
+        ],
+        "correct": 1,
+        "explanation": "RAG retrieves supporting documents and feeds them with the query into a language model to generate a comprehensive answer."
+      },
+      {
+        "question": "The exponential data growth described in the text implies which critical challenge for retrieval systems?",
+        "options": [
+          "Lower hardware costs make retrieval trivial",
+          "Indexing and ranking must occur nearly in real time to remain relevant",
+          "Users no longer require high recall",
+          "Query-less search becomes impossible"
+        ],
+        "correct": 1,
+        "explanation": "Rapidly created data such as news and social posts require near real-time indexing and ranking to stay relevant."
+      }
+    ],
+    "02 - Classical Retrieval": [
+      {
+        "question": "In the classical Boolean retrieval model, how is a document's relevance to a query determined?",
+        "options": [
+          "By calculating the cosine similarity between document and query vectors",
+          "By checking if the document satisfies the Boolean expression of the query",
+          "By estimating the probability that the document is relevant",
+          "By counting the frequency of each query term"
+        ],
+        "correct": 1,
+        "explanation": "The Boolean model includes a document if it satisfies the Boolean query expression, without using ranking or probability."
+      },
+      {
+        "question": "Which representation records how often each term appears but ignores the order of terms?",
+        "options": [
+          "Set-of-words model",
+          "Bag-of-words model",
+          "Vector embedding model",
+          "Probabilistic model"
+        ],
+        "correct": 1,
+        "explanation": "The bag-of-words model preserves term frequencies but discards word order and proximity."
+      },
+      {
+        "question": "What is a primary motivation for chunking long documents into smaller units before indexing?",
+        "options": [
+          "To reduce the size of the vocabulary",
+          "To eliminate the need for metadata extraction",
+          "To improve retrieval precision by ensuring query terms occur closer together",
+          "To avoid the need for an inverted index"
+        ],
+        "correct": 2,
+        "explanation": "Chunking forces query terms to appear within the same segment, which improves precision by reducing false positives due to distant term occurrences."
+      },
+      {
+        "question": "Which feature distinguishes faceted search from basic Boolean retrieval?",
+        "options": [
+          "Faceted search requires all query terms to be present",
+          "Users can add or remove filters and sort results without resubmitting the search",
+          "It relies solely on probabilistic ranking of documents",
+          "It eliminates the need for metadata attributes"
+        ],
+        "correct": 1,
+        "explanation": "Faceted search allows interactive filtering and sorting independent of the original query, improving navigation of large result sets."
+      },
+      {
+        "question": "Why are stop words like \"the\" often given very low weight in modern retrieval systems?",
+        "options": [
+          "They rarely appear in documents",
+          "They significantly increase the size of the index",
+          "They have high document frequency and low discriminative power",
+          "They cannot be tokenized correctly"
+        ],
+        "correct": 2,
+        "explanation": "Stop words appear in most documents and thus cannot differentiate relevant from non-relevant documents, reducing their discriminative power."
+      },
+      {
+        "question": "In the indexing pipeline's offline phase, which step directly produces high-dimensional feature vectors for retrieval?",
+        "options": [
+          "Tokenization",
+          "Summarization",
+          "Metadata extraction",
+          "Chunk splitting"
+        ],
+        "correct": 1,
+        "explanation": "During summarization, tokens are transformed into high-dimensional feature representations used for indexing and later retrieval."
+      },
+      {
+        "question": "The discrimination power dp(t) of a term t, as defined by Salton, Wong, and Yang (1975), is high when:",
+        "options": [
+          "Removing t causes documents to become more similar to the collection centroid",
+          "Term t occurs in almost all documents",
+          "Term t has low inverse document frequency",
+          "The similarity to the centroid decreases upon removing t"
+        ],
+        "correct": 0,
+        "explanation": "A high dp(t) means that removing the term increases the similarity of documents to the centroid, showing that the term previously helped to distinguish documents."
+      },
+      {
+        "question": "Which key property makes text retrieval less affected by the semantic gap compared to other media?",
+        "options": [
+          "It always uses structured metadata",
+          "It directly matches user text queries to terms in unstructured documents",
+          "It relies on image recognition algorithms",
+          "It requires manual annotation of every document"
+        ],
+        "correct": 1,
+        "explanation": "Text retrieval matches user-entered text queries directly to terms in unstructured documents, minimizing issues caused by semantic interpretation."
+      },
+      {
+        "question": "What is the main advantage of Boolean retrieval systems when scanning data?",
+        "options": [
+          "They can score and rank results in real time",
+          "They determine each document's relevance independently without post-processing",
+          "They automatically expand queries with synonyms",
+          "They always outperform vector-space models"
+        ],
+        "correct": 1,
+        "explanation": "Boolean retrieval determines relevance for each document independently and does not require a post-processing ranking step."
+      },
+      {
+        "question": "In the set-of-words model, how is a document represented?",
+        "options": [
+          "As a sequence of characters with full formatting",
+          "As a set of unique terms, ignoring order and frequency",
+          "As a weighted graph of co-occurring phrases",
+          "As a probability distribution of word embeddings"
+        ],
+        "correct": 1,
+        "explanation": "The set-of-words model records only the presence of unique terms, ignoring both order and frequency."
+      },
+      {
+        "question": "Why was faceted search introduced as an extension to the Boolean model?",
+        "options": [
+          "To enable partial matches of query terms",
+          "To improve tokenization of complex documents",
+          "To allow users to filter and sort large result sets interactively",
+          "To compute inverse document frequency scores"
+        ],
+        "correct": 2,
+        "explanation": "Faceted search was added to help users navigate large result sets by applying filters and sorting without changing document relevance."
+      },
+      {
+        "question": "What key improvement did the Extended Boolean Model introduce over the classical Boolean Model?",
+        "options": [
+          "Support for natural language queries",
+          "Partial matching and term-frequency-based relevance scoring",
+          "Integration of hyperlink analysis",
+          "Automatic language translation"
+        ],
+        "correct": 1,
+        "explanation": "The Extended Boolean Model allows partial matches and uses term frequency to assign relevance scores, enabling ranked results."
+      },
+      {
+        "question": "In the offline indexing phase, what is the primary purpose of the 'split' step?",
+        "options": [
+          "To tokenize text into words and subwords",
+          "To divide long documents into smaller coherent retrieval units",
+          "To normalize character encodings to UTF-8",
+          "To rank documents by retrieval status value"
+        ],
+        "correct": 1,
+        "explanation": "During the split step, long documents are divided into smaller searchable chunks, enabling finer-grained retrieval."
+      },
+      {
+        "question": "Why is overlapping text sometimes added when chunking long documents?",
+        "options": [
+          "To improve storage compression",
+          "To avoid false negatives when query terms span adjacent chunks",
+          "To simplify vector-space calculations",
+          "To increase the inverse document frequency of rare terms"
+        ],
+        "correct": 1,
+        "explanation": "Overlapping text ensures that query terms at chunk boundaries are captured together, reducing false negatives."
+      },
+      {
+        "question": "Which factor best explains why terms with very low or very high document frequency have low discrimination power?",
+        "options": [
+          "They cannot be tokenized properly",
+          "They fail to differentiate documents effectively",
+          "They have high inverse document frequency",
+          "They are always removed as stop words"
+        ],
+        "correct": 1,
+        "explanation": "Terms appearing in too few or too many documents provide little ability to distinguish relevant from non-relevant documents."
+      },
+      {
+        "question": "Which key limitation of the Standard Boolean Model motivated the development of ranked retrieval methods?",
+        "options": [
+          "Lack of partial match capability",
+          "Excessive computational complexity",
+          "Dependence on term frequencies",
+          "Requirement of probabilistic feedback"
+        ],
+        "correct": 0,
+        "explanation": "The Standard Boolean Model returns only documents that fully satisfy the Boolean query and cannot rank or partially match documents, leading to either too many or too few results."
+      },
+      {
+        "question": "Why does the cosine similarity measure reduce the bias toward longer documents compared to the inner product?",
+        "options": [
+          "It ignores inverse document frequency",
+          "It normalizes vectors by their length",
+          "It uses only binary term presence",
+          "It excludes query term frequencies"
+        ],
+        "correct": 1,
+        "explanation": "Cosine similarity divides by the product of vector lengths, so document length does not directly inflate similarity scores."
+      },
+      {
+        "question": "Which assumption is fundamental to the Binary Independence Model?",
+        "options": [
+          "Documents are represented as dense real-valued vectors",
+          "Term independence and binary term presence",
+          "Relevance depends on query term proximity",
+          "Term frequencies must be normalized"
+        ],
+        "correct": 1,
+        "explanation": "The BIR assumes terms occur independently and represent documents as binary (present/absent) sets, disregarding exact frequencies."
+      },
+      {
+        "question": "How does BM25 address the issue of very frequent query terms dominating the score?",
+        "options": [
+          "By discarding all terms appearing in more than 50% of documents",
+          "By applying a saturation function to term frequency",
+          "By using only binary term weights",
+          "By removing inverse document frequency entirely"
+        ],
+        "correct": 1,
+        "explanation": "BM25 uses a nonlinear saturation of term frequency controlled by parameter k, preventing excessive influence of very frequent terms."
+      },
+      {
+        "question": "What role does the parameter b play in the BM25 scoring formula?",
+        "options": [
+          "Controls how document length normalizes term frequency",
+          "Determines the inverse document frequency smoothing",
+          "Sets the minimum similarity threshold for retrieval",
+          "Specifies the user feedback weight in relevance estimation"
+        ],
+        "correct": 0,
+        "explanation": "The b parameter adjusts the impact of document length on term frequency saturation, favoring shorter or longer documents depending on its value."
+      },
+      {
+        "question": "A researcher wants a retrieval model that (1) provides a probabilistic foundation, (2) allows partial matches, (3) incorporates term frequency with diminishing returns, and (4) accounts for document length. Which model best satisfies all these requirements?",
+        "options": [
+          "Standard Boolean Model",
+          "Vector Space Model with cosine similarity",
+          "Binary Independence Model",
+          "BM25"
+        ],
+        "correct": 3,
+        "explanation": "BM25 integrates probabilistic principles, supports partial matching, applies saturated term frequency, and normalizes by document length, fulfilling all four criteria."
+      },
+      {
+        "question": "Which statement best describes the primary limitation of the Standard Boolean Model in information retrieval?",
+        "options": [
+          "It requires complex probabilistic calculations.",
+          "It cannot rank documents by relevance.",
+          "It depends on user feedback to estimate probabilities.",
+          "It only works with normalized vectors."
+        ],
+        "correct": 1,
+        "explanation": "The Standard Boolean Model only filters documents as relevant or not without ranking them by relevance."
+      },
+      {
+        "question": "What key advantage does the Vector Space Model have over the Standard Boolean Model?",
+        "options": [
+          "It guarantees independent term assumptions.",
+          "It provides ranked retrieval based on similarity measures.",
+          "It avoids using term frequencies entirely.",
+          "It uses only Boolean logic for query processing."
+        ],
+        "correct": 1,
+        "explanation": "The Vector Space Model ranks documents by computing similarity between query and document vectors."
+      },
+      {
+        "question": "In the Vector Space Model, which measure computes the angle between the query and document vectors?",
+        "options": [
+          "Inner product",
+          "Bayes' theorem",
+          "Cosine similarity",
+          "P-norm model"
+        ],
+        "correct": 2,
+        "explanation": "The cosine measure calculates the angle between query and document vectors to assess similarity."
+      },
+      {
+        "question": "According to the Binary Independence Model, which assumption is made about terms absent from the query?",
+        "options": [
+          "They are given higher weights.",
+          "They do not affect document ranking.",
+          "They are normalized using idf values.",
+          "They must be present in all relevant documents."
+        ],
+        "correct": 1,
+        "explanation": "The BIR model assumes that terms absent from the query are equally distributed in relevant and non-relevant documents and thus do not affect ranking."
+      },
+      {
+        "question": "Which feature distinguishes the Extended Boolean Model from the Vector Space Model despite both supporting ranked retrieval?",
+        "options": [
+          "The Extended Boolean Model uses Boolean query structure while Vector Space treats queries as vectors.",
+          "The Extended Boolean Model uses cosine similarity while Vector Space does not.",
+          "The Extended Boolean Model ignores idf weighting while Vector Space requires it.",
+          "The Extended Boolean Model relies on Bayes' theorem for probability estimation."
+        ],
+        "correct": 0,
+        "explanation": "Extended Boolean retains Boolean expressions for queries, unlike the Vector Space Model which treats queries as weighted vectors."
+      },
+      {
+        "question": "Consider a retrieval scenario with very frequent terms appearing in more than 50% of documents. According to the BM25 derivation from the BIR model, what happens to the idf-like weight c_j for such terms and why is this significant for ranking?",
+        "options": [
+          "c_j becomes zero, ensuring these common terms have no influence on ranking.",
+          "c_j becomes negative, potentially lowering the score contribution of very common terms.",
+          "c_j grows without bound, dominating the score.",
+          "c_j remains constant, giving frequent terms equal weight to rare terms."
+        ],
+        "correct": 1,
+        "explanation": "For very frequent terms, the BM25/BIR-derived c_j can be negative, reducing their contribution and preventing common terms from dominating the ranking."
+      },
+      {
+        "question": "In the Binary Independence Model, why can terms absent from the query be ignored in ranking?",
+        "options": [
+          "They have zero inverse document frequency",
+          "Their occurrence probability is assumed equal in relevant and non-relevant documents",
+          "They are treated as stop words by default",
+          "They cancel out during cosine normalization"
+        ],
+        "correct": 1,
+        "explanation": "BIR assumes terms not in the query have the same probability in relevant and non-relevant documents, so they do not affect ranking."
+      },
+      {
+        "question": "Suppose a corpus contains extremely long documents where relevant terms are scattered far apart. Which combination of strategies best improves both precision and recall without excessive index growth?",
+        "options": [
+          "Use only fixed-size chunking without overlap",
+          "Apply structural chunking with overlapping windows",
+          "Rely solely on term stemming",
+          "Increase BM25's k parameter and ignore chunking"
+        ],
+        "correct": 1,
+        "explanation": "Structural chunking preserves semantic boundaries while overlapping windows reduce false negatives, balancing precision and recall for long documents."
+      },
+      {
+        "question": "Compare how the Extended Boolean Model, Vector Space Model, and BM25 each handle term frequency when ranking documents. Which statement best describes their key differences?",
+        "options": [
+          "All three ignore term frequency entirely, focusing only on binary presence of terms.",
+          "Extended Boolean uses term frequency to assign similarity scores, Vector Space weights terms by tf-idf without saturation, and BM25 adds frequency saturation and length normalization.",
+          "Extended Boolean and Vector Space use tf-idf with saturation, while BM25 ignores term frequency.",
+          "Vector Space and BM25 both ignore term frequency but normalize for document length."
+        ],
+        "correct": 1,
+        "explanation": "Extended Boolean incorporates term frequency for partial matches, Vector Space uses tf-idf without saturation, and BM25 introduces frequency saturation with document length normalization."
+      },
+      {
+        "question": "Which best describes the relationship between the offline indexing pipeline and linguistic preprocessing like stemming or lemmatization?",
+        "options": [
+          "Stemming is performed after the index is built to reduce vector dimensionality.",
+          "Tokens are stemmed or lemmatized during feature extraction so the index stores normalized terms for matching queries.",
+          "Lemmatization is only applied at query time and never during indexing.",
+          "The inverted index itself performs stemming dynamically for each query."
+        ],
+        "correct": 1,
+        "explanation": "During the offline phase, stemming or lemmatization occurs in the tokenization/feature extraction stage so the index uses normalized terms."
+      },
+      {
+        "question": "How does user relevance feedback in the Binary Independence Model (BIR) relate to BM25's scoring approach?",
+        "options": [
+          "Feedback adjusts BM25's k and b hyperparameters directly.",
+          "BIR uses feedback to refine probabilities r_j and n_j, similar to how BM25 adjusts IDF weights but without direct feedback loops.",
+          "BM25 requires feedback to estimate IDF values just like BIR.",
+          "Both models ignore user feedback entirely."
+        ],
+        "correct": 1,
+        "explanation": "BIR iteratively updates r_j and n_j using feedback, conceptually similar to BM25's probabilistic weighting though BM25 does not require explicit feedback."
+      },
+      {
+        "question": "When incorporating HTML metadata and anchor text into a BM25-based retrieval engine, which weighting strategy is most appropriate to counteract spammy anchor texts?",
+        "options": [
+          "Assign extremely high weights to all anchor text terms to ensure recall.",
+          "Treat anchor text terms with the same weight as body text regardless of context.",
+          "Index anchor text but down-weight overly common or misleading phrases to limit click-bait influence.",
+          "Exclude all anchor text from the index to avoid bias."
+        ],
+        "correct": 2,
+        "explanation": "Anchor text is valuable but can be manipulated; indexing with cautious down-weighting mitigates spam without losing relevance signals."
+      },
+      {
+        "question": "How can Zipf's law guide stop-word removal and IDF weighting for a multilingual corpus to improve both Boolean and Vector Space retrieval?",
+        "options": [
+          "By enforcing equal frequency of all terms across languages.",
+          "By identifying extremely high- and low-frequency words for potential down-weighting or exclusion, refining IDF weighting.",
+          "By ensuring rare terms are always removed to reduce vocabulary size.",
+          "By ranking terms purely by alphabetical order to maintain neutrality."
+        ],
+        "correct": 1,
+        "explanation": "Zipf's law highlights very frequent and very rare terms, informing stop-word lists and IDF weighting to balance discrimination and recall."
+      }
+    ],
+    "03 - Evaluation": [
+      {
+        "question": "What is the primary purpose of benchmarks in information retrieval?",
+        "options": [
+          "To provide anecdotal evidence of a system's performance",
+          "To allow consistent comparison across different retrieval methods",
+          "To replace the need for relevance judgments",
+          "To rank documents manually by users"
+        ],
+        "correct": 1,
+        "explanation": "Benchmarks provide a shared test environment that enables fair and reproducible comparisons across different retrieval methods."
+      },
+      {
+        "question": "Which of the following is NOT typically a component of an effective benchmark?",
+        "options": [
+          "Document collection",
+          "Set of queries",
+          "Relevance judgments",
+          "User interface design"
+        ],
+        "correct": 3,
+        "explanation": "An effective benchmark consists of a document collection, queries, relevance judgments, and performance goals, but not the system's user interface."
+      },
+      {
+        "question": "In legal document discovery, which metric is most important?",
+        "options": [
+          "Top-10 precision",
+          "High recall",
+          "Low latency",
+          "Normalized Discounted Cumulative Gain (nDCG)"
+        ],
+        "correct": 1,
+        "explanation": "Legal discovery requires retrieving nearly all relevant documents, making recall the critical metric."
+      },
+      {
+        "question": "What is the main difference between macro and micro evaluation of retrieval systems?",
+        "options": [
+          "Macro averages per-query metrics equally; micro aggregates counts across all queries before computing metrics.",
+          "Macro evaluates only top-ranked documents; micro evaluates all documents.",
+          "Macro focuses on binary relevance; micro uses graded relevance.",
+          "Macro is used for web search; micro is used for legal discovery."
+        ],
+        "correct": 0,
+        "explanation": "Macro evaluation gives equal weight to each query, while micro evaluation sums counts across queries and then computes precision/recall."
+      },
+      {
+        "question": "Why is the Mean Reciprocal Rank (MRR) particularly useful for sparse relevance assessments?",
+        "options": [
+          "It focuses on the first relevant document rather than all retrieved documents",
+          "It measures overall recall more accurately",
+          "It ignores ranking and only considers document presence",
+          "It replaces the need for precision-recall curves"
+        ],
+        "correct": 0,
+        "explanation": "MRR focuses on the rank of the first relevant document, making it robust when many documents remain unjudged in sparse assessments."
+      },
+      {
+        "question": "Which retrieval architecture is primarily responsible for improving top-ranked precision without user intervention?",
+        "options": [
+          "Retriever only",
+          "Retriever-Filter",
+          "Retriever-Ranker",
+          "Boolean retrieval"
+        ],
+        "correct": 2,
+        "explanation": "Retriever-Ranker systems assign relevance scores to candidates, improving precision at the top of the ranked list automatically."
+      },
+      {
+        "question": "How does Normalized Discounted Cumulative Gain (nDCG) differ from simple Precision@k?",
+        "options": [
+          "nDCG penalizes lower-ranked relevant documents and accounts for graded relevance",
+          "nDCG only considers binary relevance and ignores ranking",
+          "Precision@k considers all retrieved documents, while nDCG considers only the first document",
+          "nDCG cannot handle top-k evaluations"
+        ],
+        "correct": 0,
+        "explanation": "nDCG incorporates both the position of relevant documents and graded relevance, while Precision@k only counts relevant documents without ranking weights."
+      },
+      {
+        "question": "A retrieval system returns 75% precision and 45% recall for a query with 20 relevant documents. If the goal is exhaustive research, which F-β value would emphasize recall over precision, and why?",
+        "options": [
+          "β=0.5, because it prioritizes precision for fact-checking",
+          "β=1, because it balances precision and recall equally",
+          "β=2, because it emphasizes recall for exhaustive retrieval",
+          "β=∞, because it ignores both precision and recall"
+        ],
+        "correct": 2,
+        "explanation": "Setting β>1 (e.g., β=2) in the F-measure emphasizes recall over precision, which is suitable for exhaustive research where retrieving all relevant documents is critical."
+      },
+      {
+        "question": "In the context of information retrieval, precision measures:",
+        "options": [
+          "The total number of relevant documents in the collection",
+          "The proportion of retrieved documents that are relevant",
+          "The speed at which a system returns results",
+          "The percentage of relevant documents not retrieved"
+        ],
+        "correct": 1,
+        "explanation": "Precision measures how many of the retrieved documents are relevant from the user's perspective."
+      },
+      {
+        "question": "In the context of information retrieval, recall measures:",
+        "options": [
+          "The total number of documents retrieved",
+          "The proportion of relevant documents that are retrieved",
+          "The speed at which results are returned",
+          "The rank of the first relevant document"
+        ],
+        "correct": 1,
+        "explanation": "Recall measures the percentage of relevant documents retrieved out of all relevant documents in the collection."
+      },
+      {
+        "question": "What does a precision-recall curve illustrate in information retrieval?",
+        "options": [
+          "The trade-off between precision and recall across different thresholds",
+          "The system's response time over multiple queries",
+          "The cumulative gain of the top-ranked document only",
+          "The total number of queries evaluated"
+        ],
+        "correct": 0,
+        "explanation": "A precision-recall curve shows how precision and recall change as more documents are retrieved, illustrating their trade-off."
+      },
+      {
+        "question": "System efficiency in information retrieval can be assessed by:",
+        "options": [
+          "Measuring the distance of the PR-curve to the ideal point",
+          "Counting only the total number of retrieved documents",
+          "Calculating micro-averaged recall alone",
+          "Evaluating relevance grades without considering ranking"
+        ],
+        "correct": 0,
+        "explanation": "System efficiency is measured by the distance of the precision-recall curve to the ideal point, combining precision and recall performance into a single metric."
+      },
+      {
+        "question": "Which scenario would prioritize high recall over precision?",
+        "options": [
+          "Fact-checking a single query quickly",
+          "Legal document discovery for a lawsuit",
+          "Recommending a few products to a user",
+          "Searching for a quick answer on a news website"
+        ],
+        "correct": 1,
+        "explanation": "In legal discovery, finding all relevant documents is critical, so recall is prioritized over precision."
+      },
+      {
+        "question": "Why might micro evaluation be preferred over macro evaluation in some retrieval tasks?",
+        "options": [
+          "It emphasizes worst-case performance across all queries",
+          "It gives equal weight to queries with few relevant documents",
+          "It aggregates all true positives and retrieved documents, reducing the impact of small queries",
+          "It requires fewer relevance judgments"
+        ],
+        "correct": 2,
+        "explanation": "Micro evaluation sums TP and retrieved/relevant documents before calculating metrics, making it less sensitive to small queries."
+      },
+      {
+        "question": "What does Mean Reciprocal Rank (MRR) specifically measure?",
+        "options": [
+          "The precision of all retrieved documents",
+          "The average rank of the first relevant document across queries",
+          "The recall of top-k documents for each query",
+          "The normalized cumulative gain of the top results"
+        ],
+        "correct": 1,
+        "explanation": "MRR focuses on the rank of the first relevant document, averaging its reciprocal over all queries."
+      },
+      {
+        "question": "Which metric accounts for graded relevance and the position of a document in the ranking?",
+        "options": [
+          "Precision at k (P@k)",
+          "Recall",
+          "Discounted Cumulative Gain (DCG)",
+          "F1-score"
+        ],
+        "correct": 2,
+        "explanation": "DCG considers both the graded relevance of documents and their rank, penalizing relevant documents in lower positions."
+      },
+      {
+        "question": "In a Retriever-Ranker architecture, how is precision mainly improved?",
+        "options": [
+          "By expanding the document collection",
+          "By giving relevance scores to candidates and ranking them",
+          "By applying user filters like date or rating",
+          "By increasing throughput and reducing latency"
+        ],
+        "correct": 1,
+        "explanation": "The ranker assigns scores to retrieved documents, improving precision at the top of the ranked list."
+      },
+      {
+        "question": "In a fact-checking scenario, which metric is usually most important?",
+        "options": [
+          "High recall across all documents",
+          "Top results precision",
+          "Throughput of queries",
+          "Normalized DCG over all results"
+        ],
+        "correct": 1,
+        "explanation": "Fact-checking prioritizes quickly finding mostly relevant documents, making top results precision critical."
+      },
+      {
+        "question": "What distinguishes dense from sparse relevance assessments in large-scale retrieval benchmarks?",
+        "options": [
+          "Dense assessments judge only the top results; sparse assess all documents",
+          "Dense assessments involve human assessors; sparse assessments are automated",
+          "Dense assessments cover most retrieved documents; sparse assess only a subset per query",
+          "Dense assessments ignore relevance; sparse focus on relevance"
+        ],
+        "correct": 2,
+        "explanation": "Dense assessments cover most retrieved documents via pooling, while sparse assessments evaluate only subsets due to scale."
+      },
+      {
+        "question": "In graded relevance assessments, what is the purpose of normalized DCG (nDCG)?",
+        "options": [
+          "To calculate only binary relevance",
+          "To normalize DCG values for comparison across queries",
+          "To evaluate the top result only",
+          "To replace precision and recall entirely"
+        ],
+        "correct": 1,
+        "explanation": "nDCG normalizes the DCG value by the ideal ranking, allowing comparisons across queries with different relevance distributions."
+      },
+      {
+        "question": "Why is the F-Measure useful in retrieval evaluation?",
+        "options": [
+          "It only considers recall",
+          "It only considers precision",
+          "It combines precision and recall into a single metric, adjustable via β",
+          "It measures query latency"
+        ],
+        "correct": 2,
+        "explanation": "The F-Measure balances precision and recall with a β parameter controlling their relative importance."
+      },
+      {
+        "question": "Which scenario would most benefit from using Mean Reciprocal Rank (MRR) instead of precision-recall metrics?",
+        "options": [
+          "Legal discovery requiring high overall recall",
+          "Fact-checking tasks with sparse relevance assessments",
+          "Biomedical literature search over hundreds of results",
+          "E-commerce recommendations focusing on diversity"
+        ],
+        "correct": 1,
+        "explanation": "MRR emphasizes the rank of the first relevant document, making it ideal for fact-checking tasks with sparse judgments."
+      },
+      {
+        "question": "Given a benchmark with highly variable query sizes, which evaluation approach minimizes the distortion caused by queries with few relevant documents?",
+        "options": [
+          "Macro evaluation",
+          "Micro evaluation",
+          "Mean Reciprocal Rank",
+          "Precision at k"
+        ],
+        "correct": 1,
+        "explanation": "Micro evaluation aggregates true positives and totals across all queries, reducing the impact of queries with very few relevant documents."
+      },
+      {
+        "question": "In information retrieval system design, why might high precision conflict with operational metrics like latency, cost, or scalability?",
+        "options": [
+          "Because optimizing precision always reduces recall",
+          "Because retrieving relevant documents with high precision may require more computational resources",
+          "Because precision and recall are unrelated to user satisfaction",
+          "Because operational metrics are only relevant for offline experiments"
+        ],
+        "correct": 1,
+        "explanation": "Maximizing precision often requires retrieving and processing more documents, which can increase computational cost, slow responses, and reduce scalability."
+      },
+      {
+        "question": "Which approach can be used to automate relevance assessment in large-scale benchmarks while maintaining reliability?",
+        "options": [
+          "Ignoring human judgments entirely and relying only on raw retrieval counts",
+          "Using Large Language Models (LLMs) to suggest initial relevance judgments for human review",
+          "Pooling all documents without applying any sampling or prioritization",
+          "Calculating only precision at k without considering relevance"
+        ],
+        "correct": 1,
+        "explanation": "LLMs can generate initial relevance judgments, which humans then review for uncertain cases, improving efficiency while keeping assessments reliable."
+      }
+    ],
+    "04 - Advanced Text Processing": [
+      {
+        "question": "Which early method in information retrieval focused on reducing words to their base forms to match queries and documents?",
+        "options": [
+          "Stemming",
+          "Word embeddings",
+          "Transformer models",
+          "N-gram analysis"
+        ],
+        "correct": 0,
+        "explanation": "Stemming reduces words to their root forms, enabling simpler matching between queries and documents."
+      },
+      {
+        "question": "What is the main purpose of query expansion using synonyms in traditional NLP retrieval?",
+        "options": [
+          "To increase recall",
+          "To improve precision",
+          "To reduce computational load",
+          "To enforce exact keyword matching"
+        ],
+        "correct": 0,
+        "explanation": "Expanding a query with synonyms increases recall by retrieving more relevant documents, though it may reduce precision."
+      },
+      {
+        "question": "Why did statistical NLP models like HMMs and n-grams struggle with meaning and long-range dependencies?",
+        "options": [
+          "They relied heavily on local patterns and limited feature engineering",
+          "They used deep neural networks with too many parameters",
+          "They employed symbolic rules instead of data",
+          "They could not process large corpora"
+        ],
+        "correct": 0,
+        "explanation": "Statistical models primarily captured local patterns, making them inadequate for understanding long-range dependencies and semantic meaning."
+      },
+      {
+        "question": "Which advance in the Neural Era allowed models to process sequences in parallel while capturing long-range dependencies?",
+        "options": [
+          "Transformer architecture",
+          "Hidden Markov Models",
+          "ELIZA pattern matching",
+          "N-gram models"
+        ],
+        "correct": 0,
+        "explanation": "Transformers use self-attention to process sequences in parallel and capture long-range dependencies, overcoming RNN limitations."
+      },
+      {
+        "question": "Why are one-hot vectors impractical for large vocabularies in machine learning models?",
+        "options": [
+          "They require large input layers and are sparse",
+          "They cannot encode numerical data",
+          "They lose word order information",
+          "They prevent tokenization of special characters"
+        ],
+        "correct": 0,
+        "explanation": "One-hot vectors scale poorly with large vocabularies due to high dimensionality and sparsity, making them inefficient for large models."
+      },
+      {
+        "question": "How does PMI (Pointwise Mutual Information) prefer bi-grams in a corpus?",
+        "options": [
+          "It favors bi-grams where the terms occur exclusively together and infrequently",
+          "It favors bi-grams with frequent stop words",
+          "It ignores term co-occurrence and uses only frequency",
+          "It ranks bi-grams randomly"
+        ],
+        "correct": 0,
+        "explanation": "PMI scores are highest for rare bi-grams where terms occur together exclusively, highlighting meaningful associations."
+      },
+      {
+        "question": "How do sub-word tokenizations help retrieval systems handle misspellings or non-native pronunciations?",
+        "options": [
+          "By breaking words or phonemes into overlapping sequences, enabling partial matches",
+          "By mapping each token to a unique ID",
+          "By using one-hot vectors for exact matches",
+          "By ignoring infrequent words entirely"
+        ],
+        "correct": 0,
+        "explanation": "Overlapping sub-word or phoneme sequences allow retrieval systems to match parts of words even when full words differ due to spelling errors or pronunciation."
+      },
+      {
+        "question": "In constructing a vocabulary using n-grams and PMI, why might a highly frequent name like 'Sherlock Holmes' appear lower in the PMI ranking but higher using LHR?",
+        "options": [
+          "PMI favors rare co-occurrences, while LHR measures statistical dependence accounting for frequency",
+          "PMI ignores term frequency, while LHR ignores co-occurrence",
+          "PMI and LHR always rank the same bi-grams",
+          "LHR uses semantic embeddings whereas PMI does not"
+        ],
+        "correct": 0,
+        "explanation": "PMI favors rare, exclusive co-occurrences, so frequent names can score lower; LHR evaluates dependence between terms, highlighting frequent, significant bi-grams."
+      },
+      {
+        "question": "What is the role of the '##' prefix in WordPiece tokenization?",
+        "options": [
+          "Indicates a token is at the beginning of a word",
+          "Indicates a token is part of a word's middle or continuation",
+          "Marks tokens as rare vocabulary items",
+          "Signals that a token is a special symbol"
+        ],
+        "correct": 1,
+        "explanation": "In WordPiece, '##' denotes subword tokens that continue within a word, helping the tokenizer capture prefixes and shared semantics."
+      },
+      {
+        "question": "In the LHR method for scoring bi-grams, why might frequent stop-word pairs appear significant?",
+        "options": [
+          "LHR directly counts term frequency without normalization",
+          "LHR compares independence vs. dependence of terms, so dependence can make frequent pairs significant",
+          "Stop words are given higher weights in LHR by default",
+          "PMI filtering is applied before computing LHR"
+        ],
+        "correct": 1,
+        "explanation": "LHR measures whether the occurrence of one term depends on another. Even frequent stop words can appear significant if their co-occurrence is highly dependent."
+      },
+      {
+        "question": "How does Byte Pair Encoding (BPE) handle unseen words in a large corpus?",
+        "options": [
+          "By mapping all unseen words to [UNK]",
+          "By decomposing them into smaller byte-level subwords using the existing vocabulary",
+          "By ignoring them during encoding",
+          "By treating each word as a separate token regardless of frequency"
+        ],
+        "correct": 1,
+        "explanation": "BPE can represent previously unseen words by breaking them into smaller subword units present in the learned vocabulary, allowing flexible encoding."
+      },
+      {
+        "question": "Consider a scenario where a query 'teach multtimedia' is segmented into sub-sequences for retrieval. Which feature of sub-word tokenization allows partial matching even with misspellings?",
+        "options": [
+          "N-gram construction with stop-word filtering",
+          "Frequency-based vocabulary expansion",
+          "Sub-sequences with optional token proximity consideration",
+          "Embedding layers mapping tokens to dense vectors"
+        ],
+        "correct": 2,
+        "explanation": "Segmenting words into overlapping sub-sequences allows retrieval models to match most sub-sequences even if the word is misspelled, enabling robust partial matching."
+      },
+      {
+        "question": "What is a common effect of converting text to lowercase before tokenization?",
+        "options": [
+          "It always improves grammatical correctness of generated text",
+          "It prevents the model from distinguishing between 'Apple' and 'apple'",
+          "It increases the vocabulary size",
+          "It encodes semantic similarity between numbers"
+        ],
+        "correct": 1,
+        "explanation": "Lowercasing helps reduce vocabulary size and merge tokens that differ only by case, but it prevents the model from generating proper capitalization."
+      },
+      {
+        "question": "Why are embedding layers preferred over one-hot vectors in large language models?",
+        "options": [
+          "They completely eliminate the need for tokenization",
+          "They reduce dimensionality and capture semantic similarity",
+          "They encode only the order of tokens, not meaning",
+          "They allow direct input of raw text into transformers"
+        ],
+        "correct": 1,
+        "explanation": "Embedding layers map sparse one-hot vectors to lower-dimensional dense vectors, capturing semantic relationships efficiently."
+      },
+      {
+        "question": "In information retrieval, what is the trade-off when expanding queries with synonyms or hypernyms?",
+        "options": [
+          "Improved precision but reduced recall",
+          "Improved recall but potentially reduced precision",
+          "No effect on either recall or precision",
+          "Guaranteed improvement in both recall and precision"
+        ],
+        "correct": 1,
+        "explanation": "Expanding queries increases the chance of retrieving relevant documents (higher recall) but may introduce unrelated items (lower precision)."
+      },
+      {
+        "question": "When applying PMI to rank bi-grams, which scenario yields the highest PMI score?",
+        "options": [
+          "When a bi-gram appears frequently but its individual terms appear elsewhere often",
+          "When a bi-gram appears exclusively together with minimal occurrences",
+          "When a bi-gram contains common stop words",
+          "When a bi-gram has unequal frequencies between its terms"
+        ],
+        "correct": 1,
+        "explanation": "PMI favors bi-grams where the terms appear almost exclusively together, making them statistically significant."
+      },
+      {
+        "question": "Which stemming algorithm in English is described as the most aggressive, often producing overly short stems that may collide with unrelated words?",
+        "options": [
+          "Porter Stemmer",
+          "Lancaster Stemmer",
+          "Snowball Stemmer",
+          "WordNet Lemmatizer"
+        ],
+        "correct": 1,
+        "explanation": "The Lancaster Stemmer is aggressive in removing suffixes, sometimes reducing different words to the same short stem."
+      },
+      {
+        "question": "In text retrieval, why might dictionary-based stemmers like WordNet and spaCy be preferred over rule-based stemmers?",
+        "options": [
+          "They run faster than rule-based stemmers",
+          "They produce stems that are linguistically correct",
+          "They always generate shorter stems",
+          "They ignore part-of-speech information"
+        ],
+        "correct": 1,
+        "explanation": "WordNet and spaCy produce linguistically correct stems, ensuring that variants like 'had' and 'have' map to the same base form."
+      },
+      {
+        "question": "What distinguishes endocentric compounds from exocentric compounds?",
+        "options": [
+          "Endocentric compounds have a semantic head, exocentric do not",
+          "Exocentric compounds are shorter than endocentric compounds",
+          "Endocentric compounds occur only in German and Finnish",
+          "Exocentric compounds always use binding syllables"
+        ],
+        "correct": 0,
+        "explanation": "Endocentric compounds derive meaning from a head element, whereas exocentric compounds' meaning cannot be inferred from their parts."
+      },
+      {
+        "question": "How is the best split of a compound determined when multiple options exist?",
+        "options": [
+          "By choosing the split with the fewest components",
+          "By using a random selection among valid splits",
+          "By selecting the split with the highest average log-frequency of components",
+          "By taking the split with the longest component"
+        ],
+        "correct": 2,
+        "explanation": "The algorithm chooses the split whose components have the highest average log-frequency in the corpus, representing the most probable split."
+      },
+      {
+        "question": "Why are synonyms problematic in information retrieval systems?",
+        "options": [
+          "They reduce search speed",
+          "They prevent matching query terms to semantically equivalent document terms",
+          "They increase spelling errors",
+          "They break POS tagging"
+        ],
+        "correct": 1,
+        "explanation": "Different words with similar meanings, like 'buy' and 'purchase', may not match in documents unless synonym expansion is used."
+      },
+      {
+        "question": "In text retrieval, why is stem correctness less critical than mapping variants to the same token?",
+        "options": [
+          "Because incorrect stems always improve search results",
+          "Because all algorithms produce identical stems",
+          "Because mapping variants ensures that different forms of a word are recognized as the same token",
+          "Because stemming is irrelevant for English text"
+        ],
+        "correct": 2,
+        "explanation": "Ensuring that different inflected forms map to the same stem allows queries to match more document variants."
+      },
+      {
+        "question": "Which algorithm type generally produces linguistically correct stems for English words?",
+        "options": [
+          "Rule-based stemmers like Porter and Lancaster",
+          "Dictionary-based approaches like WordNet and spaCy",
+          "Snowball without modifications",
+          "Lancaster only"
+        ],
+        "correct": 1,
+        "explanation": "WordNet and spaCy use dictionary-based approaches, producing stems that are linguistically valid."
+      },
+      {
+        "question": "How does NER improve the interpretation of queries like 'Who is Albert Einstein?' in search engines?",
+        "options": [
+          "By filtering out stop words from the query",
+          "By assigning POS tags only",
+          "By collapsing relevant tokens into a named entity and inferring user intent",
+          "By correcting spelling errors automatically"
+        ],
+        "correct": 2,
+        "explanation": "NER identifies 'Albert Einstein' as a single named entity, helping the search system understand that the user seeks information about a person."
+      },
+      {
+        "question": "How do large language models with a closed vocabulary handle new or uncommon words, such as novel names, during tokenization?",
+        "options": [
+          "They ignore the words completely, leading to missing information in the model",
+          "They break the words into subword units or byte-pair encoded tokens present in the vocabulary",
+          "They automatically add the new words to the model's vocabulary during inference",
+          "They replace all unknown words with a generic placeholder token regardless of context"
+        ],
+        "correct": 1,
+        "explanation": "LLMs with closed vocabularies use subword or byte-pair encoding to split unseen words into smaller units present in the vocabulary, allowing them to process novel names without adding new tokens."
+      }
+    ],
+    "05 - Index for Text Retrieval": [
+      {
+        "question": "What is the primary advantage of the inverted index in text retrieval systems?",
+        "options": [
+          "It reduces the number of documents in a collection",
+          "It allows query processing cost to grow with query terms instead of collection size",
+          "It eliminates the need for query parsing",
+          "It compresses documents directly rather than indexes"
+        ],
+        "correct": 1,
+        "explanation": "Inverted indexes reduce query processing cost by focusing on terms rather than scanning all documents, so cost scales with query terms."
+      },
+      {
+        "question": "Who introduced the theoretical foundations for modern information retrieval, including the Vector Space Model?",
+        "options": [
+          "Herman Hollerith",
+          "Calvin Mooers",
+          "Gerard Salton",
+          "Vannevar Bush"
+        ],
+        "correct": 2,
+        "explanation": "Gerard Salton established many theoretical foundations of information retrieval, notably the Vector Space Model."
+      },
+      {
+        "question": "What is a key limitation of Boolean retrieval models discussed in the text?",
+        "options": [
+          "They cannot use inverted indexes",
+          "They cannot handle term frequencies",
+          "They require semantic embeddings",
+          "They must process all documents at once"
+        ],
+        "correct": 1,
+        "explanation": "Boolean models use set-based logic and do not utilize term frequencies, which limits ranking by relevance."
+      },
+      {
+        "question": "In the context of inverted indexes, what is a 'posting list'?",
+        "options": [
+          "A list of all terms in the vocabulary",
+          "A list of documents that contain a specific term",
+          "A summary of document metadata",
+          "A compressed file of all search results"
+        ],
+        "correct": 1,
+        "explanation": "A posting list maps a term to all document IDs where that term appears."
+      },
+      {
+        "question": "How does the Document-At-A-Time (DAAT) retrieval method differ from Term-At-A-Time (TAAT)?",
+        "options": [
+          "DAAT processes one term at a time, while TAAT processes documents",
+          "DAAT retrieves documents sequentially using sorted postings, while TAAT accumulates scores term by term",
+          "DAAT uses cosine similarity, while TAAT uses Boolean logic",
+          "DAAT can only handle Boolean queries"
+        ],
+        "correct": 1,
+        "explanation": "DAAT streams documents from postings and scores them as they appear; TAAT accumulates scores for each document across all query terms."
+      },
+      {
+        "question": "In database-based retrieval systems, what structure is used to implement inverted indexes?",
+        "options": [
+          "A linked list in memory",
+          "A B-tree index on the posting(term) column",
+          "A relational join between documents and vocabulary",
+          "A hash map over query terms"
+        ],
+        "correct": 1,
+        "explanation": "B-trees are used as indexes over posting(term), enabling efficient term lookups analogous to inverted files."
+      },
+      {
+        "question": "In Boolean retrieval, what does the expression 'expr1 AND NOT(expr2)' correspond to in set operations?",
+        "options": [
+          "Union of expr1 and expr2",
+          "Intersection of expr1 and expr2",
+          "Subtraction of expr2 from expr1",
+          "Symmetric difference of expr1 and expr2"
+        ],
+        "correct": 2,
+        "explanation": "The 'AND NOT' operator corresponds to subtracting the set of expr2 documents from expr1."
+      },
+      {
+        "question": "Why is 'cat OR NOT(dog)' considered inefficient or non-intuitive in retrieval systems?",
+        "options": [
+          "It requires computing all possible document pairs.",
+          "It demands enumerating almost all documents except those with 'dog'.",
+          "It needs random access to every term in the vocabulary.",
+          "It cannot be implemented using inverted indexes."
+        ],
+        "correct": 1,
+        "explanation": "The query 'cat OR NOT(dog)' implies listing all documents except those containing 'dog', which becomes computationally expensive and conceptually meaningless for users."
+      },
+      {
+        "question": "In BM25, which parameters are used to adjust for document length and term frequency saturation?",
+        "options": [
+          "k and b",
+          "idf and tf",
+          "n and m",
+          "α and β"
+        ],
+        "correct": 0,
+        "explanation": "BM25 uses parameters k (term frequency scaling) and b (document length normalization) to balance scoring behavior."
+      },
+      {
+        "question": "What is the key optimization achieved by delta (d-gap) compression in inverted indexes?",
+        "options": [
+          "It reorders documents alphabetically.",
+          "It reduces the need for idf weighting.",
+          "It stores only small differences between consecutive document IDs.",
+          "It merges multiple indexes into one unified structure."
+        ],
+        "correct": 2,
+        "explanation": "Delta compression stores differences (gaps) between consecutive document IDs, which are small and compress efficiently."
+      },
+      {
+        "question": "Which of the following best describes Whoosh's intended use case compared to larger frameworks like Elasticsearch?",
+        "options": [
+          "It is designed for distributed enterprise-scale search clusters.",
+          "It is suitable for small applications, teaching, and prototyping due to its simplicity.",
+          "It requires Java and external dependencies to function properly.",
+          "It cannot handle tokenization or ranking algorithms."
+        ],
+        "correct": 1,
+        "explanation": "Whoosh is a pure Python search engine meant for simplicity, learning, and prototyping small applications."
+      },
+      {
+        "question": "In PostgreSQL's full-text search, what is the purpose of the tsvector data type?",
+        "options": [
+          "To store SQL queries for search optimization.",
+          "To store documents in raw text format.",
+          "To store normalized lists of lexemes for full-text indexing.",
+          "To create relational joins between document tables."
+        ],
+        "correct": 2,
+        "explanation": "tsvector stores normalized lexemes used by PostgreSQL's full-text search to enable efficient matching and ranking."
+      },
+      {
+        "question": "What advantage does PostgreSQL's integration of full-text search within SQL provide to developers?",
+        "options": [
+          "It allows search queries to be combined with relational operations in one system.",
+          "It replaces the need for SQL joins entirely.",
+          "It enables full-text indexing on binary data types.",
+          "It supports fuzzy search without indexing."
+        ],
+        "correct": 0,
+        "explanation": "By integrating FTS into SQL, PostgreSQL allows developers to combine relational logic with search in one system."
+      },
+      {
+        "question": "How does Haystack's abstraction layer benefit developers when building search pipelines?",
+        "options": [
+          "It limits developers to one backend type for consistency.",
+          "It forces all queries to run through a fixed API without flexibility.",
+          "It provides a unified API so backends can be swapped easily between development and production.",
+          "It only supports keyword-based search pipelines."
+        ],
+        "correct": 2,
+        "explanation": "Haystack's abstraction layer allows switching between backends like Whoosh or Elasticsearch via a single API."
+      },
+      {
+        "question": "Which of the following statements correctly describes Lucene's handling of deleted documents?",
+        "options": [
+          "Documents are permanently removed from the index upon deletion.",
+          "Lucene marks documents as deleted and removes them only during segment merges.",
+          "Deleted documents are replaced by null pointers for faster lookups.",
+          "Deletion automatically triggers re-indexing of all related terms."
+        ],
+        "correct": 1,
+        "explanation": "Lucene marks deleted documents and removes them only during segment merges, maintaining index integrity."
+      },
+      {
+        "question": "When scaling Lucene-based systems, what problem do Solr and Elasticsearch solve through sharding?",
+        "options": [
+          "They remove the need for inverted indexes.",
+          "They enable concurrent searches and overcome Lucene's single-server index size limit.",
+          "They replace BM25 scoring with faster hash lookups.",
+          "They remove the need for replicas entirely."
+        ],
+        "correct": 1,
+        "explanation": "Sharding distributes documents across nodes, increasing scalability and overcoming Lucene's index-size limits."
+      },
+      {
+        "question": "In a distributed Lucene-based architecture, what is the main trade-off when combining results from multiple shards that maintain independent term statistics?",
+        "options": [
+          "Reduced query latency due to duplicate documents.",
+          "Slight inconsistency in document scores across shards.",
+          "Increased memory usage due to replicated postings.",
+          "Complete loss of ranking accuracy across the index."
+        ],
+        "correct": 1,
+        "explanation": "Because each shard has its own term statistics, score variations occur, but they are typically minor and acceptable."
+      },
+      {
+        "question": "Why is GIN indexing used in PostgreSQL Full Text Search?",
+        "options": [
+          "It creates a hierarchical JSON representation of tokens",
+          "It maps lexemes to documents for fast full-text lookups",
+          "It clusters query results using the BM25F algorithm",
+          "It converts SQL queries into Lucene-like search expressions"
+        ],
+        "correct": 1,
+        "explanation": "GIN (Generalized Inverted Index) accelerates full-text queries by mapping lexemes to document identifiers."
+      },
+      {
+        "question": "What is a key advantage of Solr's faceted search capability?",
+        "options": [
+          "It allows segment-level merging during indexing",
+          "It groups search results dynamically by metadata fields such as category",
+          "It ensures consistent BM25 scoring across distributed shards",
+          "It avoids the need for Lucene's inverted index structure"
+        ],
+        "correct": 1,
+        "explanation": "Faceted search in Solr groups results by facets like category or country, improving exploration and filtering."
+      },
+      {
+        "question": "Which of the following best explains Lucene's use of segments?",
+        "options": [
+          "Segments are temporary caches for query results",
+          "Each segment is an immutable mini-index created during document additions",
+          "Segments store real-time replicas for distributed queries",
+          "Segments represent document clusters optimized by PostgreSQL"
+        ],
+        "correct": 1,
+        "explanation": "Lucene stores data in immutable segments, each acting as a small index merged later according to merge policies."
+      },
+      {
+        "question": "What is the fundamental reason Elasticsearch and OpenSearch can scale beyond Lucene's 2.1 billion document limit?",
+        "options": [
+          "They compress Lucene segments into smaller B-trees",
+          "They perform distributed indexing through shard-based partitioning",
+          "They replace Lucene's inverted index with a graph-based model",
+          "They rely on PostgreSQL's tsvector architecture for storage"
+        ],
+        "correct": 1,
+        "explanation": "Sharding distributes documents across multiple Lucene indexes, removing the single-index limit and enabling scalability."
+      },
+      {
+        "question": "A Lucene cluster employs 4 shards with 2 replicas per shard, distributed across 2 availability zones. If each leader can act as a coordinator, what scaling behavior can be expected as replicas increase?",
+        "options": [
+          "Search throughput scales roughly linearly with the number of replicas, as each can handle more concurrent queries",
+          "Indexing performance improves proportionally with replicas, since all replicas index documents concurrently",
+          "Replica count increases scoring consistency across shards by averaging term statistics",
+          "Adding replicas increases index size exponentially and reduces concurrency"
+        ],
+        "correct": 0,
+        "explanation": "Because each replica can process independent search requests, query throughput scales approximately with the number of replicas."
+      }
+    ],
+    "06 - Semantic Search": [
+      {
+        "question": "What is the main limitation of exact keyword matching in information retrieval?",
+        "options": [
+          "It cannot recognize variations or synonyms of the query terms.",
+          "It requires high computational power for every search.",
+          "It introduces too many irrelevant documents into results.",
+          "It depends on neural embeddings for semantic similarity."
+        ],
+        "correct": 0,
+        "explanation": "Exact keyword matching only retrieves documents containing the exact query words, failing to capture linguistic or conceptual variations."
+      },
+      {
+        "question": "What key advantage does semantic matching have over ontology-based approaches?",
+        "options": [
+          "It relies solely on manually crafted synonym lists.",
+          "It automatically learns conceptual relationships from data.",
+          "It reduces document storage requirements.",
+          "It ignores word meaning to focus on keyword frequency."
+        ],
+        "correct": 1,
+        "explanation": "Semantic matching uses vector embeddings that automatically learn conceptual relations from large text corpora."
+      },
+      {
+        "question": "Which early technique revealed hidden semantic structure by analyzing word co-occurrence patterns?",
+        "options": [
+          "Word2Vec",
+          "Latent Semantic Indexing (LSI)",
+          "BERT",
+          "Sentence-BERT (SBERT)"
+        ],
+        "correct": 1,
+        "explanation": "LSI (1988) used Singular Value Decomposition on the term-document matrix to expose latent semantic relationships between words and concepts."
+      },
+      {
+        "question": "Why did Word2Vec struggle with sentences like 'I sat by the bank and watched the boats go by'?",
+        "options": [
+          "It ignored rare words during training.",
+          "It modeled only local context within limited word windows.",
+          "It overfit to financial terms like 'bank'.",
+          "It used matrix factorization instead of neural networks."
+        ],
+        "correct": 1,
+        "explanation": "Word2Vec relies on local context windows and cannot capture meaning shifts across sentences or distant context."
+      },
+      {
+        "question": "How did transformers introduced in 'Attention Is All You Need' improve contextual understanding?",
+        "options": [
+          "By training separate models for each word type.",
+          "By using attention to relate all words within a sequence.",
+          "By relying on bag-of-words assumptions.",
+          "By removing the need for embeddings."
+        ],
+        "correct": 1,
+        "explanation": "Transformers use attention mechanisms to model dependencies among all words in a sequence, improving contextual understanding."
+      },
+      {
+        "question": "What limitation arises when comparing queries and documents in LSI's reduced topic space?",
+        "options": [
+          "Cosine similarity cannot be computed in reduced space.",
+          "Dense vectors prevent efficient pruning with inverted indexes.",
+          "Dimensionality reduction eliminates topic separation.",
+          "Queries lose all relationship with document frequencies."
+        ],
+        "correct": 1,
+        "explanation": "Because both queries and documents are dense vectors after SVD, inverted indexes cannot be used, requiring comparisons with all documents."
+      },
+      {
+        "question": "Which technique allows keyword-based systems to capture slight variations like 'diseases'?",
+        "options": [
+          "Word embeddings",
+          "Stemming and linguistic transformations",
+          "Latent Semantic Indexing",
+          "BERT embeddings"
+        ],
+        "correct": 1,
+        "explanation": "Stemming and linguistic transformations help recognize variations in words, extending matches beyond exact keywords."
+      },
+      {
+        "question": "Latent Semantic Indexing (LSI) uses which mathematical technique to reveal hidden semantic structures?",
+        "options": [
+          "Fourier Transform",
+          "Singular Value Decomposition (SVD)",
+          "Principal Component Analysis (PCA)",
+          "Gradient Descent"
+        ],
+        "correct": 1,
+        "explanation": "LSI applies SVD to the term-document matrix to uncover latent semantic structures."
+      },
+      {
+        "question": "A limitation of word2vec compared to transformer-based models is that it:",
+        "options": [
+          "Cannot handle out-of-vocabulary words.",
+          "Models only local context within a limited window.",
+          "Requires manual ontologies to expand queries.",
+          "Cannot be trained on large corpora."
+        ],
+        "correct": 1,
+        "explanation": "Word2vec captures only local context, failing to disambiguate words across sentences or wider contexts."
+      },
+      {
+        "question": "Sentence-BERT (SBERT) improves over BERT by:",
+        "options": [
+          "Creating better word-level embeddings using attention.",
+          "Generating fast and high-quality sentence embeddings via siamese networks.",
+          "Using SVD to reduce dimensionality of embeddings.",
+          "Applying tf-idf weighting to queries."
+        ],
+        "correct": 1,
+        "explanation": "SBERT restructures BERT into siamese/triplet networks to produce more accurate and efficient sentence embeddings."
+      },
+      {
+        "question": "Why is dimensionality reduction applied in LSI using SVD?",
+        "options": [
+          "To remove all zero values in the matrix.",
+          "To approximate A with fewer latent topics and reduce search cost.",
+          "To convert the document-term matrix into an inverted index.",
+          "To normalize tf-idf weights to unit vectors."
+        ],
+        "correct": 1,
+        "explanation": "Dimensionality reduction keeps the largest singular values to capture main topics while reducing matrix size and computation."
+      },
+      {
+        "question": "What is the primary training method used by Word2Vec?",
+        "options": [
+          "Supervised learning with labeled datasets",
+          "Self-supervised learning using context windows",
+          "Reinforcement learning",
+          "Unsupervised clustering of words"
+        ],
+        "correct": 1,
+        "explanation": "Word2Vec uses self-supervised learning by predicting context words from a center word or vice versa, without requiring labeled data."
+      },
+      {
+        "question": "In the Skip-Gram model, what is the model's main objective?",
+        "options": [
+          "Predicting the center word from surrounding words",
+          "Predicting surrounding words from the center word",
+          "Clustering semantically similar words",
+          "Generating sentence embeddings"
+        ],
+        "correct": 1,
+        "explanation": "Skip-Gram predicts the surrounding context words given a center word within a window."
+      },
+      {
+        "question": "Which similarity measure is commonly used to compare word embeddings?",
+        "options": [
+          "Jaccard similarity",
+          "Cosine similarity",
+          "Hamming distance",
+          "Pearson correlation"
+        ],
+        "correct": 1,
+        "explanation": "Cosine similarity measures the angle between vectors, making it suitable for word embeddings regardless of their magnitude."
+      },
+      {
+        "question": "How does CBOW differ from Skip-Gram in Word2Vec?",
+        "options": [
+          "CBOW predicts context words from the center word; Skip-Gram predicts the center word",
+          "CBOW uses larger context windows than Skip-Gram",
+          "CBOW predicts the center word from surrounding words; Skip-Gram predicts surrounding words from the center word",
+          "CBOW employs sub-word embeddings, unlike Skip-Gram"
+        ],
+        "correct": 2,
+        "explanation": "CBOW predicts the center word based on the surrounding words, whereas Skip-Gram predicts context words from the center word."
+      },
+      {
+        "question": "What is a key advantage of fastText over traditional Word2Vec?",
+        "options": [
+          "It uses one-hot vectors for efficiency",
+          "It incorporates sub-word representations for handling rare or unseen words",
+          "It is trained with supervised labels",
+          "It eliminates the need for context windows"
+        ],
+        "correct": 1,
+        "explanation": "fastText breaks words into sub-words to generate embeddings, enabling representation of rare or previously unseen words."
+      },
+      {
+        "question": "Why might max pooling be preferred over average pooling in text embeddings?",
+        "options": [
+          "It better preserves syntactic relationships",
+          "It highlights the most salient features in a text",
+          "It ensures all tokens contribute equally to the final vector",
+          "It captures word order effectively"
+        ],
+        "correct": 1,
+        "explanation": "Max pooling selects the maximum value across each embedding dimension, emphasizing dominant or important features."
+      },
+      {
+        "question": "Which limitation of average pooling can affect document similarity calculations?",
+        "options": [
+          "It ignores stop words entirely",
+          "It discards token-level embeddings",
+          "It dilutes distinctive content by treating all tokens equally",
+          "It requires sub-word tokenization"
+        ],
+        "correct": 2,
+        "explanation": "Average pooling treats all tokens equally, so frequent tokens like stop words or common terms can dilute meaningful content in the embedding."
+      },
+      {
+        "question": "How does a cross-encoder differ from a bi-encoder in semantic retrieval?",
+        "options": [
+          "It processes query and document separately for efficiency",
+          "It encodes only the query while ignoring the document",
+          "It combines query and document into a single input sequence for token-level interactions",
+          "It does not use transformer architectures"
+        ],
+        "correct": 2,
+        "explanation": "Cross-encoders process the query and document together, allowing precise token-level interaction modeling for improved ranking accuracy."
+      },
+      {
+        "question": "What is the main purpose of Matryoshka embeddings (MRL)?",
+        "options": [
+          "To generate embeddings only for sub-words",
+          "To create nested representations that remain meaningful at lower dimensions for multi-stage retrieval",
+          "To replace Transformers in semantic retrieval",
+          "To pool token embeddings using max pooling"
+        ],
+        "correct": 1,
+        "explanation": "MRL embeddings are trained to maintain semantic usefulness even when truncated to lower dimensions, enabling efficient multi-stage retrieval."
+      },
+      {
+        "question": "In Qwen3 embedding models, how is the embedding for a text segment obtained?",
+        "options": [
+          "By averaging all token embeddings using max pooling",
+          "From the hidden state of the final [EOS] token in a decoder-based transformer",
+          "From the [CLS] token of an encoder-based transformer",
+          "By summing sub-word embeddings like fastText"
+        ],
+        "correct": 1,
+        "explanation": "Qwen3 embeddings use a decoder-based transformer and take the hidden state of the final [EOS] token as the dense semantic embedding for the text."
+      },
+      {
+        "question": "What is the main purpose of word embeddings like Word2Vec or GloVe?",
+        "options": [
+          "To compress images into lower dimensions.",
+          "To represent words as dense vectors capturing semantic relationships.",
+          "To count word frequencies in a corpus.",
+          "To perform syntactic parsing of sentences."
+        ],
+        "correct": 1,
+        "explanation": "Word embeddings map words into vector space to capture semantic and contextual similarities."
+      },
+      {
+        "question": "In CBOW, what does the model use to predict the center word?",
+        "options": [
+          "Only the first word of the sentence",
+          "All words in the corpus",
+          "All surrounding words in the context window",
+          "A single randomly chosen word"
+        ],
+        "correct": 2,
+        "explanation": "CBOW predicts the center word based on all surrounding words within the context window."
+      },
+      {
+        "question": "Why does fastText split center words into sub-word n-grams?",
+        "options": [
+          "To reduce vocabulary size and represent rare or unseen words.",
+          "To improve syntactic parsing of the text.",
+          "To speed up cross-encoder inference.",
+          "To avoid using embeddings for context words."
+        ],
+        "correct": 0,
+        "explanation": "fastText splits words into sub-word units to generate embeddings for rare or unseen words and capture morphological features."
+      },
+      {
+        "question": "What is the main advantage of semantic search over purely lexical search methods like BM25?",
+        "options": [
+          "It always runs faster than BM25.",
+          "It matches documents based on shared meaning rather than exact words.",
+          "It requires no preprocessing of documents.",
+          "It eliminates the need for re-rankers."
+        ],
+        "correct": 1,
+        "explanation": "Semantic search uses embeddings to capture the meaning of text, allowing it to find documents even if they don't share exact words."
+      },
+      {
+        "question": "Why are long documents split into smaller chunks before embedding?",
+        "options": [
+          "To make documents easier to read for users.",
+          "Because embedding models perform best with limited input lengths.",
+          "To reduce the number of documents in the index.",
+          "To remove irrelevant information from documents."
+        ],
+        "correct": 1,
+        "explanation": "Embedding models have input size limits, so documents are split into overlapping segments to ensure effective encoding."
+      },
+      {
+        "question": "What is the role of a cross-encoder re-ranker in semantic search pipelines?",
+        "options": [
+          "To split documents into chunks.",
+          "To compute embeddings for the query.",
+          "To rerank documents.",
+          "To replace BM25 in lexical retrieval."
+        ],
+        "correct": 2,
+        "explanation": "Cross-encoder process queries and documents together to produce more precise relevance scores than independent embeddings thus re-ranking the documents."
+      },
+      {
+        "question": "Why might a small document collection skip BM25 and start with semantic retrieval?",
+        "options": [
+          "Because BM25 is only useful for large datasets",
+          "To increase recall by considering semantic similarity directly",
+          "To reduce embedding dimensionality",
+          "Because re-rankers are unnecessary in small collections"
+        ],
+        "correct": 1,
+        "explanation": "In small collections, semantic retrieval directly over embeddings can retrieve more relevant candidates and improve recall."
+      },
+      {
+        "question": "In a retriever-ranker pipeline, what is the main focus of the retriever component?",
+        "options": [
+          "Maximizing precision of top-ranked results",
+          "Finding a set of candidate documents focused on recall",
+          "Splitting documents into chunks for embedding",
+          "Reducing the dimensionality of embeddings"
+        ],
+        "correct": 1,
+        "explanation": "The retriever aims to fetch a broad set of potentially relevant candidates, prioritizing recall over precision."
+      },
+      {
+        "question": "Which of the following best describes the advantage of multi-stage retrieval with MRL embeddings?",
+        "options": [
+          "It allows retrieval without any embedding computation.",
+          "It can use smaller subvectors for fast approximate searches and full vectors for precise re-ranking.",
+          "It eliminates the need for chunking long documents.",
+          "It guarantees exact lexical matches for all queries."
+        ],
+        "correct": 1,
+        "explanation": "MRL embeddings let systems balance efficiency and accuracy by using low-dimensional vectors for initial retrieval and full vectors for re-ranking."
+      },
+      {
+        "question": "Why might a system combine BM25, embeddings, and a re-ranker rather than using only embeddings?",
+        "options": [
+          "Because embeddings cannot capture any semantic information alone",
+          "To leverage BM25 speed, embedding semantic insight, and re-ranker precision",
+          "Because BM25 increases the dimensionality of embeddings",
+          "To reduce the need for document preprocessing"
+        ],
+        "correct": 1,
+        "explanation": "Combining these techniques allows the system to be fast, semantically aware, and precise, taking advantage of each method's strengths."
+      }
+    ]
+  }
+}
