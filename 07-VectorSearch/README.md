@@ -3,7 +3,7 @@ We examine the challenge of searching embeddings and feature vectors. We explain
 
 
 > **Slides**
-> [06_SemanticSearch.pdf](https://dmi.unibas.ch/fileadmin/user_upload/dmi/Studium/Computer_Science/Vorlesungen_HS23/Multimedia_Retrieval/HS25/06_SemanticSearch.pdf)
+> [07_VectorSearch.pdf](https://dmi.unibas.ch/fileadmin/user_upload/dmi/Studium/Computer_Science/Vorlesungen_HS23/Multimedia_Retrieval/HS25/07_VectorSearch.pdf)
 
 
 
