@@ -1,0 +1,14 @@
+tabulate
+ipywidgets
+langchain
+langchain-text-splitters
+pandas
+matplot
+PyPDF2
+unidecode
+beautifulsoup4
+nltk
+spaCy
+torch
+sentence_transformers
+seaborn
