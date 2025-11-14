@@ -1632,6 +1632,705 @@
         "correct": 1,
         "explanation": "Combining these techniques allows the system to be fast, semantically aware, and precise, taking advantage of each method's strengths."
       }
+    ],
+    "07 - Vector Search": [
+      {
+        "question": "Why did early keyword based retrieval systems struggle to return relevant results for queries like vacation photos?",
+        "options": [
+          "They lacked efficient indexing structures",
+          "They matched only explicit text labels rather than semantic meaning",
+          "They could not store enough metadata",
+          "They required too much computing power for image processing"
+        ],
+        "correct": 1,
+        "explanation": "Keyword systems relied on exact text matches and could not bridge the semantic gap between user intent and low level metadata."
+      },
+      {
+        "question": "What major limitation remained in early CBIR systems such as QBIC despite using feature extraction?",
+        "options": [
+          "They could not process color information",
+          "They depended strictly on manual tagging",
+          "They captured low level features without representing actual meaning",
+          "They required neural networks for feature extraction"
+        ],
+        "correct": 2,
+        "explanation": "CBIR features described surface traits such as color or texture but did not encode higher level semantic concepts."
+      },
+      {
+        "question": "Why did approximate nearest neighbor search become preferable to exact nearest neighbor search at large scale?",
+        "options": [
+          "Exact methods fail because dot products cannot be computed reliably",
+          "Applications value semantic relevance rather than exact geometric closeness",
+          "Approximate methods always return perfect results",
+          "Exact methods cannot compare vectors of mixed sign"
+        ],
+        "correct": 1,
+        "explanation": "Embedding based applications usually require relevant results rather than mathematically exact neighbors, which makes approximate methods adequate and far more efficient."
+      },
+      {
+        "question": "Why is Gaussian normalization useful when combining heterogeneous feature components?",
+        "options": [
+          "It converts features into binary values",
+          "It forces each dimension to have identical ranges and removes variance differences",
+          "It replaces the need for distance metrics entirely",
+          "It eliminates the need for dimensionality reduction"
+        ],
+        "correct": 1,
+        "explanation": "Gaussian normalization re-centers and scales each dimension so that no single range dominates distance calculations."
+      },
+      {
+        "question": "What motivates the use of quadratic distance functions in feature based retrieval?",
+        "options": [
+          "They ensure every dimension contributes equally to Euclidean distance",
+          "They remove all correlations between components without transformation",
+          "They incorporate dependencies between dimensions through a weighting matrix",
+          "They reduce dimensionality automatically"
+        ],
+        "correct": 2,
+        "explanation": "Quadratic distances use a positive semi definite matrix to model correlations among components which leads to more faithful similarity measures for dependent features."
+      },
+      {
+        "question": "What challenge makes Voronoi diagrams impractical in high dimensional vector search?",
+        "options": [
+          "They cannot represent Euclidean distance",
+          "Their number of regions and storage requirements grow exponentially with dimension",
+          "They require supervised training signals",
+          "They do not support nearest neighbor queries"
+        ],
+        "correct": 1,
+        "explanation": "Voronoi cells proliferate rapidly as dimensionality increases which makes both computation and storage infeasible."
+      },
+      {
+        "question": "What problem arises when splitting inner nodes in R trees that does not appear with leaf node splits?",
+        "options": [
+          "Inner nodes cannot store bounding rectangles",
+          "Inner nodes must preserve strict spatial ordering",
+          "Splits can introduce overlapping bounding regions that increase search effort",
+          "Splits force reconstruction of all ancestor nodes"
+        ],
+        "correct": 2,
+        "explanation": "Inner node splits often create overlapping regions which causes search operations to visit multiple branches and reduces efficiency."
+      },
+      {
+        "question": "In high dimensional semantic search, why do classical spatial structures such as Voronoi diagrams, gridfiles, and R trees fail to scale, even when carefully optimized?",
+        "options": [
+          "High dimensional embeddings do not support metric distance functions",
+          "Memory access becomes the dominant bottleneck regardless of structure",
+          "Distances between points converge which destroys meaningful spatial partitioning",
+          "Index structures require supervised labels that high dimensional data lacks"
+        ],
+        "correct": 2,
+        "explanation": "The curse of dimensionality causes distance values to cluster so that spatial partitions lose discriminative power which undermines the effectiveness of classical geometric indexes."
+      },
+      {
+        "question": "Why did keyword-based text retrieval systems often fail to return semantically related documents?",
+        "options": [
+          "They relied on inverted indexes that could not store numeric features",
+          "They depended on dot-product similarity rather than TF-IDF",
+          "They matched exact terms without capturing synonymy or conceptual relations",
+          "They normalized all vectors to unit length"
+        ],
+        "correct": 2,
+        "explanation": "Keyword systems lacked mechanisms for representing semantic relationships such as synonymy or paraphrase."
+      },
+      {
+        "question": "Why does brute-force nearest neighbor search become impractical for large-scale vector databases?",
+        "options": [
+          "Distances between points decrease toward zero as datasets grow",
+          "Computing similarity against every vector becomes prohibitively expensive",
+          "Normalization requires repeated retraining of embedding models",
+          "Dot products cannot be computed for mixed-sign vectors"
+        ],
+        "correct": 1,
+        "explanation": "Brute force requires comparing queries with all vectors, which becomes too costly at large scales."
+      },
+      {
+        "question": "What problem arises when Euclidean distance is applied to feature vectors whose dimensions have vastly different numeric ranges?",
+        "options": [
+          "Dot-product similarity becomes undefined",
+          "The feature with the smallest range dominates the calculation",
+          "Search accuracy becomes independent of normalization",
+          "The feature with the largest range dominates the distance computation"
+        ],
+        "correct": 3,
+        "explanation": "Dimensions with large numeric ranges dominate Euclidean distance, overshadowing lower-range components."
+      },
+      {
+        "question": "What makes R-trees increasingly inefficient as dimensionality rises?",
+        "options": [
+          "Their nodes require spherical instead of rectangular bounding regions",
+          "Splits always produce perfectly non-overlapping partitions",
+          "Overlaps among bounding rectangles grow, forcing searches to explore many branches",
+          "R-trees cannot support distance-based queries"
+        ],
+        "correct": 2,
+        "explanation": "Bounding rectangles overlap more in high dimensions, forcing exploration of multiple branches in searches."
+      },
+      {
+        "question": "Why does approximate nearest neighbor search generally outperform exact nearest neighbor search in large-scale embedding applications?",
+        "options": [
+          "Exact search requires convex distance metrics, which embeddings do not satisfy",
+          "Exact geometric closeness rarely correlates perfectly with relevance while ANN achieves high recall at far lower cost",
+          "ANN avoids normalization, which improves representation quality",
+          "ANN eliminates the need for indexing structures entirely"
+        ],
+        "correct": 1,
+        "explanation": "Relevance tolerates small errors in geometric ranking, so ANN delivers high recall without the heavy cost of exact search."
+      },
+      {
+        "question": "Why does the concept of “same direction” weaken in high-dimensional embedding spaces?",
+        "options": [
+          "Most vectors become parallel",
+          "There are too few possible sign combinations",
+          "The number of sign combinations grows exponentially with dimension",
+          "Dot products always increase with dimensionality"
+        ],
+        "correct": 2,
+        "explanation": "With 2^d possible sign patterns, matching all signs becomes unlikely as dimensionality grows."
+      },
+      {
+        "question": "Why does dot-product similarity converge toward zero in extremely high-dimensional normalized spaces?",
+        "options": [
+          "Vectors tend to align more strongly",
+          "Normalization reduces dimensionality",
+          "Most randomly distributed vectors become nearly orthogonal",
+          "Dot products are dominated by the largest component"
+        ],
+        "correct": 2,
+        "explanation": "Random high-dimensional vectors are almost orthogonal, so their dot products approach zero."
+      },
+      {
+        "question": "Why does the inverted file (IVF) method reduce search time when using k-means clustering?",
+        "options": [
+          "It eliminates the need for vector comparisons",
+          "It restricts search to data points within clusters nearest to the query",
+          "It increases the dimensionality of the vectors",
+          "It forces each cluster to contain only a single point"
+        ],
+        "correct": 1,
+        "explanation": "IVF narrows search to lists associated with the closest cluster centers."
+      },
+      {
+        "question": "What is the primary advantage of product quantization (PQ) over scalar quantization?",
+        "options": [
+          "It avoids using k-means clustering",
+          "It converts vectors into hyperplane-based bit strings",
+          "It quantizes groups of dimensions to achieve stronger compression with acceptable error",
+          "It guarantees exact nearest neighbor retrieval"
+        ],
+        "correct": 2,
+        "explanation": "PQ clusters sub-vectors, enabling high compression while preserving approximate distances."
+      },
+      {
+        "question": "In Lucene, which component is responsible for organizing vectors into the structure that enables approximate nearest neighbor search?",
+        "options": [
+          "The BooleanQuery engine",
+          "The HNSW graph maintained per segment",
+          "The IndexWriterConfig analyzer",
+          "The IntPoint range index"
+        ],
+        "correct": 1,
+        "explanation": "Lucene uses an HNSW graph stored in each segment to support approximate nearest neighbor search."
+      },
+      {
+        "question": "When using KnnVectorQuery in Lucene, what does the parameter k signify?",
+        "options": [
+          "The minimum similarity threshold",
+          "The number of vectors stored per document",
+          "The number of nearest neighbors to retrieve",
+          "The number of index segments merged"
+        ],
+        "correct": 2,
+        "explanation": "The k parameter sets how many nearest neighbors the query should return."
+      },
+      {
+        "question": "Why does Lucene merge k-NN results across segments during search?",
+        "options": [
+          "Because each segment maintains its own HNSW graph",
+          "Because Lucene only stores one vector per index",
+          "Because BooleanQuery requires merge operations for filters",
+          "Because scoring is unavailable at the segment level"
+        ],
+        "correct": 0,
+        "explanation": "Each segment builds its own HNSW structure, so results must be merged during search."
+      },
+      {
+        "question": "In PostgreSQL with pgvector, how does the query optimizer integrate vector similarity into typical SQL filtering?",
+        "options": [
+          "It rewrites vector operators into JSON search expressions",
+          "It treats vector operators as standard indexable expressions",
+          "It requires disabling all other indexes during vector filtering",
+          "It forces sequential scans for all vector comparisons"
+        ],
+        "correct": 1,
+        "explanation": "Vector operators plug into the PostgreSQL planner like other indexed expressions, allowing combined filtering and ordering."
+      },
+      {
+        "question": "When inserting documents into a Lucene index containing KnnVectorField values, what happens to the HNSW graph?",
+        "options": [
+          "It must be manually rebuilt after each commit",
+          "It is automatically constructed and updated as vectors are added",
+          "It is stored only at query time to reduce memory usage",
+          "It is shared across all segments to avoid duplication"
+        ],
+        "correct": 1,
+        "explanation": "Lucene automatically builds and updates the HNSW structure as vectors are added to the index."
+      },
+      {
+        "question": "Why do Lucene and OpenSearch segments or shards each maintain their own HNSW graphs?",
+        "options": [
+          "To enforce transactional consistency on vector updates",
+          "Because vector graphs are too large to store globally",
+          "Because segment and shard isolation allows parallel construction and merging of results",
+          "To support only brute force search at query time"
+        ],
+        "correct": 2,
+        "explanation": "Each segment or shard maintains its own HNSW to enable independent indexing and merging of results at search time."
+      },
+      {
+        "question": "What advantage does PostgreSQL gain by treating vector distance operators like <-> and <=> as part of its query planner?",
+        "options": [
+          "It offloads vector search to external engines without overhead",
+          "It allows vector similarity to be optimized alongside traditional SQL filters and indexes",
+          "It ensures distributed execution of vector queries",
+          "It converts vector queries into HNSW updates"
+        ],
+        "correct": 1,
+        "explanation": "Integrating vector operators into the planner allows PostgreSQL to unify vector similarity with standard SQL optimization."
+      },
+      {
+        "question": "Suppose you have identical datasets in Lucene, OpenSearch, and PostgreSQL, each using HNSW with cosine-based metrics. You issue a vector plus year < 2000 constraint query across all systems. Which factor most profoundly explains why result rankings might diverge even with the same embeddings and similarity metric?",
+        "options": [
+          "Lucene and PostgreSQL always return exact neighbors while OpenSearch never does",
+          "Differences in HNSW graph construction timing, segment or shard partitioning, and per-system merge strategies may alter approximate search paths",
+          "Cosine similarity cannot be consistently applied outside of SQL-based systems",
+          "PostgreSQL automatically normalizes vectors in a way Lucene rejects"
+        ],
+        "correct": 1,
+        "explanation": "Variations in graph construction, segment or shard partitioning, and merging logic can affect approximate neighbor retrieval paths, causing ranking differences."
+      }
+    ],
+    "08 - Retrieval Augmented Generation": [
+      {
+        "question": "Why is understanding user intent considered essential in modern information retrieval systems?",
+        "options": [
+          "It allows systems to match exact keywords regardless of context",
+          "It reduces the need for ranking algorithms and embeddings",
+          "It ensures that systems return responses aligned with what the user is truly seeking rather than surface-level matches",
+          "It eliminates the need for retrieval augmentation mechanisms"
+        ],
+        "correct": 2,
+        "explanation": "Understanding intent ensures retrieval systems provide answers that fit the user's underlying goal instead of surface-level keyword matches."
+      },
+      {
+        "question": "What motivates the shift toward hierarchical chunking in RAG systems?",
+        "options": [
+          "The need to eliminate embeddings entirely",
+          "The desire to make all chunks identical in size",
+          "The goal of combining small, semantically precise retrieval units with larger context for generation",
+          "The requirement that all documents be split strictly by character counts"
+        ],
+        "correct": 2,
+        "explanation": "Hierarchical chunking uses small pieces for accurate retrieval and larger merged units for richer generation, balancing precision and context."
+      },
+      {
+        "question": "In semantic splitting, why is iterative merging of adjacent chunks based on similarity an effective strategy?",
+        "options": [
+          "It guarantees equal-length chunks for embedding models",
+          "It prevents any two sentences with different vocabulary from appearing together",
+          "It gradually forms topic-coherent segments while maintaining boundaries between unrelated parts",
+          "It avoids the need for sentence tokenization entirely"
+        ],
+        "correct": 2,
+        "explanation": "Iterative merging builds coherent chunks aligned to meaning by grouping nearby sentences with strong semantic continuity."
+      },
+      {
+        "question": "What primary challenge arises when splitting text solely by structural elements such as paragraphs or chapters?",
+        "options": [
+          "All resulting chunks become shorter than embedding size limits",
+          "Structural boundaries may produce chunks that are too large or too small for effective retrieval or generation",
+          "Documents automatically align perfectly with semantic shifts",
+          "RAG systems cannot operate on structured documents"
+        ],
+        "correct": 1,
+        "explanation": "Structural units often vary widely in length, which can create either oversized or undersized chunks unsuitable for retrieval or generation."
+      },
+      {
+        "question": "Why is query-aware chunking increasingly valuable as models gain larger context windows?",
+        "options": [
+          "It reduces the need for dynamic retrieval by returning all document text at once",
+          "It adapts the amount of context to the type of question, optimizing relevance, efficiency, and reasoning quality",
+          "It requires no embeddings and only uses rule-based heuristics",
+          "It ensures that all queries use identical chunk sizes"
+        ],
+        "correct": 1,
+        "explanation": "Query-aware chunking adjusts context to match intent, improving efficiency and relevance even when large context windows exist."
+      },
+      {
+        "question": "What is the role of Google's Knowledge Graph in search?",
+        "options": [
+          "Providing raw documents in response to queries",
+          "Listing multiple web pages with relevant keywords",
+          "Supplying authoritative, structured facts combined with retrieved data",
+          "Focusing solely on commercial offers in search results"
+        ],
+        "correct": 2,
+        "explanation": "Google's Knowledge Graph supplies authoritative, structured facts that enhance search results with clear, context-aware responses."
+      },
+      {
+        "question": "How do featured snippets represent an early form of Retrieval-Augmented Generation (RAG)?",
+        "options": [
+          "By generating entirely new text without retrieved documents",
+          "By extracting short, relevant answers from web pages",
+          "By listing links with keyword matches only",
+          "By focusing solely on commercial product information"
+        ],
+        "correct": 1,
+        "explanation": "Featured snippets extract short, relevant answers for the given query, an important step toward modern RAG techniques."
+      },
+      {
+        "question": "Why is Retrieval-Augmented Generation (RAG) preferred over fine-tuning a large language model for specific contexts?",
+        "options": [
+          "RAG is faster and less costly, retrieving up-to-date information when asked",
+          "Fine-tuning always produces less accurate answers",
+          "RAG does not require any training data",
+          "Fine-tuning models cannot handle personal questions"
+        ],
+        "correct": 0,
+        "explanation": "RAG retrieves relevant and current information efficiently, avoiding the high cost and inflexibility of fine-tuning."
+      },
+      {
+        "question": "What is a limitation of sentence-based chunking?",
+        "options": [
+          "It cannot handle long sentences",
+          "Sentence boundaries do not always correspond to topic shifts or logical sections",
+          "It produces chunks that are too small for embedding",
+          "It always requires manual tuning of chunk sizes"
+        ],
+        "correct": 1,
+        "explanation": "While sentence-based chunking preserves sentence integrity, sentence boundaries may not align with meaningful topic changes."
+      },
+      {
+        "question": "What is the primary goal of query transformation in information retrieval?",
+        "options": [
+          "To change the user's original intent for broader search results",
+          "To improve recall by finding more relevant documents while preserving the original intent",
+          "To simplify queries for faster processing",
+          "To limit search results to exact keyword matches"
+        ],
+        "correct": 1,
+        "explanation": "Query transformation aims to improve recall by finding more relevant documents while maintaining the user's original intent."
+      },
+      {
+        "question": "Why is spell-checking an important first step in query transformation?",
+        "options": [
+          "It expands the query with synonyms",
+          "It detects user intent more accurately",
+          "It prevents recall loss caused by misspelled terms",
+          "It automatically generates paraphrases"
+        ],
+        "correct": 2,
+        "explanation": "Spell-checking corrects misspellings, which prevents recall loss by ensuring terms match document words."
+      },
+      {
+        "question": "Which of the following best describes the vocabulary gap in information retrieval?",
+        "options": [
+          "The difference between user query length and document length",
+          "The mismatch between the words users use and those in documents",
+          "A gap in the user's knowledge about search techniques",
+          "The time delay between query submission and results retrieval"
+        ],
+        "correct": 1,
+        "explanation": "The vocabulary gap refers to the mismatch between user query wording and document terminology."
+      },
+      {
+        "question": "What unique capabilities do large language models (LLMs) provide in query transformation?",
+        "options": [
+          "Only correcting spelling mistakes",
+          "Generating multiple paraphrases and reasoning through queries for richer understanding",
+          "Strict synonym replacement based on lexical databases",
+          "Limiting queries to exact keyword matches"
+        ],
+        "correct": 1,
+        "explanation": "LLMs generate diverse paraphrases and use deep reasoning to understand user intent and enhance query formulation."
+      },
+      {
+        "question": "What risk is associated with pseudo-relevance feedback in query transformation?",
+        "options": [
+          "Ignoring user input completely",
+          "Query drift due to incorporating terms from irrelevant top results",
+          "Overfitting to the user's original query terms",
+          "Reducing recall by limiting expansions"
+        ],
+        "correct": 1,
+        "explanation": "Pseudo-relevance feedback risks query drift if the initial top results are off-topic, leading to irrelevant term expansions."
+      },
+      {
+        "question": "How do systems typically prevent query drift when expanding queries with multiple related terms?",
+        "options": [
+          "By deleting all original query terms after expansion",
+          "By assigning highest weights to original terms and lower weights to expansions",
+          "By restricting expansions to synonyms only",
+          "By ignoring semantic similarity between original and expanded queries"
+        ],
+        "correct": 1,
+        "explanation": "Assigning higher weights to original terms anchors the search, preventing the query from drifting too far from its intent."
+      },
+      {
+        "question": "When is a generative reader most appropriate?",
+        "options": [
+          "For questions requiring exact quotes from one document.",
+          "For combining information from multiple sources into a coherent summary.",
+          "For retrieving a list of documents.",
+          "For simple yes/no questions."
+        ],
+        "correct": 1,
+        "explanation": "Generative readers excel at merging details from several documents to answer complex or open-ended questions."
+      },
+      {
+        "question": "What is a key disadvantage of generative readers compared to extractive readers?",
+        "options": [
+          "They cannot handle complex questions.",
+          "They are slower to run.",
+          "They risk hallucinating unsupported details.",
+          "They only work with small contexts."
+        ],
+        "correct": 2,
+        "explanation": "Generative readers can invent details not present in the sources, requiring careful control to avoid hallucinations."
+      },
+      {
+        "question": "How does a synthesizer improve answer accuracy?",
+        "options": [
+          "By selecting answers only from one passage.",
+          "By using multiple retrieval and reasoning steps to build layered information.",
+          "By eliminating the need for a retriever.",
+          "By copying exact text spans from documents."
+        ],
+        "correct": 1,
+        "explanation": "A synthesizer coordinates several retrieval steps, combining multiple layers of information to produce a more complete and accurate answer."
+      },
+      {
+        "question": "What is the role of guardrails in a RAG system?",
+        "options": [
+          "To generate answers from the model's prior knowledge.",
+          "To ensure answers are accurate, safe, and relevant to the domain.",
+          "To speed up the retrieval process.",
+          "To eliminate the need for citations."
+        ],
+        "correct": 1,
+        "explanation": "Guardrails restrict the system to use only retrieved evidence and maintain answer relevance and accuracy within the application's scope."
+      },
+      {
+        "question": "How does an extractive reader based on BERT identify an answer in a passage?",
+        "options": [
+          "By generating new text based on the passage.",
+          "By predicting start and end token positions of the answer span.",
+          "By summarizing the entire passage.",
+          "By reranking retrieved documents."
+        ],
+        "correct": 1,
+        "explanation": "The extractive BERT model predicts start and end positions in the passage that define the answer span."
+      },
+      {
+        "question": "Why is effective prompt engineering important in generative readers?",
+        "options": [
+          "It improves retrieval speed.",
+          "It guarantees 100% factual accuracy.",
+          "It guides the model to stay grounded in retrieved documents and avoid hallucination.",
+          "It removes the need for a retriever."
+        ],
+        "correct": 2,
+        "explanation": "Prompt engineering helps keep generative models focused on retrieved evidence, reducing the risk of hallucinating incorrect details."
+      },
+      {
+        "question": "What is the main difference between an extractive reader and a generative reader in how they produce answers?",
+        "options": [
+          "Extractive readers generate new text; generative readers select exact words",
+          "Extractive readers select exact spans from passages; generative readers create new text token by token",
+          "Extractive readers summarize documents; generative readers only retrieve documents",
+          "Extractive readers use large language models; generative readers use transformers"
+        ],
+        "correct": 1,
+        "explanation": "Extractive readers pick exact text spans from input passages; generative readers produce new, coherent text based on learned patterns."
+      },
+      {
+        "question": "What advantage does citation integration provide in a RAG system's output?",
+        "options": [
+          "It reduces the complexity of the retrieval process",
+          "It allows users to verify answers and enhances trust through transparent sourcing",
+          "It eliminates the need for guardrails",
+          "It speeds up the answer generation by skipping retrieval"
+        ],
+        "correct": 1,
+        "explanation": "Citations link answers to source documents, enabling users to confirm accuracy and increasing trustworthiness."
+      }
+    ],
+    "09 - Web Search": [
+      {
+        "question": "What was a key innovation that distinguished Google's early search engine from other search engines in the late 1990s?",
+        "options": [
+          "Using a basic Boolean search only",
+          "Introducing PageRank to re-rank results based on link structure",
+          "Building only product catalogs for search",
+          "Showing ads between search results"
+        ],
+        "correct": 1,
+        "explanation": "Google introduced PageRank, a novel method to rank pages using link structure, which set it apart from other search engines that mainly relied on basic keyword searches."
+      },
+      {
+        "question": "What is one main difference between classical text retrieval systems and web search engines regarding document structure?",
+        "options": [
+          "Classical retrieval systems use unstructured documents, while web search uses only PDFs",
+          "Classical retrieval relies on structured and uniform documents, while the web contains highly heterogeneous and unstructured documents",
+          "Web search only indexes structured documents, unlike classical retrieval",
+          "Classical retrieval does not use indexing"
+        ],
+        "correct": 1,
+        "explanation": "Classical retrieval systems operate on well-structured documents with known formats, whereas web documents vary widely and lack uniform structure."
+      },
+      {
+        "question": "Why is proximity of query terms in documents important for web retrieval but less so for classical retrieval?",
+        "options": [
+          "Because web documents are shorter",
+          "Because classical retrieval assumes terms are always adjacent",
+          "Because web documents are large and may contain query terms far apart, making proximity a better relevance indicator",
+          "Because classical retrieval does not consider term frequency"
+        ],
+        "correct": 2,
+        "explanation": "Web documents can be lengthy and contain terms scattered throughout; closer proximity of query terms usually indicates higher relevance in web search."
+      },
+      {
+        "question": "How do search engines use anchor text from incoming links in ranking pages?",
+        "options": [
+          "They ignore anchor text as it is often spam",
+          "Anchor text boosts the relevance of pages described by those terms, weighted heavily due to difficulty in manipulation",
+          "Anchor text only helps identify document structure",
+          "Anchor text replaces page content entirely in ranking"
+        ],
+        "correct": 1,
+        "explanation": "Anchor text describes the target page and is used as a strong relevance signal, with large numbers of reliable anchor texts boosting page rankings."
+      },
+      {
+        "question": "What challenge does the lack of quality control on the web pose to search engines compared to classical retrieval systems?",
+        "options": [
+          "Web content is all highly reliable and structured",
+          "Web content quality varies greatly, with spam and misinformation, making relevance ranking harder",
+          "Classical retrieval systems face more spam than web search",
+          "Web search engines do not need to rank results"
+        ],
+        "correct": 1,
+        "explanation": "The web contains highly variable content quality, including spam and false information, complicating search engines' efforts to rank results effectively."
+      },
+      {
+        "question": "Which of the following best describes navigational search queries?",
+        "options": [
+          "Queries intended to purchase products or services",
+          "Queries aimed at finding specific websites or sections",
+          "Queries asking general informational questions",
+          "Queries with long-tail keywords"
+        ],
+        "correct": 1,
+        "explanation": "Navigational queries target specific websites or parts of websites, like 'youtube' or 'facebook login.'"
+      },
+      {
+        "question": "How do neural network-based reader models enhance web search results?",
+        "options": [
+          "By generating advertisements within search results",
+          "By ranking pages based on link structures",
+          "By pinpointing relevant passages that directly answer natural language queries",
+          "By increasing the number of search results returned"
+        ],
+        "correct": 2,
+        "explanation": "Reader models locate the most relevant passages within documents to answer natural language queries effectively."
+      },
+      {
+        "question": "What primary factor distinguishes the importance of links in PageRank compared to simply counting the number of incoming links?",
+        "options": [
+          "The topic relevance of the linked page",
+          "The quality or importance of the source page",
+          "The length of the anchor text",
+          "The frequency of the outgoing links from the target page"
+        ],
+        "correct": 1,
+        "explanation": "PageRank weights links based on the importance (PageRank) of the source page rather than just the number of incoming links."
+      },
+      {
+        "question": "How does the HITS algorithm differ fundamentally from PageRank in evaluating web pages?",
+        "options": [
+          "HITS is query-specific and assesses both hubs and authorities; PageRank is query-agnostic and global",
+          "HITS only considers incoming links; PageRank only considers outgoing links",
+          "HITS ranks pages based on keyword frequency; PageRank uses random surfing",
+          "HITS relies on user click data; PageRank relies on server logs"
+        ],
+        "correct": 0,
+        "explanation": "HITS works within a query-dependent subgraph identifying hubs and authorities, while PageRank calculates a global importance independent of queries."
+      },
+      {
+        "question": "In the HITS algorithm, what characterizes a 'hub' page?",
+        "options": [
+          "A page with numerous incoming links from authorities",
+          "A page with many outgoing links to recognized authorities on the topic",
+          "A page with no outbound links",
+          "A page ranked highest by PageRank"
+        ],
+        "correct": 1,
+        "explanation": "A hub is defined by its many outgoing links to authoritative pages relevant to the topic."
+      },
+      {
+        "question": "What issue arises in HITS if a domain excessively links to the same external page, and how is this mitigated?",
+        "options": [
+          "It creates biased PageRank; mitigated by damping factor",
+          "It causes overpowered authorities; mitigated by weighting votes at the domain level",
+          "It inflates hub scores; mitigated by ignoring self-links",
+          "It leads to disconnected graphs; mitigated by pruning links"
+        ],
+        "correct": 1,
+        "explanation": "Multiple links from one domain to a page can create overpowered authorities; weighting votes at the domain level reduces this bias."
+      },
+      {
+        "question": "Why does PageRank tend to favor older web pages over newer ones?",
+        "options": [
+          "Older pages have more content",
+          "Older pages are linked by more and thus accumulate higher PageRank over time",
+          "New pages are excluded from the adjacency matrix",
+          "New pages have fewer outgoing links"
+        ],
+        "correct": 1,
+        "explanation": "Older pages accumulate more incoming links, gaining higher PageRank, while new pages lack sufficient links initially."
+      },
+      {
+        "question": "Why is the PageRank algorithm described as query-agnostic?",
+        "options": [
+          "It ignores link structure and only considers keywords.",
+          "It calculates a global importance score independent of query terms.",
+          "It dynamically adjusts rankings for each user query.",
+          "It focuses exclusively on anchor text matching."
+        ],
+        "correct": 1,
+        "explanation": "PageRank produces a global importance score for pages independent of any specific query, serving as a page-level boost."
+      },
+      {
+        "question": "What is the key difference between hubs and authorities in the HITS algorithm?",
+        "options": [
+          "Hubs are authoritative pages, authorities link to many hubs.",
+          "Authorities link to hubs, hubs receive many incoming links.",
+          "Hubs link to many authorities; authorities receive many incoming links from hubs.",
+          "Hubs and authorities are identical concepts used interchangeably."
+        ],
+        "correct": 2,
+        "explanation": "In HITS, hubs point to many authorities, and authorities are pages receiving many incoming links from hubs."
+      },
+      {
+        "question": "How does the HITS algorithm incorporate the concept of topic relevance in ranking?",
+        "options": [
+          "By using PageRank values to weight hubs and authorities.",
+          "By considering only the number of incoming and outgoing links regardless of topic.",
+          "By operating on a base set of pages related to the user’s query topic.",
+          "By ignoring link structure and focusing on content similarity."
+        ],
+        "correct": 2,
+        "explanation": "HITS builds a base set around the query to focus on pages relevant to the topic, unlike PageRank which is global and query-agnostic."
+      }
     ]
   }
 }
