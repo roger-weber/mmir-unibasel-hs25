@@ -39,7 +39,7 @@ Throughout, students engage with theoretical and hands-on practical exercises, a
 | 07      | [Vector Search](./07-VectorSearch/README.md)                   | We examine the challenge of searching embeddings and feature vectors. We explain the curse of dimensionality and review techniques used by vector search engines today.                                   |
 | 08      | [Retrieval Augmented Generation](./08-RetrievalAugementedGeneration/README.md)  | We show how large language models can improve responses to users by using retrieved information. We apply this approach to text search.                                                                   |
 | 09      | [Web Search](./09-WebSearch/README.md)                      | We study web retrieval, specifically methods that influence rankings using the relationships among documents or web pages.                                                                                |
-| 10      | Multimodal Content Analysis     | We explain multimodal content analysis and how to evaluate extracted features using a confusion matrix. We present metadata extraction as a simple method to bridge the semantic gap.                      |
+| 10      | [Multimodal Content Analysis](./10-MultimodalContentAnalysis/README.md)     | We explain multimodal content analysis and how to evaluate extracted features using a confusion matrix. We present metadata extraction as a simple method to bridge the semantic gap.                      |
 | 11      | Visual Features                 | We cover the human perception of visual signal information and examine several algorithms for extracting features that describe color, texture, and shape aspects found in the images.                     |
 | 12      | Acoustic Features               | We cover the human perception of audio signals and study various algorithms for extracting features in both the time and frequency domains.                                                                |
 | 13      | Spatiotemporal Features         | We present simple methods to describe how videos change over time and across space.                                                                                                                      |
@@ -72,8 +72,9 @@ New questions are added as we progress in the course. There is a short [User Man
 | **Practical Exercise 1** | Benchmarking | <ul><li>Work through [Practical Exercise 1: Benchmarking](./98-Exercises/PEx_1_EvaluationClassicalRetrieval.md)</ul> |
 | **Theoretical Exercise 2** | Evaluation | <ul><li>Work through [Theoretical Exercise 2.1: Precision, Recall, and MRR](./98-Exercises/TEx_2_1_PrecisionRecallMRR.md)<li>Work through [Theoretical Exercise 2.2: Graded Relevance](./98-Exercises/TEx_2_2_GradedRelevance.md)<li>Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 3-4</ul> |
 | **Practical Exercise 2** | Text Retrieval with Lucene | <ul><li>Work through [Practical Exercise 2: Text Retrieval](./98-Exercises/PEx_2_TextRetrievalWithLucene.md)</ul> |
-| **Theoretical Exercise 3** | Semantic Search | <ul><li>Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 5-5</ul> |
+| **Theoretical Exercise 3** | Semantic Search | <ul><li>Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 5-6</ul> |
 | **Practical Exercise 3** | Semantic Search | <ul><li>Work through [Practical Exercise 3: Semantic Search](./98-Exercises/PEx_3_SemanticSearch.md)</ul> |
+| **Theoretical Exercise 4** | Web Search | <ul><li>Work through [Theoretical Exercise 4.1: Hubs, Authorities, and PageRank](./98-Exercises/TEx_4_1_Hubs_Authorities_PageRank.md)<<li>Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 7–9</ul> |
 
 <br>
 

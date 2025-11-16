@@ -1,0 +1,20 @@
+Extract key metadata from the following text summary and structure it into a JSON document. The metadata fields you should extract are:
+
+title (the main title or headline of the text)
+author (the name of the author or creator)
+date (the date of publication or creation)
+summary (a concise summary or abstract of the text)
+keywords (a list of important keywords or concepts from the text)
+source (the original source or publication of the text)
+If any metadata is missing, return it as null. Organize the output into a well-formatted JSON document.
+
+Expected JSON Output Example:
+
+{
+  "title": "null",
+  "author": "null",
+  "date": "null",
+  "summary": "[Insert summary text]",
+  "keywords": [],
+  "source": "null"
+}
