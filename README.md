@@ -74,7 +74,7 @@ New questions are added as we progress in the course. There is a short [User Man
 | **Practical Exercise 2** | Text Retrieval with Lucene | <ul><li>Work through [Practical Exercise 2: Text Retrieval](./98-Exercises/PEx_2_TextRetrievalWithLucene.md)</ul> |
 | **Theoretical Exercise 3** | Semantic Search | <ul><li>Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 5-6</ul> |
 | **Practical Exercise 3** | Semantic Search | <ul><li>Work through [Practical Exercise 3: Semantic Search](./98-Exercises/PEx_3_SemanticSearch.md)</ul> |
-| **Theoretical Exercise 4** | Web Search | <ul><li>Work through [Theoretical Exercise 4.1: Hubs, Authorities, and PageRank](./98-Exercises/TEx_4_1_Hubs_Authorities_PageRank.md)<<li>Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 7–9</ul> |
+| **Theoretical Exercise 4** | Web Search | <ul><li>Work through [Theoretical Exercise 4.1: Hubs, Authorities, and PageRank](./98-Exercises/TEx_4_1_Hubs_Authorities_PageRank.md)<li>Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 7–9</ul> |
 
 <br>
 
