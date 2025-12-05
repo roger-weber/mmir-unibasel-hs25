@@ -40,8 +40,8 @@ Throughout, students engage with theoretical and hands-on practical exercises, a
 | 08      | [Retrieval Augmented Generation](./08-RetrievalAugementedGeneration/README.md)  | We show how large language models can improve responses to users by using retrieved information. We apply this approach to text search.                                                                   |
 | 09      | [Web Search](./09-WebSearch/README.md)                      | We study web retrieval, specifically methods that influence rankings using the relationships among documents or web pages.                                                                                |
 | 10      | [Multimodal Content Analysis](./10-MultimodalContentAnalysis/README.md)     | We explain multimodal content analysis and how to evaluate extracted features using a confusion matrix. We present metadata extraction as a simple method to bridge the semantic gap.                      |
-| 11      | Visual Features                 | We cover the human perception of visual signal information and examine several algorithms for extracting features that describe color, texture, and shape aspects found in the images.                     |
-| 12      | Acoustic Features               | We cover the human perception of audio signals and study various algorithms for extracting features in both the time and frequency domains.                                                                |
+| 11      | [Visual Features](https://dmi.unibas.ch/fileadmin/user_upload/dmi/Studium/Computer_Science/Vorlesungen_HS23/Multimedia_Retrieval/HS25/11_VisualFeatures.pdf)                 | We cover the human perception of visual signal information and examine several algorithms for extracting features that describe color, texture, and shape aspects found in the images.                     |
+| 12      | [Acoustic Features](https://dmi.unibas.ch/fileadmin/user_upload/dmi/Studium/Computer_Science/Vorlesungen_HS23/Multimedia_Retrieval/HS25/12_AcousticFeatures.pdf)               | We cover the human perception of audio signals and study various algorithms for extracting features in both the time and frequency domains.                                                                |
 | 13      | Spatiotemporal Features         | We present simple methods to describe how videos change over time and across space.                                                                                                                      |
 | 14      | Classifiers                     | We study network architectures that extract classifiers from images and audio files to serve as focused content descriptors.                                                                               |
 | 15      | Multimodal Search               | We use transformer-based models to generate improved descriptions and classifiers and examine how to integrate them into the retrieval process.                                                            |
@@ -75,7 +75,8 @@ New questions are added as we progress in the course. There is a short [User Man
 | **Theoretical Exercise 3** | Semantic Search | <ul><li>Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 5-6</ul> |
 | **Practical Exercise 3** | Semantic Search | <ul><li>Work through [Practical Exercise 3: Semantic Search](./98-Exercises/PEx_3_SemanticSearch.md)</ul> |
 | **Theoretical Exercise 4** | Web Search | <ul><li>Work through [Theoretical Exercise 4.1: Hubs, Authorities, and PageRank](./98-Exercises/TEx_4_1_Hubs_Authorities_PageRank.md)<li>Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 7–9</ul> |
-
+| **Practical Exercise 4** | Visual Features | <ul><li>Work through [Practical Exercise 4: Visual Features](./98-Exercises/PEx_4_VisualFeatures.md)</ul> |
+| **Theoretical Exercise 5** | Web Search | <ul><li>Complete the [Quiz App](https://roger-weber.github.io/mmir-unibasel-hs25/) for Chapters 10–14</ul> |
 <br>
 
 ---
