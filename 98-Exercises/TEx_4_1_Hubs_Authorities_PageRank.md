@@ -4,11 +4,10 @@ Consider the following directed network:
 
 <img src="TEx_4_1_Network.png" width="600"/>
 
-In this exercise, we analyze the nodes in the network using three important measures: **hub scores**, **authority scores**, and **PageRank**. These measures help us understand the roles that nodes play in the given network.
-
+In this exercise, we analyze the nodes in the network using three important measures: **hub scores**, **authority scores**, and **PageRank**. These measures help us understand the roles that nodes play in the given network. In this exercise, we apply the original **HITS (Hyperlink-Induced Topic Search)** algorithm.
 
 ### Task 4.1a
-We have defined matrices $\mathbf{M}$ and $\mathbf{A}$ for the iterative computations. In this part, we apply the original **HITS (Hyperlink-Induced Topic Search)** algorithm. The following update rules are used:
+We have defined matrices $\mathbf{M}$ and $\mathbf{A}$ for the iterative computations of HITS and PageRank. The following update rules are used:
 
 $$\mathbf{A}^{(t+1)}=\frac{1-\alpha }{N}\cdot\mathbf{1}+\alpha\cdot\mathbf{M}\cdot\mathbf{r}^{\left(t\right)}$$ 
 
@@ -16,7 +15,8 @@ $$\mathbf{h}^{(t+1)}=\mathbf{A}\cdot \mathbf{a}^{\left(t\right)}$$
 
 $$\mathbf{a}^{\left(t+1\right)}=\mathbf{A}^⊤\cdot\mathbf{h}^{(t)}$$
 
-Compute the matrices for the network shown above. This includes constructing the adjacency matrix, the transition matrix, and the matrices used during the HITS iterations.
+Compute the matrices for the network shown above. This includes constructing the adjacency matrix, the transition matrix, and the matrices used during the HITS and PageRank iterations.
+
 
 > <details>
 > <summary>Solution</summary>
