@@ -27,9 +27,9 @@ Compute the nDCG for each query and for both systems. Then, calculate the averag
 
 ---
 
-# Task 2.1b
+# Task 2.2b
 
-Consider the 10 queries for Task 2.1c: both systems are tested on 10 queries, each returning the top 10 results. A '+' indicates a relevant document (grade = 1), and a blank cell indicates a non-relevant document (grade = 0). Compare both systems using the average nDCG.
+Consider the 10 queries for Task 2.1b: both systems are tested on 10 queries, each returning the top 10 results. A '+' indicates a relevant document (grade = 1), and a blank cell indicates a non-relevant document (grade = 0). Compare both systems using the average nDCG.
 
 
 > <details>
@@ -40,7 +40,7 @@ Consider the 10 queries for Task 2.1c: both systems are tested on 10 queries, ea
 
 ---
 
-# Task 2.1c
+# Task 2.2c
 
 Two DCG calculation methods are given below. Apply both methods to the scenario in (b), changing the relevance grades for '+' documents from 1 to 3. Describe your observations.
 
@@ -54,7 +54,6 @@ Two DCG calculation methods are given below. Apply both methods to the scenario 
 > <summary>Solution</summary>
 > <br>
 > When we adjust the relevance grades from 1 to 3, the nDCG values for Engines A and B remain unchanged when using the formula on the left. This occurs because both DCG and IDCG scale proportionally with the grade values of relevant documents, and this proportionality cancels out when computing their ratio in nDCG. The same principle applies to the formula on the right. Since our evaluation uses only 0 and maximum-grade values, $2^{max−grade}−1$ serves merely as a scaling factor for both DCG and IDCG, resulting in identical nDCG values regardless of the chosen maximum grade. Differences in nDCG would appear only if intermediate grades between 0 and 3 were included.
-> When we adjust grades from 1 to 3, nDCG values for A and B remain unchanged with the left formula below. This is because both DCG and IDCG are proportionate to the grade value of relevant documents, canceling out when we calculate their ratio for nDCG. The same principle applies to the right formula below. Given our assessment uses only 0 and max-grade values,  becomes the scaling factor for DCG and IDCG, resulting in identical nDCG values as we change max-grade. Differences in results would emerge if we included grades between 0 and 3.
 >
 > </details>
 
