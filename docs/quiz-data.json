@@ -1778,7 +1778,7 @@
         "explanation": "Relevance tolerates small errors in geometric ranking, so ANN delivers high recall without the heavy cost of exact search."
       },
       {
-        "question": "Why does the concept of “same direction” weaken in high-dimensional embedding spaces?",
+        "question": "Why does the concept of 'same direction' weaken in high-dimensional embedding spaces?",
         "options": [
           "Most vectors become parallel",
           "There are too few possible sign combinations",
@@ -2325,11 +2325,802 @@
         "options": [
           "By using PageRank values to weight hubs and authorities.",
           "By considering only the number of incoming and outgoing links regardless of topic.",
-          "By operating on a base set of pages related to the user’s query topic.",
+          "By operating on a base set of pages related to the user's query topic.",
           "By ignoring link structure and focusing on content similarity."
         ],
         "correct": 2,
         "explanation": "HITS builds a base set around the query to focus on pages relevant to the topic, unlike PageRank which is global and query-agnostic."
+      }
+    ],
+    "10 - Multimodal Content Analysis": [
+      {
+        "question": "What is the primary goal of multimodal content analysis in information retrieval systems?",
+        "options": [
+          "To extract and unify insights from multiple media types into coherent, searchable knowledge",
+          "To store raw multimedia data in its original formats",
+          "To filter multimedia content based on user preferences only",
+          "To translate audio into text without considering other media"
+        ],
+        "correct": 0,
+        "explanation": "Multimodal content analysis aims to combine data from text, images, audio, and video into meaningful, searchable representations."
+      },
+      {
+        "question": "Which of the following best describes the semantic gap in multimodal analysis?",
+        "options": [
+          "The gap between different media types like audio and video",
+          "The disconnect between low-level computational features and higher-level concepts they represent",
+          "The delay in processing multimedia data on streaming platforms",
+          "The difference between manual and automated metadata annotation"
+        ],
+        "correct": 1,
+        "explanation": "The semantic gap refers to the challenge of linking raw computational features to meaningful high-level concepts."
+      },
+      {
+        "question": "Why is multimodal analysis more effective than traditional unimodal systems?",
+        "options": [
+          "It relies only on textual data for retrieval",
+          "It uses multiple complementary signals from different media types to provide richer interpretations",
+          "It eliminates the need for user interaction in search",
+          "It processes only visual data for content understanding"
+        ],
+        "correct": 1,
+        "explanation": "Multimodal analysis integrates signals from text, images, and audio to capture richer and more human-like meaning."
+      },
+      {
+        "question": "What role do embeddings play in modern media archives and newsrooms?",
+        "options": [
+          "They replace metadata with exact keyword matches",
+          "They create semantic representations from visuals, speech, and text to enable concept-based search",
+          "They store raw video and audio data for archival purposes",
+          "They focus exclusively on manual tagging of content"
+        ],
+        "correct": 1,
+        "explanation": "Embeddings capture semantic meaning across modalities, allowing archives to be searched by concept rather than exact keywords."
+      },
+      {
+        "question": "In multimodal analysis, what is the main limitation of low-level (perceptual) features?",
+        "options": [
+          "They are too abstract and hard to compute",
+          "They provide sensory summaries but lack semantic meaning or context",
+          "They cannot be extracted from audio or video",
+          "They only work on text-based data"
+        ],
+        "correct": 1,
+        "explanation": "Perceptual features describe raw signals but do not interpret or connect to higher-level meanings."
+      },
+      {
+        "question": "What is the primary challenge in image retrieval when users search with keywords?",
+        "options": [
+          "Keywords and pixel data cannot be directly compared",
+          "There are too many images to search through",
+          "Users often misspell keywords",
+          "Images lack any metadata"
+        ],
+        "correct": 0,
+        "explanation": "The core difficulty is that pixel data from images and user keywords are fundamentally different and cannot be directly matched."
+      },
+      {
+        "question": "Why can annotations from different workers cause problems in image retrieval systems?",
+        "options": [
+          "Annotations may vary in semantic level and wording",
+          "Annotations are always inaccurate",
+          "Annotations are only numeric values",
+          "Annotations always include irrelevant information"
+        ],
+        "correct": 0,
+        "explanation": "Different annotators may use terms at different levels of specificity, causing semantic mismatches during retrieval."
+      },
+      {
+        "question": "What is a significant limitation of manually created metadata for large-scale image collections?",
+        "options": [
+          "High cost and variability in quality due to domain knowledge differences",
+          "Lack of any useful information",
+          "No ability to describe abstract concepts",
+          "Inability to capture any textual data"
+        ],
+        "correct": 0,
+        "explanation": "Manual annotation can be expensive and inconsistent, especially when domain expertise varies among annotators."
+      },
+      {
+        "question": "How does faceted navigation improve user experience in large media archives?",
+        "options": [
+          "By categorizing images with pre-defined attributes for easier browsing",
+          "By automatically generating images",
+          "By increasing the number of images shown per page",
+          "By removing metadata to simplify the database"
+        ],
+        "correct": 0,
+        "explanation": "Faceted navigation groups images by attributes, allowing users to filter and browse efficiently."
+      },
+      {
+        "question": "Why is automated metadata extraction especially valuable for arbitrary photos and videos?",
+        "options": [
+          "Because curated reference databases do not exist for all images, making manual annotation impractical",
+          "Because automated methods always produce perfect metadata",
+          "Because humans cannot annotate images",
+          "Because raw pixels contain all semantic information"
+        ],
+        "correct": 0,
+        "explanation": "Automated methods help scale annotation where no comprehensive curated metadata sources exist."
+      },
+      {
+        "question": "In a binary classification confusion matrix, what does the term True Positive (TP) represent?",
+        "options": [
+          "Instances where the model correctly predicts the positive class",
+          "Instances where the model incorrectly predicts the positive class",
+          "Instances where the model correctly predicts the negative class",
+          "Instances where the model incorrectly predicts the negative class"
+        ],
+        "correct": 0,
+        "explanation": "True Positives are cases where the prediction and actual condition both indicate the positive class."
+      },
+      {
+        "question": "Which of the following metrics is calculated as TP divided by the total predicted positive cases (P)?",
+        "options": [
+          "Recall (TPR)",
+          "Precision (PPV)",
+          "Specificity (TNR)",
+          "Negative Predictive Value (NPV)"
+        ],
+        "correct": 1,
+        "explanation": "Precision, also called Positive Predictive Value, is TP divided by T, representing the proportion of correct positive predictions."
+      },
+      {
+        "question": "What does the False Negative Rate (FNR) represent in a classification task?",
+        "options": [
+          "The proportion of negative cases incorrectly predicted as positive",
+          "The proportion of positive cases correctly predicted",
+          "The proportion of positive cases incorrectly predicted as negative",
+          "The proportion of negative cases correctly predicted"
+        ],
+        "correct": 2,
+        "explanation": "FNR measures how many actual positive cases are missed (predicted as negative)."
+      },
+      {
+        "question": "If a test has a very low prevalence (P) of positive cases, how might this affect the interpretation of accuracy?",
+        "options": [
+          "Accuracy will be a reliable measure of performance",
+          "Accuracy might be misleadingly high due to many true negatives",
+          "Accuracy will be low because of many false positives",
+          "Accuracy only depends on sensitivity and specificity, so prevalence is irrelevant"
+        ],
+        "correct": 1,
+        "explanation": "With low prevalence, many true negatives inflate accuracy even if the test performs poorly on positive cases."
+      },
+      {
+        "question": "In a multi-class classification scenario, how can metrics like sensitivity and specificity for a single class be computed?",
+        "options": [
+          "By ignoring other classes and evaluating only the target class",
+          "By collapsing other classes into one group and treating it as a binary problem",
+          "By averaging the metric values over all classes",
+          "By using only the confusion matrix diagonal elements"
+        ],
+        "correct": 1,
+        "explanation": "Collapsing all other classes into a single 'not class k' group creates a binary view to compute these metrics."
+      },
+      {
+        "question": "Considering the ROC curve, what does the Area Under the Curve (AUC) represent?",
+        "options": [
+          "The proportion of true negatives over false positives",
+          "The classifier's ability to distinguish between positive and negative cases across all thresholds",
+          "The classification accuracy at the optimal threshold",
+          "The ratio of true positives to false negatives"
+        ],
+        "correct": 1,
+        "explanation": "AUC measures overall classifier performance in separating classes regardless of the threshold."
+      }
+    ],
+    "11 - Visual Features": [
+      {
+        "question": "What is meant by the semantic gap in image retrieval?",
+        "options": [
+          "The difference between image resolution and display resolution",
+          "The lack of labels in most image datasets",
+          "The distance between raw pixel data and human-level concepts",
+          "The computational cost of processing images"
+        ],
+        "correct": 2,
+        "explanation": "The semantic gap refers to the mismatch between low-level visual signals and the high-level concepts people use to describe images."
+      },
+      {
+        "question": "Why are perceptual color spaces preferred over raw RGB values for measuring color similarity?",
+        "options": [
+          "They reduce images to fewer dimensions",
+          "They match physical wavelength measurements more accurately",
+          "They better align numeric distances with human perception",
+          "They eliminate the need for normalization"
+        ],
+        "correct": 2,
+        "explanation": "Perceptual color spaces are designed so that equal numeric distances correspond more closely to equal perceived differences."
+      },
+      {
+        "question": "Which invariance property ensures that small shifts in object position do not change an image's feature representation?",
+        "options": [
+          "Rotation invariance",
+          "Scale invariance",
+          "Translation invariance",
+          "Lighting invariance"
+        ],
+        "correct": 2,
+        "explanation": "Translation invariance allows features to remain stable under small positional shifts in the image."
+      },
+      {
+        "question": "Why do simple histogram distance measures sometimes fail to capture perceptual similarity between images?",
+        "options": [
+          "They are too computationally expensive",
+          "They ignore correlations between similar colors",
+          "They require labeled training data",
+          "They cannot be normalized"
+        ],
+        "correct": 1,
+        "explanation": "Simple distances treat bins as independent and do not account for similarity between nearby reference colors."
+      },
+      {
+        "question": "What advantage do quadratic distance measures offer over simple Euclidean distances for comparing color histograms?",
+        "options": [
+          "They reduce histogram dimensionality automatically",
+          "They explicitly incorporate similarities between reference colors",
+          "They avoid the need for normalization",
+          "They eliminate sensitivity to lighting changes"
+        ],
+        "correct": 1,
+        "explanation": "Quadratic distances use a matrix encoding inter-bin similarities, allowing perceptually close colors to contribute less to distance."
+      },
+      {
+        "question": "Why are CIE Lab color moments often preferred over RGB-based moments in image retrieval?",
+        "options": [
+          "Lab has fewer channels than RGB",
+          "Lab is device dependent and easier to compute",
+          "Lab provides perceptual uniformity for distance calculations",
+          "Lab eliminates the need for covariance terms"
+        ],
+        "correct": 2,
+        "explanation": "CIE Lab is perceptually uniform, making statistical distances between moments more consistent with human judgments."
+      },
+      {
+        "question": "What is the main goal of early visual feature extraction methods in computer vision?",
+        "options": [
+          "To classify objects using learned labels",
+          "To describe images at a perceptual level rather than a semantic one",
+          "To directly close the semantic gap using language models",
+          "To encode images as natural language descriptions"
+        ],
+        "correct": 1,
+        "explanation": "Early methods focused on measurable perceptual properties such as color, texture, and edges rather than object meaning."
+      },
+      {
+        "question": "Which property of human perception motivates translation invariance in visual features?",
+        "options": [
+          "Brightness adaptation",
+          "Tolerance to noise",
+          "Recognition of objects despite small positional shifts",
+          "Sensitivity to absolute pixel values"
+        ],
+        "correct": 2,
+        "explanation": "People recognize objects even when their position changes slightly, so features should remain stable under small translations."
+      },
+      {
+        "question": "Why do color histograms and color moments often fail to distinguish images with very different layouts?",
+        "options": [
+          "They depend heavily on illumination conditions",
+          "They ignore spatial relationships between pixels",
+          "They require too many reference colors",
+          "They are computed in nonuniform color spaces"
+        ],
+        "correct": 1,
+        "explanation": "Both methods aggregate color statistics globally and do not encode where colors appear in the image."
+      },
+      {
+        "question": "Why is texture considered essential for image retrieval?",
+        "options": [
+          "Because it replaces the need for color information entirely",
+          "Because it explains how colors and patterns are spatially arranged",
+          "Because it directly encodes object labels in images",
+          "Because it focuses only on pixel intensity values"
+        ],
+        "correct": 1,
+        "explanation": "Texture provides information about how colors, patterns, and shapes are arranged in space, which aids recognition and retrieval."
+      },
+      {
+        "question": "What is the main purpose of combining color features with texture features in image retrieval systems?",
+        "options": [
+          "To reduce computational cost",
+          "To replace shape analysis entirely",
+          "To improve accuracy and robustness of retrieval",
+          "To simplify the database structure"
+        ],
+        "correct": 2,
+        "explanation": "Using both color and texture provides a more complete description of image content, improving retrieval performance."
+      },
+      {
+        "question": "Why are Sobel operators commonly used in edge-based texture analysis?",
+        "options": [
+          "They directly compute texture histograms",
+          "They enhance color contrast between regions",
+          "They estimate image gradients in horizontal and vertical directions",
+          "They convert images into the frequency domain"
+        ],
+        "correct": 2,
+        "explanation": "Sobel operators approximate intensity gradients in the x and y directions, which are fundamental for detecting edges."
+      },
+      {
+        "question": "Why are moments often preferred over histograms when many Gabor filters are used?",
+        "options": [
+          "Moments are easier to visualize",
+          "Histograms cannot represent frequency information",
+          "Moments reduce dimensionality and avoid complex distance measures",
+          "Histograms are sensitive only to orientation"
+        ],
+        "correct": 2,
+        "explanation": "Moments summarize distributions compactly, reducing feature dimensionality and computational complexity."
+      },
+      {
+        "question": "In SIFT, how is rotation invariance primarily achieved during feature construction?",
+        "options": [
+          "By ignoring gradient magnitudes",
+          "By normalizing keypoints to a dominant orientation",
+          "By restricting features to horizontal and vertical edges",
+          "By using only grayscale intensity values"
+        ],
+        "correct": 1,
+        "explanation": "SIFT assigns a dominant orientation to each keypoint and aligns feature extraction accordingly, enabling rotation invariance."
+      }
+    ],
+    "12 - Acoustic Features": [
+      {
+        "question": "What frequency range defines the limits of typical human hearing?",
+        "options": [
+          "10 Hz to 10 kHz",
+          "20 Hz to 20 kHz",
+          "50 Hz to 15 kHz",
+          "100 Hz to 30 kHz"
+        ],
+        "correct": 1,
+        "explanation": "The text states that humans typically hear frequencies between 20 hertz and 20 kilohertz."
+      },
+      {
+        "question": "What is the main limitation of applying a single Fourier transform to an entire audio signal?",
+        "options": [
+          "It cannot represent high frequencies accurately",
+          "It ignores the amplitude of the signal",
+          "It averages frequency content over time and loses temporal changes",
+          "It requires excessive computational resources"
+        ],
+        "correct": 2,
+        "explanation": "A single Fourier transform produces one global spectrum, losing information about how frequency content changes over time."
+      },
+      {
+        "question": "In the Short-Time Fourier Transform, what tradeoff is controlled by the window length?",
+        "options": [
+          "Amplitude versus phase accuracy",
+          "Sampling rate versus quantization noise",
+          "Time resolution versus frequency resolution",
+          "Dynamic range versus loudness perception"
+        ],
+        "correct": 2,
+        "explanation": "Short windows improve time resolution but blur frequency detail, while long windows improve frequency resolution at the expense of timing accuracy."
+      },
+      {
+        "question": "Why is overlapping used when dividing an audio signal into frames for feature extraction?",
+        "options": [
+          "To increase the sampling frequency",
+          "To reduce computational complexity",
+          "To prevent abrupt changes and ensure smooth feature transitions",
+          "To eliminate background noise"
+        ],
+        "correct": 2,
+        "explanation": "Overlapping frames prevent discontinuities at frame boundaries and keep changes in extracted features smooth."
+      },
+      {
+        "question": "Why is the A-weighting curve commonly applied when measuring loudness in decibels?",
+        "options": [
+          "It compensates for microphone distortion",
+          "It emphasizes very high frequencies above 10 kHz",
+          "It models the frequency-dependent sensitivity of human hearing",
+          "It equalizes energy across all frequency bands"
+        ],
+        "correct": 2,
+        "explanation": "A-weighting approximates how human hearing is more sensitive to certain frequencies, especially between 2 and 5 kHz."
+      },
+      {
+        "question": "Why do MFCC-based systems typically include first- and second-order derivatives of cepstral coefficients?",
+        "options": [
+          "To reduce the dimensionality of the feature space",
+          "To encode absolute loudness more accurately",
+          "To capture temporal dynamics and changes in spectral shape",
+          "To eliminate the need for segmentation"
+        ],
+        "correct": 2,
+        "explanation": "The derivatives model how cepstral coefficients change over time, capturing dynamic information crucial for distinguishing speech and other sounds."
+      },
+      {
+        "question": "What is the defining property of two pitches that are one octave apart?",
+        "options": [
+          "Their frequencies differ by a constant additive value",
+          "Their frequencies have a ratio of 1:2 or 2:1",
+          "They share the same harmonic structure",
+          "They differ by exactly 12 Hz"
+        ],
+        "correct": 1,
+        "explanation": "An octave corresponds to a doubling or halving of frequency, giving a ratio of 1:2 or 2:1."
+      },
+      {
+        "question": "How does combinatorial hashing improve the robustness of audio fingerprinting systems like Shazam?",
+        "options": [
+          "By storing full spectrograms for exact comparison",
+          "By encoding absolute amplitude values of peaks",
+          "By representing relative frequency and timing relationships between peaks",
+          "By averaging all detected peaks into a single descriptor"
+        ],
+        "correct": 2,
+        "explanation": "Hashes based on relative frequency and time differences remain stable even when noise slightly shifts peak positions."
+      },
+      {
+        "question": "Why does background noise tend to have less impact on the constellation map representation (fingerprinting systems)?",
+        "options": [
+          "Noise produces harmonically related peaks",
+          "Noise peaks are usually stronger than musical peaks",
+          "Noise peaks are randomly distributed and often filtered out by local-maximum selection",
+          "Noise only affects phase information"
+        ],
+        "correct": 2,
+        "explanation": "Local-maximum detection favors strong, structured peaks from the signal while discarding weaker, randomly distributed noise peaks."
+      },
+      {
+        "question": "What is the key criterion used to decide which candidate song matches a query recording in Shazam?",
+        "options": [
+          "The total number of matching hashes regardless of timing",
+          "The similarity of average spectral envelopes",
+          "The height of the largest time-offset histogram bin",
+          "The smallest frequency difference between matched peaks"
+        ],
+        "correct": 2,
+        "explanation": "Correct matches produce many hashes that agree on the same time offset, forming a strong histogram peak."
+      },
+      {
+        "question": "Why do audio fingerprinting systems generally fail to identify user-sung or highly improvised live versions of songs?",
+        "options": [
+          "They lack sufficient frequency resolution",
+          "They depend on invariant relative frequency and timing patterns that are altered in such performances",
+          "They cannot process monophonic signals",
+          "They rely exclusively on tempo information"
+        ],
+        "correct": 1,
+        "explanation": "Fingerprinting assumes stable frequency and timing structures from catalog recordings, which are heavily altered in singing or live improvisation."
+      }
+    ],
+    "13 - Spatiotemporal Features": [
+      {
+        "question": "Which unit represents the smallest level of visual detail in a video according to the text?",
+        "options": [
+          "Scene",
+          "Shot",
+          "Frame",
+          "Episode"
+        ],
+        "correct": 2,
+        "explanation": "A frame is defined as a single still image captured at one moment and is the most detailed visual unit."
+      },
+      {
+        "question": "Why are frames rarely used directly for video search tasks?",
+        "options": [
+          "They do not contain audio information",
+          "They are too numerous and too fine-grained",
+          "They cannot be indexed by algorithms",
+          "They lack temporal ordering"
+        ],
+        "correct": 1,
+        "explanation": "Frames exist in very large numbers and contain overly detailed information, making them inefficient for direct search."
+      },
+      {
+        "question": "Which video unit is most commonly used as a basic building block for indexing and retrieval systems?",
+        "options": [
+          "Frame",
+          "Shot",
+          "Scene",
+          "Episode"
+        ],
+        "correct": 1,
+        "explanation": "Shots are coherent sequences of frames with synchronized media, making them suitable for indexing and retrieval."
+      },
+      {
+        "question": "What distinguishes a scene from a shot in video segmentation?",
+        "options": [
+          "A scene always has a single camera angle",
+          "A scene groups shots by shared context or narrative",
+          "A scene is defined only by audio continuity",
+          "A scene contains exactly one episode"
+        ],
+        "correct": 1,
+        "explanation": "Scenes consist of multiple shots that share context such as location, time, or continuous action."
+      },
+      {
+        "question": "Why is traditional shot detection often unsuitable for surveillance video?",
+        "options": [
+          "Surveillance videos lack audio tracks",
+          "Hard cuts rarely occur in surveillance footage",
+          "Scenes are too short to analyze",
+          "Frame rates are too low for detection"
+        ],
+        "correct": 1,
+        "explanation": "Surveillance footage is typically continuous, so abrupt shot changes are uncommon and shot detection is ineffective."
+      },
+      {
+        "question": "What key advantage do cross-modal transformers provide in video retrieval systems?",
+        "options": [
+          "They reduce video storage requirements",
+          "They eliminate the need for visual features",
+          "They fuse visual, audio, and text data over time",
+          "They rely solely on manual annotations"
+        ],
+        "correct": 2,
+        "explanation": "Cross-modal transformers integrate multiple modalities and temporal information into a unified representation."
+      },
+      {
+        "question": "In hard cut detection using frame comparison, when is a shot boundary declared?",
+        "options": [
+          "When audio changes abruptly",
+          "When an I-frame appears in the encoding",
+          "When frame distance exceeds a chosen threshold",
+          "When histogram brightness gradually shifts"
+        ],
+        "correct": 2,
+        "explanation": "A hard cut is detected when the measured difference between consecutive frames surpasses a predefined threshold."
+      },
+      {
+        "question": "What is the main limitation of simple background subtraction for motion detection?",
+        "options": [
+          "It cannot detect large moving objects",
+          "It requires labeled training data",
+          "It fails when the camera is not stationary",
+          "It cannot detect shadows"
+        ],
+        "correct": 2,
+        "explanation": "Background subtraction assumes a fixed camera, and camera motion breaks the background model."
+      },
+      {
+        "question": "Why does the Lucas-Kanade optical flow method work best on corner points rather than edges or flat regions?",
+        "options": [
+          "Corners have higher brightness values",
+          "Edges violate the brightness constancy assumption",
+          "Flat regions produce too much motion",
+          "Corners provide well-conditioned equations with sufficient gradient variation"
+        ],
+        "correct": 3,
+        "explanation": "Corner points yield stable solutions because gradients in multiple directions make the system of equations invertible."
+      },
+      {
+        "question": "What is the aperture problem in optical flow estimation?",
+        "options": [
+          "The inability to detect motion when brightness changes over time",
+          "The ambiguity of motion estimation when observing movement through a small local window",
+          "The failure of optical flow methods at high frame rates",
+          "The loss of spatial resolution caused by image pyramids"
+        ],
+        "correct": 1,
+        "explanation": "When motion is observed only within a small neighborhood, movement along an edge cannot be uniquely determined, leading to ambiguous motion estimates."
+      },
+      {
+        "question": "What role does the brightness constancy assumption play in the Lucas-Kanade optical flow method?",
+        "options": [
+          "It assumes that the overall illumination of a scene never changes",
+          "It states that a pixel's intensity remains constant as it moves between consecutive frames",
+          "It enforces equal brightness across neighboring pixels in a window",
+          "It guarantees that motion vectors are identical for all pixels in a frame"
+        ],
+        "correct": 1,
+        "explanation": "Lucas-Kanade assumes that the brightness of a moving pixel does not change over short time intervals, forming the basis of the optical flow equation."
+      },
+      {
+        "question": "How does the Lucas-Kanade method overcome the aperture problem in optical flow estimation?",
+        "options": [
+          "By assuming zero motion along image edges",
+          "By analyzing motion at multiple pyramid scales",
+          "By aggregating motion constraints from a local window of neighboring pixels",
+          "By ignoring pixels with low brightness gradients"
+        ],
+        "correct": 2,
+        "explanation": "Lucas-Kanade assumes that pixels within a small window share the same motion, providing multiple equations that resolve the ambiguity present when considering a single pixel."
+      }
+    ],
+    "14 - Structural Features": [
+      {
+        "question": "What is the primary role of structural features for retrieval?",
+        "options": [
+          "To capture raw sensory data without semantic meaning",
+          "To reduce overfitting by simplifying models",
+          "To bridge the semantic gap by capturing richer patterns and relationships",
+          "To directly label data without any preprocessing"
+        ],
+        "correct": 2,
+        "explanation": "Structural features capture complex patterns and relationships in data, helping models move beyond low-level sensory signals to understand abstract concepts."
+      },
+      {
+        "question": "What key assumption does the Naïve Bayes model make to simplify probability calculations in high-dimensional feature spaces?",
+        "options": [
+          "Features are dependent on each other",
+          "Features are conditionally independent given the class",
+          "Classes have equal probability",
+          "All features have equal importance"
+        ],
+        "correct": 1,
+        "explanation": "Naïve Bayes assumes conditional independence among features, simplifying the modeling of high-dimensional data."
+      },
+      {
+        "question": "In language detection using Naïve Bayes, what is the role of character-based n-grams?",
+        "options": [
+          "They encode semantic meaning of sentences",
+          "They form the feature vectors by counting occurrences within the text",
+          "They represent syntactic structures explicitly",
+          "They replace stop word frequency analysis"
+        ],
+        "correct": 1,
+        "explanation": "Character-based n-grams are counted in texts to create feature vectors for each language, enabling probability estimation in the Naïve Bayes model."
+      },
+      {
+        "question": "Why might smoothing not be required when estimating likelihoods for language detection?",
+        "options": [
+          "Because all n-grams are equally likely",
+          "Because the vocabulary excludes rare or absent n-grams in test data, avoiding zero probabilities",
+          "Because the model uses binary features instead of counts",
+          "Because priors compensate for zero likelihoods"
+        ],
+        "correct": 1,
+        "explanation": "Excluding infrequent or missing n-grams from the vocabulary avoids zero probabilities, making smoothing unnecessary in this context."
+      },
+      {
+        "question": "What key benefit does the TextCNN architecture provide for text classification compared to transformers?",
+        "options": [
+          "It treats sequence length as an architectural parameter",
+          "It handles long-range dependencies better",
+          "It efficiently captures local patterns without requiring fixed sequence lengths",
+          "It uses self-attention to process whole sequences in parallel"
+        ],
+        "correct": 2,
+        "explanation": "TextCNN uses 1D convolutions over embeddings to capture local features efficiently and can handle variable-length sequences without padding."
+      },
+      {
+        "question": "Why might Naïve Bayes be preferred over transformer models for sentiment analysis?",
+        "options": [
+          "Naïve Bayes offers higher accuracy than transformers",
+          "Naïve Bayes provides fast training and classification with minimal resources",
+          "Transformers cannot handle short texts effectively",
+          "Transformers are unable to model negations"
+        ],
+        "correct": 1,
+        "explanation": "Naïve Bayes trains and classifies extremely fast with minimal resources, achieving high accuracy quickly, whereas transformers are slower and more resource-intensive with only marginal gains."
+      },
+      {
+        "question": "What problem in neural networks did the residual blocks introduced in ResNet primarily address?",
+        "options": [
+          "Overfitting",
+          "Vanishing gradients",
+          "Data normalization",
+          "Limited training data"
+        ],
+        "correct": 1,
+        "explanation": "Residual blocks help mitigate the vanishing gradient problem by allowing gradients to flow directly through identity connections."
+      },
+      {
+        "question": "How does the Vision Transformer (ViT) model process images differently compared to traditional CNNs?",
+        "options": [
+          "It uses max-pooling layers for feature extraction.",
+          "It converts images into sequences of patch embeddings and applies transformer encoders.",
+          "It applies only convolutional filters of varying sizes.",
+          "It directly classifies raw pixels without feature extraction."
+        ],
+        "correct": 1,
+        "explanation": "ViT breaks images into fixed-size patches, learns embeddings for these patches, and processes them through a transformer encoder."
+      },
+      {
+        "question": "Why did neural networks experience a deadlock in progress before the breakthrough of deep learning?",
+        "options": [
+          "Lack of large labeled datasets and insufficient computational power.",
+          "Absence of activation functions.",
+          "Excessively large datasets overwhelming training.",
+          "Overreliance on convolutional neural networks only."
+        ],
+        "correct": 0,
+        "explanation": "Early neural networks suffered due to limited data, insufficient computing resources, and instability like vanishing gradients, which delayed practical success."
+      },
+      {
+        "question": "Which of the following best describes the architecture of GoogleLeNet's inception module?",
+        "options": [
+          "A single convolutional layer with a large kernel size.",
+          "Multiple convolutional paths with different filter sizes combined at the output.",
+          "A fully connected layer followed by dropout.",
+          "Stacked residual blocks without pooling."
+        ],
+        "correct": 1,
+        "explanation": "Inception modules combine multiple convolutional filters of various sizes and pooling in parallel paths that are concatenated at the end."
+      },
+      {
+        "question": "In CLIP's contrastive training, how are positive and negative image-text pairs determined?",
+        "options": [
+          "All pairs are treated as positive examples.",
+          "Pairs are randomly assigned as positive or negative.",
+          "The correct caption-image pairs are positive, all others are negative.",
+          "Pairs are labeled by a human during training."
+        ],
+        "correct": 2,
+        "explanation": "CLIP treats the matching caption and image as positive pairs and all mismatched pairs in the batch as negative to learn aligned embeddings."
+      },
+      {
+        "question": "Why does the residual block in ResNet learn a delta function g(x) = f(x) - x instead of the original function f(x)?",
+        "options": [
+          "To simplify model architecture and reduce parameters.",
+          "To allow gradients to bypass layers, improving training stability and convergence.",
+          "To enforce sparsity in activations.",
+          "To prevent overfitting by reducing model capacity."
+        ],
+        "correct": 1,
+        "explanation": "Learning the delta function enables direct gradient flow through identity connections, alleviating vanishing gradient problems and stabilizing training."
+      },
+      {
+        "question": "What role does a decision tree play in audio classification tasks?",
+        "options": [
+          "It preprocesses raw audio into spectrograms",
+          "It learns a sequence of feature-based tests to assign class labels",
+          "It converts phonemes directly into words",
+          "It smooths out feature values across time frames"
+        ],
+        "correct": 1,
+        "explanation": "Decision trees learn sequences of tests on features to classify audio segments into categories like speech or music."
+      },
+      {
+        "question": "Why is smoothing applied to prediction results during the audio classification phase?",
+        "options": [
+          "To increase the sampling rate of the audio signal",
+          "To reduce rapid label fluctuations and stabilize segmentation",
+          "To amplify the most recent feature values",
+          "To convert phoneme sequences into words"
+        ],
+        "correct": 1,
+        "explanation": "Smoothing prevents rapid changes between class labels by weighting past predictions, stabilizing the segmentation of audio."
+      },
+      {
+        "question": "What is the key advantage of using Hidden Markov Models (HMM) for phoneme learning?",
+        "options": [
+          "They require no human expertise for setup",
+          "They model temporal transitions and phoneme durations explicitly",
+          "They rely solely on raw waveform data without preprocessing",
+          "They do not depend on quantized feature vectors"
+        ],
+        "correct": 1,
+        "explanation": "HMMs explicitly model temporal transitions and durations of phonemes, helping align phonetic units over time."
+      },
+      {
+        "question": "How do transformer architectures improve transcription compared to traditional recurrent networks?",
+        "options": [
+          "By eliminating the need for feature extraction",
+          "By using attention mechanisms for better sequence modeling",
+          "By modeling only fixed-length audio segments",
+          "By requiring less training data"
+        ],
+        "correct": 1,
+        "explanation": "Transformers use attention to better model long-range dependencies in sequences, improving transcription accuracy over RNNs."
+      },
+      {
+        "question": "Which technique helps audio models handle variability in speech tempo during transcription?",
+        "options": [
+          "Assuming fixed phoneme durations for all speech",
+          "Using explicit duration models and variable-length state modeling",
+          "Ignoring tempo variations during feature extraction",
+          "Increasing the audio sampling rate"
+        ],
+        "correct": 1,
+        "explanation": "Explicit duration models and variable-length state modeling allow phonemes to span different time frames, accommodating tempo changes."
+      },
+      {
+        "question": "In the context of searching spoken content without full word recognition, why are N-grams of phonemes useful?",
+        "options": [
+          "They enable direct matching of query phonemes to audio features without transcription",
+          "They simplify the audio signal by averaging feature values",
+          "They convert audio into text without using any models",
+          "They allow exact word recognition even with dialect variations"
+        ],
+        "correct": 0,
+        "explanation": "N-grams of phonemes let systems search phoneme sequences directly, bypassing errors or complexity in full word transcription."
       }
     ]
   }
