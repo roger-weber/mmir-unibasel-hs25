@@ -71,7 +71,7 @@ const Question = ({question, revealAnswer, onSelect}) => {
   // Create shuffled indices array while preserving original options order
   const shuffledIndices = useMemo(() => (
     [...Array(question.options.length).keys()].sort(() => Math.random() - 0.5)
-  ), [question.question, question.tries]);
+  ), [question.options.length]);
 
   return (
     <div className="question-container">
@@ -124,7 +124,7 @@ const QuizScreen = ({ onFinish }) => {
       />
 
       {revealAnswer() && (
-          <RevealAnswer correct={question.correct === selected} explanation={question.explanation} onClick={handleSelection}></RevealAnswer>
+          <RevealAnswer correct={question.correct === selected} explanation={question.explanation} onClick={handleNext}></RevealAnswer>
       )} 
 
       <Buttons showNext={quiz.isLearningMode() && selected != null} handleNext={handleNext} handleFinish={onFinish} />

@@ -51,9 +51,7 @@ const PercentageSelector = () => {
     const value = parseInt(e.target.value, 10);
     quiz.setPercentage(value);
   };
-  
-  const selectedQuestions = Math.ceil((quiz.selectedPercentage / 100) * quiz.numberOfQuestions);
-  
+    
   return (
     <div className="percentage-selector">
       <div className="slider-container">

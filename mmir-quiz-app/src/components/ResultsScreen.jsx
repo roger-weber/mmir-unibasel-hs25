@@ -34,6 +34,7 @@ const QuizStats = ({ results }) => {
         title="Overall Score" 
         score={results.score} 
         detailsText={`${results.correct} correct out of ${results.total} questions`}
+        key="total"
       />
 
       <div className="topic-score-container">
@@ -49,6 +50,7 @@ const QuizStats = ({ results }) => {
             title={topic}
             score={results.topics[topic].score}
             detailsText={`${results.topics[topic].correct} correct out of ${results.topics[topic].total} questions`}
+            key={topic}
           />
         ))}
       </div>
