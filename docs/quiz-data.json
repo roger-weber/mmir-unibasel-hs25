@@ -1778,7 +1778,7 @@
         "explanation": "Relevance tolerates small errors in geometric ranking, so ANN delivers high recall without the heavy cost of exact search."
       },
       {
-        "question": "Why does the concept of 'same direction' weaken in high-dimensional embedding spaces?",
+        "question": "Why does the concept of “same direction” weaken in high-dimensional embedding spaces?",
         "options": [
           "Most vectors become parallel",
           "There are too few possible sign combinations",
@@ -2325,7 +2325,7 @@
         "options": [
           "By using PageRank values to weight hubs and authorities.",
           "By considering only the number of incoming and outgoing links regardless of topic.",
-          "By operating on a base set of pages related to the user's query topic.",
+          "By operating on a base set of pages related to the user’s query topic.",
           "By ignoring link structure and focusing on content similarity."
         ],
         "correct": 2,
@@ -2455,7 +2455,7 @@
         "explanation": "True Positives are cases where the prediction and actual condition both indicate the positive class."
       },
       {
-        "question": "Which of the following metrics is calculated as TP divided by the total predicted positive cases (P)?",
+        "question": "Which of the following metrics is calculated as TP divided by the total predicted positive cases (T)?",
         "options": [
           "Recall (TPR)",
           "Precision (PPV)",
