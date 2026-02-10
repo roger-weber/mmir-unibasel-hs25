@@ -1,5 +1,7 @@
 # Overview
 
+(This course is now archived)
+
 The **Multimedia Retrieval** (HS25) course at the University of Basel is a comprehensive exploration of information retrieval systems spanning text, images, audio, and video content. The course begins with foundational concepts, covering classical text retrieval models including Boolean, vector space, and probabilistic approaches, culminating in the widely-used BM25 algorithm. Students learn performance evaluation techniques using precision and recall metrics to assess retrieval system effectiveness.
 
 The curriculum progresses through advanced text processing methods, indexing strategies using tools like Lucene, and modern semantic search techniques including word embeddings and transformer-based models. A significant focus is placed on vector search challenges, addressing the curse of dimensionality and contemporary vector search engine techniques. The course embraces current AI trends by covering Retrieval Augmented Generation (RAG), showing how large language models enhance responses using retrieved information.
